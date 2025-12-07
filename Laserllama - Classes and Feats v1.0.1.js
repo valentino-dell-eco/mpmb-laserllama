@@ -2714,7 +2714,7 @@ ClassList["monk(laserllama)"] = {
         "Arresting Strike", "Dazing Strike", "Deflect Strike", "Empowered Strike",
         "Crippling Strike", "Enhanced Grip", "Improvised Strikes", "Mystic Regeneration",
         "Patient Defense", "Slow Fall", "Step of the Wind", "Probing Strike", "Spiritual Armor",
-        "Divine Light",
+        "Divine Light", "Typhoon Strike",
 
         // prereq: monk level 5+
         "Deflect Missile", "Gentling Touch", "Seeking Strike", "Slowing Strike", "Stunning Strike",
@@ -2804,8 +2804,7 @@ ClassList["monk(laserllama)"] = {
         additional: levels.map(function (n) {
           return "1d" + (n < 5 ? 6 : n < 11 ? 8 : n < 17 ? 10 : 12) + " + " + n + " + Dex mod; 1 ki to deflect";
         }),
-        submenu: "[monk level  5+]",
-        prereqeval: function (v) { return classes.known["monk(laserllama)"].level >= 5; },
+        prereqeval: function (v) { return classes.known["monk(laserllama)"].level >= 1; },
       },
       "empowered strike": {
         name: "Empowered Strike",
