@@ -211,6 +211,12 @@ ClassList['warlock(laserllama)'] = {
                 {
                     feature: "subclassfeature6"
                 },
+                {
+                    feature: "subclassfeature10"
+                },
+                {
+                    feature: "subclassfeature14"
+                },
             ]
         },
         "eldritch blast": {
@@ -1836,6 +1842,145 @@ AddSubClass("warlock(laserllama)", "deep one", {
     }
 });
 
+// Darklord Patron
+AddSubClass("warlock(laserllama)", "darklord", {
+    regExpSearch: /^(?=.*darklord).*$/i,
+    subname: "Darklord Patron",
+    fullname: "Darklord Warlock",
+    source: ["GMB:LL", 0],
+    features: {
+        "subclassfeature2": {
+            name: "Darklord Magic",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            choicesNotInMenu: true,
+            choices: ["Intelligence", "Wisdom", "Charisma"],
+            spellcastingExtra: [
+                "hex", "inflict wounds",
+                "blur", "shadow blade",
+                "fear", "haste",
+                "freedom of movement", "phantasmal killer",
+                "dream", "negative energy flood"
+            ],
+            description: desc([
+                "Your Patron infuses your magic with the dark powers of the Shadowfell.",
+                "You can choose for your Eldritch Blast to deal necrotic damage."
+            ]),
+            calcChanges: {
+                atkAdd: [
+                    function (fields, v) {
+                        if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                            fields.Description += (fields.Description ? '; ' : '') +
+                                "Can deal necrotic damage (Darklord Magic)";
+                        }
+                    },
+                    "Darklord Magic: Eldritch Blast can deal necrotic damage.",
+                    286
+                ]
+            }
+        },
+        "subclassfeature2.1": {
+            name: "Fell Curse",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            choicesNotInMenu: true,
+            choices: ["Intelligence", "Wisdom", "Charisma"],
+            usages: 1,
+            recovery: "long rest",
+            description: levels.map(function (n) {
+                if (n < 14) return desc([
+                    "Whenever you cast the hex spell it gains the following additional benefits:",
+                    "- Your concentration cannot be broken by taking damage.",
+                    "- Your attack rolls against the target of your hex spell score a critical hit on a roll of 19 or 20 on the d20.",
+                    "- If the target of your hex is reduced to 0 hit points, you can instantly end your hex to gain temporary hit points equal to your Warlock level + your Intelligence modifier.",
+                    "- Once per long rest you can cast hex at the level of your Pact Magic spell slots without expending a spell slot."
+                ])
+                return desc([
+                    "Whenever you cast the hex spell it gains the following additional benefits:",
+                    "- The spell no longer requires your concentration, but you can only have one instance of hex active at one time.",
+                    "- Whenever time the target of your hex damages you, you reduce it by your Pact Modifier (minimum of 1).",
+                    "- Your Shadow shares all the benefits from your hex spell.",
+                    "- Your attack rolls against the target of your hex spell score a critical hit on a roll of 19 or 20 on the d20.",
+                    "- If the target of your hex is reduced to 0 hit points, you can instantly end your hex to gain temporary hit points equal to your Warlock level + your Intelligence modifier.",
+                    "- Once per long rest you can cast hex at the level of your Pact Magic spell slots without expending a spell slot."
+                ])
+            }),
+            spellChanges: {
+                "hex": {
+                    changes: levels.map(function (n) {
+                        if (n < 14) return desc([
+                            "Whenever you cast the hex spell it gains the following additional benefits:",
+                            "- Your concentration cannot be broken by taking damage.",
+                            "- Your attack rolls against the target of your hex spell score a critical hit on a roll of 19 or 20 on the d20.",
+                            "- If the target of your hex is reduced to 0 hit points, you can instantly end your hex to gain temporary hit points equal to your Warlock level + your Intelligence modifier.",
+                            "- Once per long rest you can cast hex at the level of your Pact Magic spell slots without expending a spell slot."
+                        ])
+                        return desc([
+                            "Whenever you cast the hex spell it gains the following additional benefits:",
+                            "- The spell no longer requires your concentration, but you can only have one instance of hex active at one time.",
+                            "- Whenever time the target of your hex damages you, you reduce it by your Pact Modifier (minimum of 1).",
+                            "- Your Shadow shares all the benefits from your hex spell.",
+                            "- Your attack rolls against the target of your hex spell score a critical hit on a roll of 19 or 20 on the d20.",
+                            "- If the target of your hex is reduced to 0 hit points, you can instantly end your hex to gain temporary hit points equal to your Warlock level + your Intelligence modifier.",
+                            "- Once per long rest you can cast hex at the level of your Pact Magic spell slots without expending a spell slot."
+                        ])
+                    })
+                }
+            },
+        },
+        "subclassfeature2.2": {
+            name: "Shadow Warrior",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            description: desc([
+                "You gain the Armor of Shadows Eldritch Invocation.",
+                "It does not count against your number of Invocations Known, but it cannot be replaced with another Eldritch Invocation.",
+                "If you already know this Eldritch Invocation, then you learn another Invocation of your choice."
+            ]),
+            bonusClassExtrachoices: [
+                {
+                    class: "warlock(laserllama)",
+                    feature: "eldritch invocations",
+                    bonus: 1,
+                    filter: function (eInvocation) {
+                        return eInvocation.name && eInvocation.name.toLowerCase().includes("armor of shadows");
+                    },
+                },
+            ]
+        },
+        "subclassfeature6": {
+            name: "Living Shadow",
+            source: ["GMB:LL", 0],
+            minlevel: 6,
+            description: desc([
+                "As an action, you can expend a Pact Magic spell slot to bring your shadow to life with dark magic.",
+                "It uses the Shadow stat block from the Monster Manual, but its maximum hit points increase by your Warlock level and it uses your Warlock spell attack modifier for its attack rolls.",
+                "In combat, it acts during your turn. The Shadow can move and use its reaction on its own, but it will only take the Dodge action unless you use your bonus action to order it to take an action in its stat block or another action.",
+                "Your Shadow remains animated for 1 minute. It returns to you as a normal shadow after this time, or sooner if it is slain or if you use a bonus action to end this effect."
+            ]),
+            action: ["action", ""],
+        },
+        "subclassfeature10": {
+            name: "Dread Mantle",
+            source: ["GMB:LL", 0],
+            minlevel: 10,
+            description: desc([
+                "You have advantage on your death saving throws, and you gain resistance to necrotic damage."
+            ]),
+            savetxt: {
+                advantage: ["Death saving throws"],
+            },
+            dmgres: ["Necrotic"]
+        },
+        "subclassfeature14": {
+            name: "Right Hand of Dread",
+            source: ["GMB:LL", 0],
+            minlevel: 14,
+            description: "Fell Curse improved (see feature)"
+        }
+    }
+});
+
 // Exalted Patron
 AddSubClass("warlock(laserllama)", "exalted", {
     regExpSearch: /^(?=.*exalted).*$/i,
@@ -1977,6 +2122,340 @@ AddSubClass("warlock(laserllama)", "exalted", {
                 weaponOptions: returnBlindingDefiance(6),
                 weaponAdd: ["Blinding Defiance"]
             },
+        }
+    }
+});
+
+// Noble Genie Patron
+AddSubClass("warlock(laserllama)", "noble genie", {
+    regExpSearch: /^(?=.*noble)(?=.*genie).*$/i,
+    subname: "Noble Genie",
+    fullname: "Noble Genie Warlock",
+    source: ["GMB:LL", 0],
+    features: {
+        "subclassfeature2": {
+            name: "Noble Magic",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            description: desc([
+                'Choose your type of Genie for Noble Magic with the "Choose Feature" button'
+            ]),
+            choices: ["Dao (Earth)", "Djinn (Air)", "Efreeti (Fire)", "Marid (Water)"],
+            "dao (earth)": {
+                name: "Dao Noble Magic",
+                description: desc([
+                    "You can choose for your Eldritch Blast to deal bludgeoning damage."
+                ]),
+                calcChanges: {
+                    atkAdd: [
+                        function (fields, v) {
+                            if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                                fields.Description += (fields.Description ? '; ' : '') +
+                                    "Can deal bludgeoning damage (Noble Magic)";
+                            }
+                        },
+                        "Darklord Magic: Eldritch Blast can deal bludgeoning damage.",
+                        286
+                    ]
+                }
+            },
+            "djinn (air)": {
+                name: "Djinn Noble Magic",
+                description: desc([
+                    "You can choose for your Eldritch Blast to deal thunder damage."
+                ]),
+                calcChanges: {
+                    atkAdd: [
+                        function (fields, v) {
+                            if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                                fields.Description += (fields.Description ? '; ' : '') +
+                                    "Can deal thunder damage (Noble Magic)";
+                            }
+                        },
+                        "Darklord Magic: Eldritch Blast can deal thunder damage.",
+                        286
+                    ]
+                }
+            },
+            "efreeti (fire)": {
+                name: "Efreeti Noble Magic",
+                description: desc([
+                    "You can choose for your Eldritch Blast to deal fire damage."
+                ]),
+                calcChanges: {
+                    atkAdd: [
+                        function (fields, v) {
+                            if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                                fields.Description += (fields.Description ? '; ' : '') +
+                                    "Can deal fire damage (Noble Magic)";
+                            }
+                        },
+                        "Darklord Magic: Eldritch Blast can deal fire damage.",
+                        286
+                    ]
+                }
+            },
+            "marid (water)": {
+                name: "Marid Noble Magic",
+                description: desc([
+                    "You can choose for your Eldritch Blast to deal cold damage."
+                ]),
+                calcChanges: {
+                    atkAdd: [
+                        function (fields, v) {
+                            if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                                fields.Description += (fields.Description ? '; ' : '') +
+                                    "Can deal cold damage (Noble Magic)";
+                            }
+                        },
+                        "Darklord Magic: Eldritch Blast can deal cold damage.",
+                        286
+                    ]
+                }
+            },
+            choiceDependencies: [{
+                feature: "subclassfeature6" // Ethereal Nature
+            }]
+        },
+        "subclassfeature2.1": {
+            name: "Genie's Vessel",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            description: desc([
+                "Your Patron has given you a mystical Vessel as a sign of your Pact.",
+                "This Vessel is a Tiny object that appears as a container of your choice.",
+                "Your Vessel can be used as a Trinket for one of your Eldritch Invocations,",
+                "and if it is lost, it reappears next to you at the end of your next short or long rest.",
+                "Within this Vessel is an extradimensional space the size of a 20-foot cube.",
+                "As an action, you can put a Medium or smaller object inside this space by holding it to your Vessel's opening.",
+                "While you are holding your Vessel you can use an action to enter it.",
+                "You can remain inside for a number of hours equal to half your Warlock level,",
+                "but you can leave it early as an action, appearing in the unoccupied space closest to it."
+            ]),
+            action: [["action", " (enter/leave Vessel)"]]
+        },
+        "subclassfeature6": {
+            name: "Ethereal Nature",
+            source: ["GMB:LL", 0],
+            minlevel: 6,
+            description: desc([
+                "Your elemental magics have begun to physically change you.",
+                "You gain resistance to the damage type of your Noble Genie.",
+                "Also, once per turn when you deal the damage type of your Noble Genie",
+                "to a creature with Eldritch Blast, you can force it to make a",
+                "Charisma saving throw against your Spell save DC.",
+                "On a failed save, you instantly switch places with the target."
+            ]),
+            choices: ["dao (earth)", "djinn (air)", "efreeti (fire)", "marid (water)"],
+            choicesNotInMenu: true,
+            "dao (earth)": {
+                name: "Ethereal Nature (Dao)",
+                description: desc([
+                    "You gain resistance to bludgeoning damage.",
+                    "Once per turn when you deal bludgeoning damage with Eldritch Blast,",
+                    "you can force the target to make a Charisma saving throw.",
+                    "On a failed save, you instantly switch places with the target."
+                ]),
+                dmgres: ["Bludgeoning"]
+            },
+            "djinn (air)": {
+                name: "Ethereal Nature (Djinn)",
+                description: desc([
+                    "You gain resistance to thunder damage.",
+                    "Once per turn when you deal thunder damage with Eldritch Blast,",
+                    "you can force the target to make a Charisma saving throw.",
+                    "On a failed save, you instantly switch places with the target."
+                ]),
+                dmgres: ["Thunder"]
+            },
+            "efreeti (fire)": {
+                name: "Ethereal Nature (Efreeti)",
+                description: desc([
+                    "You gain resistance to fire damage.",
+                    "Once per turn when you deal fire damage with Eldritch Blast,",
+                    "you can force the target to make a Charisma saving throw.",
+                    "On a failed save, you instantly switch places with the target."
+                ]),
+                dmgres: ["Fire"]
+            },
+            "marid (water)": {
+                name: "Ethereal Nature (Marid)",
+                description: desc([
+                    "You gain resistance to cold damage.",
+                    "Once per turn when you deal cold damage with Eldritch Blast,",
+                    "you can force the target to make a Charisma saving throw.",
+                    "On a failed save, you instantly switch places with the target."
+                ]),
+                dmgres: ["Cold"]
+            }
+        },
+        "subclassfeature10": {
+            name: "Mystical Sanctuary",
+            source: ["GMB:LL", 0],
+            minlevel: 10,
+            description: desc([
+                "When you enter your Vessel, you can bring up to five willing creatures within 30 feet with you.",
+                "They remain in the Vessel for 1 hour, but are expelled early if you leave the Vessel,",
+                "or if you use your action to expel them from the Vessel.",
+                "Creatures within your Vessel gain the benefits of a short rest after 10 minutes",
+                "of light activity, instead of 1 hour."
+            ])
+        },
+        "subclassfeature14": {
+            name: "Limited Wish",
+            source: ["GMB:LL", 0],
+            minlevel: 14,
+            description: desc([
+                "You can call on your Patron to alter reality.",
+                "As an action, you can use your Vessel to cast a spell of your choice",
+                "of 6th-level or lower from any spell list, so long as it has a",
+                "casting time of one action or bonus action.",
+                "You do not need to expend a spell slot, and your Vessel replaces",
+                "all material components.",
+                "Once you use this feature you must finish three long rests",
+                "before you can use it again."
+            ]),
+            additional: "3 long rests",
+            action: [["action", ""]],
+            usages: 1,
+        }
+    }
+});
+
+// Undying Patron
+AddSubClass("warlock(laserllama)", "undying", {
+    regExpSearch: /^(?=.*undying).*$/i,
+    subname: "Undying Patron",
+    fullname: "Undying Warlock",
+    source: ["GMB:LL", 0],
+    features: {
+        "subclassfeature2": {
+            name: "Undying Magic",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            description: desc([
+                "Your Patron infuses your magic with undead power.",
+                "You can choose for your Eldritch Blast to deal necrotic damage."
+            ]),
+            spellcastingExtra: [
+                "cause fear", "ray of sickness",
+                "blindness/deafness", "ray of enfeeblement",
+                "fear", "phantom steed",
+                "blight", "death ward",
+                "antilife shell", "contagion"
+            ],
+            calcChanges: {
+                atkAdd: [
+                    function (fields, v) {
+                        if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                            if (!fields.Description.includes("necrotic damage")) {
+                                fields.Description += (fields.Description ? '; ' : '') +
+                                    "Can deal necrotic damage (Undying Magic)";
+                            }
+                        }
+                    },
+                    "Undying Magic: Eldritch Blast can deal necrotic damage.",
+                    286
+                ]
+            }
+        },
+        "subclassfeature2.1": {
+            name: "Necrotic Husk",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            choicesNotInMenu: true,
+            description: desc([
+                "As a bonus action, you can infuse your flesh with the power of undeath, decaying into the Necrotic Husk of your living body.",
+                "While you are transformed you gain the benefits below:",
+                "- When you transform you gain temporary hit points equal to your Warlock level + your Pact modifier (minimum of 1).",
+                "- You are immune to the frightened condition.",
+                "- Once per turn when you hit a creature with an attack, you can force it to make a Wisdom saving throw against your Warlock Spell save DC. On a failed save, the creature is frightened of you until the start of your next turn.",
+                "This transformation lasts for 1 minute, but you can end it early as a bonus action.",
+                "Once you transform, you must finish a short or long rest before you can do so again.",
+                "If you have no use left, you can expend a Pact Magic spell slot to transform."
+            ]),
+            action: ["bonus action", ""],
+            recovery: "short rest",
+            savetxt: {
+                immune: ["frightened"],
+            },
+            choices: ["Intelligence", "Wisdom", "Charisma"],
+            "intelligence": {
+                usagescalc: "event.value = Math.max(1, What('Int Mod'));",
+                additional: function () {
+                    var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                    var intMod = What('Int Mod');
+                    return "Temp HP: " + (warlockLevel + Math.max(intMod, 1));
+                }
+            },
+            "wisdom": {
+                usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+                additional: function () {
+                    var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                    var wisMod = What('Wis Mod');
+                    return "Temp HP: " + (warlockLevel + Math.max(wisMod, 1));
+                }
+            },
+            "charisma": {
+                usagescalc: "event.value = Math.max(1, What('Cha Mod'));",
+                additional: function () {
+                    var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                    var chaMod = What('Cha Mod');
+                    return "Temp HP: " + (warlockLevel + Math.max(chaMod, 1));
+                }
+            }
+        },
+        "subclassfeature2.2": {
+            name: "Touch of the Grave",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            description: desc([
+                "The magic infused in you by your Pact makes you appear to other undead as one of their own.",
+                "Undead of a CR equal to your Warlock level or lower are not hostile toward you until you say or do something hostile toward them."
+            ])
+        },
+        "subclassfeature6": {
+            name: "Lifedrinker",
+            source: ["GMB:LL", 0],
+            minlevel: 6,
+            description: desc([
+                "Your Pact allows you to feed on the vitality of the living.",
+                "Once per turn when you deal necrotic damage to a creature that is not construct or undead, you gain temporary hit points equal to half the necrotic damage dealt.",
+                "In Necrotic Husk form, you can add these to the temporary hit points from Necrotic Husk, but your temporary hit points cannot exceed your Warlock level + your Pact modifier."
+            ]),
+        },
+        "subclassfeature6.1": {
+            name: "Unsettling Visage",
+            source: ["GMB:LL", 0],
+            minlevel: 6,
+            description: desc([
+                "When you force a creature within 30 feet that can see you to make a saving throw to resist being frightened while you are in your Necrotic Husk form, it has disadvantage on its roll."
+            ]),
+        },
+        "subclassfeature10": {
+            name: "Unnatural Resilience",
+            source: ["GMB:LL", 0],
+            minlevel: 10,
+            description: desc([
+                "You gain resistance to necrotic damage.",
+                "In your Necrotic Husk form you are immune to necrotic damage, and resistant to bludgeoning, piercing, and slashing damage from non-magical and non-silvered attacks."
+            ]),
+            dmgres: ["Necrotic"],
+            savetxt: {
+                text: ["Necrotic Husk form: immune to necrotic, resist B/P/S from non-magical/non-silvered"]
+            }
+        },
+        "subclassfeature14": {
+            name: "Unending Life",
+            source: ["GMB:LL", 0],
+            minlevel: 14,
+            description: desc([
+                "If you are reduced to 0 hit points but not killed outright, you instead gain hit points equal to your level.",
+                "Once you use this feature you must finish a long rest before you use it again.",
+                "Lastly, if you begin your turn with less than half of your total hit points, but at least 1 hit point, you regain hit points equal to your Pact Modifier (minimum of 1 hit point)."
+            ]),
+            usages: 1,
+            recovery: "long rest",
         }
     }
 });
