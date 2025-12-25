@@ -2126,6 +2126,7 @@ AddSubClass("warlock(laserllama)", "exalted", {
     }
 });
 
+
 // Noble Genie Patron
 AddSubClass("warlock(laserllama)", "noble genie", {
     regExpSearch: /^(?=.*noble)(?=.*genie).*$/i,
@@ -2157,7 +2158,8 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         "Darklord Magic: Eldritch Blast can deal bludgeoning damage.",
                         286
                     ]
-                }
+                },
+                spellcastingExtra: ["sleep", "sanctuary", "enlarge/reduce", "spike growth", "fly", "meld into stone", "polymorph", "pillars of earth", "arcane hand", "wall of stone"]
             },
             "djinn (air)": {
                 name: "Djinn Noble Magic",
@@ -2175,7 +2177,8 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         "Darklord Magic: Eldritch Blast can deal thunder damage.",
                         286
                     ]
-                }
+                },
+                spellcastingExtra: ["sleep", "thunderwave", "enlarge/reduce", "gust of wind", "fly", "gaseous form", "polymorph", "greater invisibility", "arcane hand", "seeming"]
             },
             "efreeti (fire)": {
                 name: "Efreeti Noble Magic",
@@ -2193,7 +2196,10 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         "Darklord Magic: Eldritch Blast can deal fire damage.",
                         286
                     ]
-                }
+                },
+                spellcastingExtra: [
+                    "sleep", "burning hands", "enlarge/reduce", "scorching ray", "fly", "fireball", "polymorph", "fire shield", "arcane hand", "flame strike"
+                ]
             },
             "marid (water)": {
                 name: "Marid Noble Magic",
@@ -2211,7 +2217,10 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         "Darklord Magic: Eldritch Blast can deal cold damage.",
                         286
                     ]
-                }
+                },
+                spellcastingExtra: [
+                    "sleep", "torrent", "enlarge/reduce", "misty step", "fly", "tidal wave", "polymorph", "watery sphere", "arcane hand", "cone of cold"
+                ]
             },
             choiceDependencies: [{
                 feature: "subclassfeature6" // Ethereal Nature
