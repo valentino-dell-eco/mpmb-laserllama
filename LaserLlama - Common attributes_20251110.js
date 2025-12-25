@@ -9784,424 +9784,1518 @@ ElixirInfusionsLL = {
 // Biomancer Artificer LL Modifications
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 BiomancerModificationsLL = {
-    "amphibian physiology": {
-        name: "Amphibian Physiology",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Your neck sprouts gills or your skin becomes permeable like an amphibious creature",
-            "You gain a swimming speed equal to your walking speed",
-            "You can breathe both air and water"
-        ]),
-        speed: {
-            swim: { number: "walk", condition: "Permanent" }
-        },
-        additional: "Swim speed, water breathing"
+  "amphibian physiology": {
+    name: "Amphibian Physiology",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Your neck sprouts gills or your skin becomes permeable like an amphibious creature",
+      "You gain a swimming speed equal to your walking speed",
+      "You can breathe both air and water"
+    ]),
+    speed: {
+      swim: { number: "walk", condition: "Permanent" }
     },
-    "bestial senses": {
-        name: "Bestial Senses",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Your eyes and ears resemble those of predators",
-            "When you make a Wisdom (Perception) or Wisdom (Survival) check based on your sense of hearing, sight, or smell",
-            "You add your Intelligence modifier (minimum of +1) to your roll"
-        ]),
-        addMod: [{
-            type: "skill",
-            field: "Perception",
-            mod: "max(Int|1)",
-            text: "Bestial Senses: Add Intelligence modifier to Perception and Survival checks based on senses"
-        }, {
-            type: "skill", 
-            field: "Survival",
-            mod: "max(Int|1)",
-            text: "Bestial Senses: Add Intelligence modifier to Perception and Survival checks based on senses"
-        }],
-        additional: "Int to Perception/Survival"
+    additional: "Swim speed, water breathing"
+  },
+  "bestial senses": {
+    name: "Bestial Senses",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Your eyes and ears resemble those of predators",
+      "When you make a Wisdom (Perception) or Wisdom (Survival) check based on your sense of hearing, sight, or smell",
+      "You add your Intelligence modifier (minimum of +1) to your roll"
+    ]),
+    addMod: [{
+      type: "skill",
+      field: "Perception",
+      mod: "max(Int|1)",
+      text: "Bestial Senses: Add Intelligence modifier to Perception and Survival checks based on senses"
+    }, {
+      type: "skill",
+      field: "Survival",
+      mod: "max(Int|1)",
+      text: "Bestial Senses: Add Intelligence modifier to Perception and Survival checks based on senses"
+    }],
+    additional: "Int to Perception/Survival"
+  },
+  "enhanced physicality": {
+    name: "Enhanced Physicality",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Your muscles and veins engorge with arcane power",
+      "When you make a Strength ability check or saving throw",
+      "You add your Intelligence modifier (minimum of +1) to your roll"
+    ]),
+    addMod: [{
+      type: "skill",
+      field: "Strength",
+      mod: "max(Int|1)",
+      text: "Enhanced Physicality: Add Intelligence modifier to Strength checks and saves"
+    }, {
+      type: "save",
+      field: "Strength",
+      mod: "max(Int|1)",
+      text: "Enhanced Physicality: Add Intelligence modifier to Strength checks and saves"
+    }],
+    additional: "Int to Strength checks/saves"
+  },
+  "monstrous claw": {
+    name: "Monstrous Claw",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "You transform one of your limbs into a monstrous arm ending in a massive pincer",
+      "Your unarmed strikes with this claw deal slashing damage equal to 1d8 + your Strength modifier",
+      "On hit, you can choose to automatically grapple your target if it is equal to your size or smaller"
+    ]),
+    additional: "1d8 slashing unarmed, auto-grapple"
+  },
+  "resilient hide": {
+    name: "Resilient Hide",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Your flesh grows hideously thick",
+      "When not wearing armor, your Armor Class equals 10 + your Intelligence modifier + your Constitution modifier"
+    ]),
+    ac: "10 + Int + Con",
+    condition: "When not wearing armor",
+    additional: "Natural armor AC"
+  },
+  "winged glide": {
+    name: "Winged Glide",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "You grow bat-like skin flaps that you use to glide",
+      "When you fall at least 10 feet and aren't incapacitated, you can subtract up to 100 feet from your fall when you calculate fall damage",
+      "You can move horizontally 2 feet for every 1 foot you fall"
+    ]),
+    additional: "Glide, reduced fall damage"
+  },
+  "arachnoid grip": {
+    name: "Arachnoid Grip",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Your hands and feet secrete a sticky substance",
+      "You gain a climbing speed equal to your walking speed",
+      "You can climb difficult surfaces without needing to make an ability check",
+      "Creatures have disadvantage on ability checks or saving throws they make to escape being grappled by you"
+    ]),
+    speed: {
+      climb: { number: "walk", condition: "Permanent" }
     },
-    "enhanced physicality": {
-        name: "Enhanced Physicality",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Your muscles and veins engorge with arcane power",
-            "When you make a Strength ability check or saving throw",
-            "You add your Intelligence modifier (minimum of +1) to your roll"
-        ]),
-        addMod: [{
-            type: "skill",
-            field: "Strength", 
-            mod: "max(Int|1)",
-            text: "Enhanced Physicality: Add Intelligence modifier to Strength checks and saves"
-        }, {
-            type: "save",
-            field: "Strength",
-            mod: "max(Int|1)",
-            text: "Enhanced Physicality: Add Intelligence modifier to Strength checks and saves" 
-        }],
-        additional: "Int to Strength checks/saves"
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Climb speed, better grappling"
+  },
+  "greater physique": {
+    name: "Greater Physique",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Biomancer",
+      "Magic forcefully enlarges your body, giving you hideous size",
+      "You grow by one size category (for example, from Medium to Large)",
+      "Your reach increases by 5 feet",
+      "Your weight is multiplied by eight",
+      "Your melee weapon attacks deal a bonus 1d4 damage"
+    ]),
+    prereqeval: function (v) {
+      return classes.known["artificer(laserllama)"] &&
+        classes.known["artificer(laserllama)"].subclass == "biomancer" &&
+        classes.known["artificer(laserllama)"].level >= 5;
     },
-    "monstrous claw": {
-        name: "Monstrous Claw",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "You transform one of your limbs into a monstrous arm ending in a massive pincer",
-            "Your unarmed strikes with this claw deal slashing damage equal to 1d8 + your Strength modifier",
-            "On hit, you can choose to automatically grapple your target if it is equal to your size or smaller"
-        ]),
-        additional: "1d8 slashing unarmed, auto-grapple"
+    additional: "+1 size, +5 ft reach, +1d4 melee damage"
+  },
+  "vestigial limb": {
+    name: "Vestigial Limb",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "You grow an additional grotesque limb that resembles your other limbs in a place of your choice",
+      "It can perform any task your limbs can including the ability to use weapons, shields, magic items, tools, and other objects"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Extra functional limb"
+  },
+  "avian flight": {
+    name: "Avian Flight",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 15th-level Artificer",
+      "A pair of feathered or leathery wings sprout forth from your back",
+      "You gain a flying speed equal to your walking speed"
+    ]),
+    speed: {
+      fly: { number: "walk", condition: "Permanent" }
     },
-    "resilient hide": {
-        name: "Resilient Hide", 
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Your flesh grows hideously thick",
-            "When not wearing armor, your Armor Class equals 10 + your Intelligence modifier + your Constitution modifier"
-        ]),
-        ac: "10 + Int + Con",
-        condition: "When not wearing armor",
-        additional: "Natural armor AC"
-    },
-    "winged glide": {
-        name: "Winged Glide",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "You grow bat-like skin flaps that you use to glide",
-            "When you fall at least 10 feet and aren't incapacitated, you can subtract up to 100 feet from your fall when you calculate fall damage",
-            "You can move horizontally 2 feet for every 1 foot you fall"
-        ]),
-        additional: "Glide, reduced fall damage"
-    },
-    "arachnoid grip": {
-        name: "Arachnoid Grip",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Your hands and feet secrete a sticky substance",
-            "You gain a climbing speed equal to your walking speed",
-            "You can climb difficult surfaces without needing to make an ability check",
-            "Creatures have disadvantage on ability checks or saving throws they make to escape being grappled by you"
-        ]),
-        speed: {
-            climb: { number: "walk", condition: "Permanent" }
-        },
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Climb speed, better grappling"
-    },
-    "greater physique": {
-        name: "Greater Physique",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Biomancer",
-            "Magic forcefully enlarges your body, giving you hideous size",
-            "You grow by one size category (for example, from Medium to Large)",
-            "Your reach increases by 5 feet",
-            "Your weight is multiplied by eight",
-            "Your melee weapon attacks deal a bonus 1d4 damage"
-        ]),
-        prereqeval: function(v) { 
-            return classes.known["artificer(laserllama)"] && 
-                   classes.known["artificer(laserllama)"].subclass == "biomancer" &&
-                   classes.known["artificer(laserllama)"].level >= 5; 
-        },
-        additional: "+1 size, +5 ft reach, +1d4 melee damage"
-    },
-    "vestigial limb": {
-        name: "Vestigial Limb", 
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "You grow an additional grotesque limb that resembles your other limbs in a place of your choice",
-            "It can perform any task your limbs can including the ability to use weapons, shields, magic items, tools, and other objects"
-        ]),
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Extra functional limb"
-    },
-    "avian flight": {
-        name: "Avian Flight",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 15th-level Artificer",
-            "A pair of feathered or leathery wings sprout forth from your back",
-            "You gain a flying speed equal to your walking speed"
-        ]),
-        speed: {
-            fly: { number: "walk", condition: "Permanent" }
-        },
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 15; },
-        additional: "Flight speed"
-    },
-    "hideous regeneration": {
-        name: "Hideous Regeneration",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 15th-level Artificer", 
-            "If you begin your turn with less than half of your hit points remaining, but at least 1 hit point",
-            "You instantly regain hit points equal to your Intelligence modifier (minimum of 1)"
-        ]),
-        regen: "max(Int|1)",
-        condition: "When below half HP at start of turn",
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 15; },
-        additional: "Regeneration when wounded"
-    }
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 15; },
+    additional: "Flight speed"
+  },
+  "hideous regeneration": {
+    name: "Hideous Regeneration",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 15th-level Artificer",
+      "If you begin your turn with less than half of your hit points remaining, but at least 1 hit point",
+      "You instantly regain hit points equal to your Intelligence modifier (minimum of 1)"
+    ]),
+    regen: "max(Int|1)",
+    condition: "When below half HP at start of turn",
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 15; },
+    additional: "Regeneration when wounded"
+  }
 };
 
 // Gunslinger Artificer LL Upgrades
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 GunslingerUpgrades = {
-    "close shot": {
-        name: "Close Shot",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "When making ranged attack with Arcane Firearm while hostile creature within 5 ft",
-            "Do not have disadvantage on attack roll"
-        ]),
-        additional: "No disadvantage in melee"
-    },
-    "deadly accuracy": {
-        name: "Deadly Accuracy",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "+2 bonus to Arcane Firearm attack rolls",
-            "Does not stack with Archery Fighting Style"
-        ]),
-        addMod: [{
-            type: "skill",
-            field: "Attack with Arcane Firearm",
-            mod: 2,
-            text: "Deadly Accuracy: +2 bonus to Arcane Firearm attack rolls"
-        }],
-        additional: "+2 to attack rolls"
-    },
-    "elemental shot": {
-        name: "Elemental Shot",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Bonus action: touch Arcane Firearm and expend spell slot (1st-level+)",
-            "Choose acid, cold, fire, lightning, or poison damage type",
-            "For 1 minute: Arcane Firearm deals additional damage of chosen type on hit",
-            "Bonus damage: 1d4 for 1st-level slot + 1d4 per slot level above 1st"
-        ]),
-        action: [["bonus action", "Activate Elemental"]],
-        additional: "Elemental damage boost"
-    },
-    "grooved barrel": {
-        name: "Grooved Barrel",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Ignore disadvantage on Arcane Firearm attacks at long range"
-        ]),
-        additional: "No long range disadvantage"
-    },
-    "high caliber": {
-        name: "High Caliber",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Range increases to (100/400)",
-            "Damage die increases from 1d10 to 2d6",
-            "Gains heavy and two-handed properties"
-        ]),
-        additional: "Increased range and damage"
-    },
-    "replaceable parts": {
-        name: "Replaceable Parts",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Spend 10 minutes with smith's tools to replace one Upgrade with another",
-            "Can be done during short rest"
-        ]),
-        additional: "Flexible upgrades"
-    },
-    "blinding rounds": {
-        name: "Blinding Rounds",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Once per turn when hitting target: force Constitution save",
-            "On failure: blinded until start of your next turn"
-        ]),
-        prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Blind on hit"
-    },
-    "concussive rounds": {
-        name: "Concussive Rounds",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Once per turn when hitting target: force Constitution save",
-            "On failure: cannot take reactions and speed halved until start of your next turn"
-        ]),
-        prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Slow and no reactions"
-    },
-    "explosive rounds": {
-        name: "Explosive Rounds",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Once per turn when hitting target: all creatures within 5 ft make Dexterity save",
-            "On failed save: take damage as if hit by your Arcane Firearm attack"
-        ]),
-        prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Splash damage"
-    },
-    "incapacitating rounds": {
-        name: "Incapacitating Rounds",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 10th-level Artificer",
-            "Once per turn when hitting target: force Strength save",
-            "On failed save: incapacitated until start of your next turn, or until taking damage or making save",
-            "Large+ creatures have advantage on the save"
-        ]),
-        prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 10; },
-        additional: "Incapacitate on hit"
-    },
-    "arcane railgun": {
-        name: "Arcane Railgun",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 15th-level Artificer",
-            "Once per turn in place of attack: 60-ft line Dexterity save",
-            "Failed save: 4d6 force damage, half damage on success"
-        ]),
-        action: [["action", "Railgun Attack"]],
-        prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 15; },
-        additional: "Line area attack"
-    },
-    "independent turret": {
-        name: "Independent Turret",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 15th-level Artificer",
-            "Action: set Arcane Firearm as turret in 5-ft space",
-            "While within 120 ft: bonus action to make attack or use ability through turret"
-        ]),
-        action: [["action", "Deploy Turret"], ["bonus action", "Command Turret"]],
-        prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 15; },
-        additional: "Deployable turret"
-    }
+  "close shot": {
+    name: "Close Shot",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "When making ranged attack with Arcane Firearm while hostile creature within 5 ft",
+      "Do not have disadvantage on attack roll"
+    ]),
+    additional: "No disadvantage in melee"
+  },
+  "deadly accuracy": {
+    name: "Deadly Accuracy",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "+2 bonus to Arcane Firearm attack rolls",
+      "Does not stack with Archery Fighting Style"
+    ]),
+    addMod: [{
+      type: "skill",
+      field: "Attack with Arcane Firearm",
+      mod: 2,
+      text: "Deadly Accuracy: +2 bonus to Arcane Firearm attack rolls"
+    }],
+    additional: "+2 to attack rolls"
+  },
+  "elemental shot": {
+    name: "Elemental Shot",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Bonus action: touch Arcane Firearm and expend spell slot (1st-level+)",
+      "Choose acid, cold, fire, lightning, or poison damage type",
+      "For 1 minute: Arcane Firearm deals additional damage of chosen type on hit",
+      "Bonus damage: 1d4 for 1st-level slot + 1d4 per slot level above 1st"
+    ]),
+    action: [["bonus action", "Activate Elemental"]],
+    additional: "Elemental damage boost"
+  },
+  "grooved barrel": {
+    name: "Grooved Barrel",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Ignore disadvantage on Arcane Firearm attacks at long range"
+    ]),
+    additional: "No long range disadvantage"
+  },
+  "high caliber": {
+    name: "High Caliber",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Range increases to (100/400)",
+      "Damage die increases from 1d10 to 2d6",
+      "Gains heavy and two-handed properties"
+    ]),
+    additional: "Increased range and damage"
+  },
+  "replaceable parts": {
+    name: "Replaceable Parts",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Spend 10 minutes with smith's tools to replace one Upgrade with another",
+      "Can be done during short rest"
+    ]),
+    additional: "Flexible upgrades"
+  },
+  "blinding rounds": {
+    name: "Blinding Rounds",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Once per turn when hitting target: force Constitution save",
+      "On failure: blinded until start of your next turn"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Blind on hit"
+  },
+  "concussive rounds": {
+    name: "Concussive Rounds",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Once per turn when hitting target: force Constitution save",
+      "On failure: cannot take reactions and speed halved until start of your next turn"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Slow and no reactions"
+  },
+  "explosive rounds": {
+    name: "Explosive Rounds",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Once per turn when hitting target: all creatures within 5 ft make Dexterity save",
+      "On failed save: take damage as if hit by your Arcane Firearm attack"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Splash damage"
+  },
+  "incapacitating rounds": {
+    name: "Incapacitating Rounds",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 10th-level Artificer",
+      "Once per turn when hitting target: force Strength save",
+      "On failed save: incapacitated until start of your next turn, or until taking damage or making save",
+      "Large+ creatures have advantage on the save"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 10; },
+    additional: "Incapacitate on hit"
+  },
+  "arcane railgun": {
+    name: "Arcane Railgun",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 15th-level Artificer",
+      "Once per turn in place of attack: 60-ft line Dexterity save",
+      "Failed save: 4d6 force damage, half damage on success"
+    ]),
+    action: [["action", "Railgun Attack"]],
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 15; },
+    additional: "Line area attack"
+  },
+  "independent turret": {
+    name: "Independent Turret",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 15th-level Artificer",
+      "Action: set Arcane Firearm as turret in 5-ft space",
+      "While within 120 ft: bonus action to make attack or use ability through turret"
+    ]),
+    action: [["action", "Deploy Turret"], ["bonus action", "Command Turret"]],
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 15; },
+    additional: "Deployable turret"
+  }
 };
 
 // Machinist Artificer LL Automaton Models
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 AutomatonModels = {
-    "agent model": {
-        name: "Agent Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Action: perceive through Automaton's senses, become blind to own senses",
-            "Bonus action to end",
-            "Must be within 1 mile of Automaton"
-        ]),
-        action: [["action", "Perceive through Automaton"]],
-        additional: "Remote sensing"
+  "agent model": {
+    name: "Agent Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Action: perceive through Automaton's senses, become blind to own senses",
+      "Bonus action to end",
+      "Must be within 1 mile of Automaton"
+    ]),
+    action: [["action", "Perceive through Automaton"]],
+    additional: "Remote sensing"
+  },
+  "anchor model": {
+    name: "Anchor Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Action: latch onto target within 5 ft, reduce speed by 5 × Intelligence modifier (min 5 ft)",
+      "Automaton can still be targeted while attached",
+      "Creature can use action to make Strength check vs Spell DC to remove"
+    ]),
+    action: [["action", "Latch onto Target"]],
+    additional: "Movement reduction"
+  },
+  "arcane model": {
+    name: "Arcane Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "When casting Artificer spell: can originate from this Automaton instead of self",
+      "Must be within 60 ft of Automaton",
+      "Automaton's Slam attack deals force damage"
+    ]),
+    additional: "Spell redirection, force damage"
+  },
+  "artisan model": {
+    name: "Artisan Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Automaton proficient with one set of tools (chosen at creation)",
+      "Action: use tools to make ability check, add Intelligence modifier (min +1) to result"
+    ]),
+    action: [["action", "Use Tools"]],
+    additional: "Tool proficiency and bonus"
+  },
+  "assault model": {
+    name: "Assault Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Slam attack damage increases to 1d10",
+      "Deals force damage instead of bludgeoning"
+    ]),
+    additional: "1d10 force damage"
+  },
+  "amphibian model": {
+    name: "Amphibian Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Gains 30-foot swimming speed",
+      "While swimming: advantage on Slam attack rolls"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Swim speed, advantage in water"
+  },
+  "arachnid model": {
+    name: "Arachnid Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Gains 30-foot climbing speed",
+      "Can climb difficult surfaces including sheer walls and ceilings without checks"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Spider climb"
+  },
+  "archer model": {
+    name: "Archer Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Slam attack can be ranged weapon attack against target within 60 ft",
+      "Deals piercing damage on hit"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "Ranged attacks"
+  },
+  "armor model": {
+    name: "Armor Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 5th-level Artificer",
+      "Action: attach to willing creature within 5 ft, grant AC bonus equal to Intelligence modifier (min +1)",
+      "Automaton can still be targeted while attached",
+      "Action to detach from target"
+    ]),
+    action: [["action", "Attach/Detach"]],
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 5; },
+    additional: "AC bonus for allies"
+  },
+  "avenger model": {
+    name: "Avenger Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 10th-level Artificer",
+      "Reaction when creature within 25 ft attacks or forces save: order Automaton to move and Slam attack",
+      "On hit: bonus 1d6 bludgeoning damage"
+    ]),
+    action: [["reaction", "Retaliate"]],
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 10; },
+    additional: "Reaction attacks with bonus damage"
+  },
+  "avian model": {
+    name: "Avian Model",
+    source: [["HB:LL", 0]],
+    description: desc([
+      "Prerequisite: 10th-level Artificer",
+      "Gains 30-foot flying speed",
+      "While flying: opportunity attacks against Automaton have disadvantage"
+    ]),
+    prereqeval: function (v) { return classes.known["artificer(laserllama)"].level >= 10; },
+    additional: "Flight, disadv. on opportunity attacks"
+  }
+};
+
+
+
+
+// Warlock LL Eldritch Invocations
+// NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
+EldritchInvocationsLL = {
+  "armor of shadows": {
+    name: "Armor of Shadows",
+    source: ["GMB:LL", 0],
+    description: "As an action, you can ward yourself (or dismiss) armor made from living shadow. So long as you are not wearing armor or wielding a shield, these shadows grant you an Armor Class equal to 13 + your Pact modifier (minimum of +0)",
+    action: [["action", " (ward/dismiss)"]],
+    choicesNotInMenu: true,
+    choices: ["Intelligence", "Wisdom", "Charisma"],
+    "intelligence": {
+      armorOptions: [
+        {
+          regExpSearch: /justToAddToDropDown/,
+          name: "Armor of Shadows",
+          source: [["GMB:LL", 0]],
+          ac: "10+Int",
+          affectsWildShape: true,
+          selectNow: true
+        },
+      ],
+      armorAdd: "Armor of Shadows",
     },
-    "anchor model": {
-        name: "Anchor Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Action: latch onto target within 5 ft, reduce speed by 5 × Intelligence modifier (min 5 ft)",
-            "Automaton can still be targeted while attached",
-            "Creature can use action to make Strength check vs Spell DC to remove"
-        ]),
-        action: [["action", "Latch onto Target"]],
-        additional: "Movement reduction"
+    "wisdom": {
+      armorOptions: [
+        {
+          regExpSearch: /justToAddToDropDown/,
+          name: "Armor of Shadows",
+          source: [["GMB:LL", 0]],
+          ac: "10+Wis",
+          affectsWildShape: true,
+          selectNow: true
+        },
+      ],
+      armorAdd: "Armor of Shadows",
     },
-    "arcane model": {
-        name: "Arcane Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "When casting Artificer spell: can originate from this Automaton instead of self",
-            "Must be within 60 ft of Automaton",
-            "Automaton's Slam attack deals force damage"
-        ]),
-        additional: "Spell redirection, force damage"
-    },
-    "artisan model": {
-        name: "Artisan Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Automaton proficient with one set of tools (chosen at creation)",
-            "Action: use tools to make ability check, add Intelligence modifier (min +1) to result"
-        ]),
-        action: [["action", "Use Tools"]],
-        additional: "Tool proficiency and bonus"
-    },
-    "assault model": {
-        name: "Assault Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Slam attack damage increases to 1d10",
-            "Deals force damage instead of bludgeoning"
-        ]),
-        additional: "1d10 force damage"
-    },
-    "amphibian model": {
-        name: "Amphibian Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Gains 30-foot swimming speed",
-            "While swimming: advantage on Slam attack rolls"
-        ]),
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Swim speed, advantage in water"
-    },
-    "arachnid model": {
-        name: "Arachnid Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Gains 30-foot climbing speed",
-            "Can climb difficult surfaces including sheer walls and ceilings without checks"
-        ]),
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Spider climb"
-    },
-    "archer model": {
-        name: "Archer Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Slam attack can be ranged weapon attack against target within 60 ft",
-            "Deals piercing damage on hit"
-        ]),
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "Ranged attacks"
-    },
-    "armor model": {
-        name: "Armor Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 5th-level Artificer",
-            "Action: attach to willing creature within 5 ft, grant AC bonus equal to Intelligence modifier (min +1)",
-            "Automaton can still be targeted while attached",
-            "Action to detach from target"
-        ]),
-        action: [["action", "Attach/Detach"]],
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 5; },
-        additional: "AC bonus for allies"
-    },
-    "avenger model": {
-        name: "Avenger Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 10th-level Artificer",
-            "Reaction when creature within 25 ft attacks or forces save: order Automaton to move and Slam attack",
-            "On hit: bonus 1d6 bludgeoning damage"
-        ]),
-        action: [["reaction", "Retaliate"]],
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 10; },
-        additional: "Reaction attacks with bonus damage"
-    },
-    "avian model": {
-        name: "Avian Model",
-        source: [["HB:LL", 0]],
-        description: desc([
-            "Prerequisite: 10th-level Artificer",
-            "Gains 30-foot flying speed",
-            "While flying: opportunity attacks against Automaton have disadvantage"
-        ]),
-        prereqeval: function(v) { return classes.known["artificer(laserllama)"].level >= 10; },
-        additional: "Flight, disadv. on opportunity attacks"
+    "charisma": {
+      armorOptions: [
+        {
+          regExpSearch: /justToAddToDropDown/,
+          name: "Armor of Shadows",
+          source: [["GMB:LL", 0]],
+          ac: "10+Cha",
+          affectsWildShape: true,
+          selectNow: true
+        },
+      ],
+      armorAdd: "Armor of Shadows",
     }
+  },
+  "aspect of the moon": {
+    name: "Aspect of the Moon",
+    source: ["GMB:LL", 0],
+    description: "You no longer need to sleep and cannot be forced to sleep byany means. To gain the benefits of a long rest, you can spend all 8 hours doing light activity, such as keeping watch.",
+  },
+  "beguiling influence": {
+    name: "Beguiling Influence",
+    source: ["GMB:LL", 0],
+    description: "You gain proficiency in two of the following skills: Deception, Insight, Intimidation, or Persuasion. Whenever you make an ability check with the skills from this Invocation, you can add your Pact modifier to your roll in place of the normal ability score associated with the skill.",
+    extrachoices: ["Deception", "Insight", "Intimidation", "Persuasion"],
+    extraTimes: 2,
+    "deception": {
+      choicesNotInMenu: true,
+      choices: ["Intelligence", "Wisdom", "Charisma"],
+      skills: ["Deception"],
+      "intelligence": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Deception",
+            mod: "max(Int-Cha|0)",
+            text: "I can replace Charisma (Deception) checks with Intelligence (Deception)",
+          },
+        ],
+      },
+      "wisdom": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Deception",
+            mod: "max(Wis-Cha|0)",
+            text: "I can replace Charisma (Deception) checks with Wisdom (Deception)",
+          },
+        ],
+      },
+      "charisma": {
+      },
+    },
+    "insight": {
+      choicesNotInMenu: true,
+      choices: ["Intelligence", "Wisdom", "Charisma"],
+      skills: ["Insight"],
+      "intelligence": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Insight",
+            mod: "max(Int-Wis|0)",
+            text: "I can replace Wisdom (Insight) checks with Intelligence (Insight)",
+          },
+        ],
+      },
+      "wisdom": {
+      },
+      "charisma": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Insight",
+            mod: "max(Cha-Wis|0)",
+            text: "I can replace  Wisdom (Insight) checks with Charisma (Insight)",
+          },
+        ],
+      },
+    },
+    "intimidation": {
+      choicesNotInMenu: true,
+      choices: ["Intelligence", "Wisdom", "Charisma"],
+      skills: ["Intimidation"],
+      "intelligence": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Intimidation",
+            mod: "max(Int-Cha|0)",
+            text: "I can replace Charisma (Intimidation) checks with Intelligence (Intimidation)",
+          },
+        ],
+      },
+      "wisdom": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Intimidation",
+            mod: "max(Wis-Cha|0)",
+            text: "I can replace Charisma (Intimidation) checks with Wisdom (Intimidation)",
+          },
+        ],
+      },
+      "charisma": {
+      },
+    },
+    "persuasion": {
+      choicesNotInMenu: true,
+      choices: ["Intelligence", "Wisdom", "Charisma"],
+      skills: ["Persuasion"],
+      "intelligence": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Persuasion",
+            mod: "max(Int-Cha|0)",
+            text: "I can replace Charisma (Persuasion) checks with Intelligence (Persuasion)",
+          },
+        ],
+      },
+      "wisdom": {
+        addMod: [
+          {
+            type: "skill",
+            field: "Persuasion",
+            mod: "max(Wis-Cha|0)",
+            text: "I can replace Charisma (Persuasion) checks with Wisdom (Persuasion)",
+          },
+        ],
+      },
+      "charisma": {
+      },
+    },
+
+  },
+  "eldritch sight": {
+    name: "Eldritch Sight",
+    description: desc("As an action you can awaken your senses to see the presence of magic within 30 feet of you. For 10 minutes, you can see a faint aura around any visible creature or object in that radius that bears magic, instantly learning its school of magic, if any. This sight is blocked by 1 foot of stone, 1 inch of metal, a thin sheet of lead, or 3 feet of wood or dirt. You must concentrate on this sense as if you were concentrating on a spell."),
+    source: ["GMB:LL", 0],
+    action: [["action", ""]]
+  },
+  "eye of the rune keeper": {
+    name: "Eye of the Rune Keeper",
+    source: ["GMB:LL", 0],
+    description: "You can read and understand any written words, symbols, or scripts as if they were written in your native tongue."
+  },
+  "gaze of two minds": {
+    name: "Gaze of Two Minds",
+    source: ["GMB:LL", 0],
+    description: desc([
+      "As an action, you can touch a willing humanoid and perceivethrough its senses until the end of your next turn. During thistime, you benefit from all special senses the target possessesbut you are blinded and deafened to your own surroundings.",
+      "When you are both on the same plane of existence, you canuse your action to extend this connection for one more turn."
+    ]),
+    action: [["action", ""]]
+  },
+  "gift of the deep ones": {
+    name: "Gift of the Deep Ones",
+    source: ["GMB:LL", 0],
+    description:
+      levels.map(function (n) {
+        if (n < 5) return desc([
+          "You manifest aquatic features. You can breathe underwater, and you gain a swimming speed equal to your walking speed.",
+        ])
+        else return desc([
+          "You manifest aquatic features. You can breathe underwater,and you gain a swimming speed equal to your walking speed.",
+          "You learn the Water Breathing spell, and you can cast it once per long rest without expending a spell slot."])
+      }),
+    "water breathing": {
+      extraname: "Warlock(Laserllama) 5",
+      source: [["GMB:LL", 0]],
+      spellcastingBonus: [{
+        name: "Gift of the deep ones",
+        spells: ["water breathing"],
+        selection: ["water breathing"],
+        firstCol: "1xLR"
+      }],
+      recovery: "long rest",
+      usages: 1
+    },
+    autoSelectExtrachoices: [{
+      extrachoice: "water breathing",
+      minlevel: 5
+    }]
+  },
+  "infernal sight": {
+    name: "Infernal Sight",
+    source: ["GMB:LL", 0],
+    description: "You can see normally in dim light and darkness, both magical and nonmagical, out to a distance of 120 feet.",
+    vision: [["Infernal Sight", 120]]
+  },
+  "otherwordly vigor": {
+    name: "Otherwordly vigor",
+    source: ["GMB:LL", 0],
+    description: "As a bonus action, you can grant yourself temporary hit points equal to your Pact modifier (minimum of 1 hit point).",
+    action: [["bonus action", ""]]
+  },
+  "mask of many faces": {
+    name: "Mask of Many Faces",
+    source: ["GMB:LL", 0],
+    action: [["action", ""]],
+    description: "As an action, you can change your physical appearance and voice to match that of a creature that you have seen before, so long as the new appearance has the same arrangement of limbs. You determine the specifics, including your race, coloration, sex, height, weight, and hair length, but you cannot change sizes. Transforming does not affect your clothing or game statistics."
+  },
+  "misty visions": {
+    name: "Misty Visions",
+    source: ["GMB:LL", 0],
+    action: [["action", "Illusory Image (cast/move)"]],
+    description: desc([
+      "As an action, you shape otherworldly shadow into an illusory image of an object, creature, or a visible phenomenon that is no larger than a 15-foot cube in a spot you can see within 60 feet of. This image is purely visual; it cannot be accompaniedby sound, smell, or other effects. It lasts for 10 minutes.",
+      "As an action, you can cause this illusory image to move to another spot within 60 feet. When you do so, you can choose for it to move in a way that appears natural for the image.",
+      "A creature that succeeds on an Intelligence (Investigation) check against your Spell save DC sees through the illusion. Conjuring a second illusion dispels any previous illusions."
+    ])
+  },
+  "sylvan speech": {
+    name: "Sylvan Speech",
+    source: ["GMB:LL", 0],
+    description:
+      levels.map(function (n) {
+        if (n < 7) return desc([
+          "You learn to speak Sylvan, and while speaking in Sylvan you can comprehend and verbally communicate with beasts. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, they can give you information about nearby locations and monsters, including whatever they can perceive or have perceived in the past day.",
+        ])
+        else return desc([
+          "You learn to speak Sylvan, and while speaking in Sylvan you can comprehend and verbally communicate with beasts. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, they can give you information about nearby locations and monsters, including whatever they can perceive or have perceived in the past day.",
+          "You can speak in Sylvan to communicate with plants as if you were under the effects of Speak with Plants spell."
+        ])
+      }),
+    languageProfs: ["Sylvan"],
+  },
+  "cloak of decay": {
+    name: "Cloak of Decay",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    description: desc([
+      "As a bonus action, you conjure (or dispel) a swarm of infernal flies that surround you in a 5-foot radius. Creatures of your choice that start their turn in this area take piercing damage equal to your Pact modifier (minimum of 0).",
+      "The flies grant you advantage on Charisma (Intimidation) checks, but disadvantage on all other Charisma checks."
+    ]),
+    action: [["bonus action", " (conjure/dispel)"]],
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 3; }
+  },
+  "eldritch spear": {
+    name: "Eldritch Spear",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    description: "Whenever you use Eldritch Blast or cast a spell that requires you to make a ranged spell attack roll, the range is doubled.",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 3; },
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          // Doppia la gittata per Eldritch Blast
+          if (v.baseWeaponName && v.baseWeaponName.toLowerCase().includes('eldritch blast ll')) {
+            var originalRange = v.range ? parseFloat(v.range) : 120;
+            fields.Range = (originalRange * 2) + ' ft';
+          }
+          // Doppia la gittata per altri attacchi a distanza con attacco magico
+          else if (v.isSpell && v.isRanged && v.range) {
+            var originalRange = parseFloat(v.range);
+            if (!isNaN(originalRange)) {
+              fields.Range = (originalRange * 2) + ' ft';
+            }
+          }
+        },
+        "Whenever I use Eldritch Blast or cast a spell that requires me to make a ranged spell attack roll, the range is doubled.",
+        50
+      ],
+      spellAdd: [
+        function (spellKey, spellObj, spName) {
+          if (spellObj.attack && spellObj.attack.includes('R')) {
+            if (spellObj.range && !spellObj.range.includes('Self') && !spellObj.range.includes('Touch')) {
+              var rangeMatch = spellObj.range.match(/(\d+)/);
+              if (rangeMatch) {
+                var originalRange = parseInt(rangeMatch[1]);
+                spellObj.range = (originalRange * 2) + ' ft';
+              }
+            }
+          }
+        },
+        "Whenever I use Eldritch Blast or cast a spell that requires me to make a ranged spell attack roll, the range is doubled.",
+        50
+      ]
+    }
+  },
+  "grasp of hadar": {
+    name: "Grasp of Hadar",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    description: "When you hit a creature with Eldritch Blast you can pull it up to 10 feet toward you in a line. The total distance you move a creature in one turn is halved for each size it is above Large.",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 3; },
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          if (v.baseWeaponName && v.baseWeaponName.toLowerCase().includes('eldritch blast ll')) {
+            fields.Description += '; On hit: can pull up to 10 ft toward you (halved for each size above Large)';
+          }
+        },
+        "When I hit a creature with my Eldritch Blast cantrip, I can pull it up to 10 ft toward me (distance halved for each size above Large).",
+        52
+      ],
+    }
+  },
+  "lance of lethargy": {
+    name: "Lance of Lethargy",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 3; },
+    submenu: "[warlock level 3+]",
+    description: "Whenever you damage a creature with Eldritch Blast you can halve its speed until the beginning of your next turn. You can only apply this effect to a creature once per turn.",
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          if (v.baseWeaponName && v.baseWeaponName.toLowerCase().includes('eldritch blast ll')) {
+            // Controlla se ci sono già effetti di movimento (push/pull)
+            if (fields.Description.includes('; On hit:')) {
+              // Aggiungi l'effetto di rallentamento agli effetti esistenti
+              fields.Description += ' OR halve its speed until start of your next turn (once per turn per creature)';
+            } else {
+              // Aggiungi come nuovo effetto
+              fields.Description += '; On hit: can halve its speed until start of your next turn (once per turn per creature)';
+            }
+          }
+        },
+        "When I damage a creature with my Eldritch Blast cantrip, I can halve its speed until the beginning of my next turn (once per turn per creature).",
+        53
+      ],
+    }
+  },
+  "repelling blast": {
+    name: "Repelling Blast",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    description: "When you hit a creature with Eldritch Blast you can push it up to 10 feet away from you in a line. The total distance you move a target in a turn is halved for each size above Large.",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 3; },
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          if (v.baseWeaponName && v.baseWeaponName.toLowerCase().includes('eldritch blast ll')) {
+            fields.Description += '; On hit: can push up to 10 ft away (halved for each size above Large)';
+          }
+        },
+        "When I hit a creature with my Eldritch Blast cantrip, I can push it up to 10 ft away from me (distance halved for each size above Large).",
+        51
+      ],
+    }
+  },
+  "thief of five fates": {
+    name: "Thief of Five Fates",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    action: [["action", ""]],
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 3; },
+    description: desc([
+      "As an action, you can force one creature you can see within 30 feet to make a Charisma saving throw. On a failed save, it must subtract 1d4 from any d20 roll it makes for 1 minute. You must concentrate on this feature to maintain the curse.",
+      "It can repeat its saving throw at the end of each of its turns, ending the effect on a success. Creatures that succeed on this saving throw are immune to this effect until the next dawn."
+    ]),
+  },
+  "tome of ancient secrets": {
+    name: "Tome of Ancient Secrets",
+    description: desc([
+      "You Eldritch Tome gains two new pages, each detailing one 1st-level ritual spell of your choice from any class spell list",
+      "These spells count as Warlock spells for you, but don't count against your total number of Spells Known",
+      "You can add additional rituals to your Eldritch Tome, if the spell is equal to your Pact Magic spell slot level or lower",
+      "To add a ritual spell: perform a 1-hour ritual, burn a scroll of the spell, and use 50 gp per spell level of materials pleasing to your Patron",
+      "The ritual spell then appears in your Tome, and can only be cast as a ritual."
+    ]),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    eval: function () {
+      // Crea una lista di incantesimi rituali per l'Eldritch Tome
+      CurrentSpells['warlock(laserllama)-tome of ancient secrets'] = {
+        name: 'Tome of Ancient Secrets',
+        ability: 'warlock',
+        list: { class: 'any', ritual: true }, // Permette qualsiasi incantesimo rituale da qualsiasi classe
+        known: { spells: 'tome' }, // Gli incantesimi sono memorizzati nel tomo
+        refType: "feat",
+        max: function (v) {
+          // Due incantesimi iniziali + eventuali aggiunti
+          var baseCount = 2;
+          // Puoi aggiungere incantesimi rituali fino al livello dello slot di incantesimo
+          var maxSpellLevel = Math.ceil(classes.known['warlock(laserllama)'].level / 2);
+          if (maxSpellLevel > 5) maxSpellLevel = 5; // Massimo 5° livello
+          // Gli incantesimi aggiunti vengono gestiti separatamente
+          return baseCount;
+        }
+      };
+
+      // Gestione degli incantesimi selezionati (versione v12.999)
+      if (CurrentSpells['tome of ancient secrets'] && CurrentSpells['tome of ancient secrets'].selectSp) {
+        CurrentSpells['warlock(laserllama)-tome of ancient secrets'].offsetBo = CurrentSpells['tome of ancient secrets'].offsetBo;
+        CurrentSpells['warlock(laserllama)-tome of ancient secrets'].selectBo = CurrentSpells['tome of ancient secrets'].selectBo;
+        CurrentSpells['warlock(laserllama)-tome of ancient secrets'].selectSp = CurrentSpells['tome of ancient secrets'].selectSp;
+        delete CurrentSpells['tome of ancient secrets'];
+      }
+
+      SetStringifieds('spells');
+      CurrentUpdates.types.push('spells');
+    },
+    removeeval: function () {
+      // Rimuove la lista di incantesimi quando l'invocazione viene rimossa
+      delete CurrentSpells['warlock(laserllama)-tome of ancient secrets'];
+      SetStringifieds('spells');
+      CurrentUpdates.types.push('spells');
+    },
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 3 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch tome';
+    },
+    calcChanges: {
+      spellAdd: [
+        function (spellKey, spellObj, spName) {
+          // Applica modifiche solo agli incantesimi del Tome of Ancient Secrets
+          if (spName == "warlock(laserllama)-tome of ancient secrets") {
+            // Aggiunge il tag rituale
+            spellObj.firstCol = SpellRitualTag;
+
+            // Aumenta il tempo di lancio per gli incantesimi rituali
+            if (!(/.*(\d+ ?h\b|special|see b).*/i).test(spellObj.time)) {
+              var numMinutes = Number(spellObj.time.replace(/(\d+) ?min.*/, "$1"));
+              if (isNaN(numMinutes)) numMinutes = 0;
+              // Aggiunge 10 minuti per il lancio rituale
+              spellObj.time = (numMinutes + 10) + " min";
+            }
+            return true;
+          };
+        },
+        "By the Tome of Ancient Secrets invocation, I can cast ritual spells from my Eldritch Tome. Ritual spells have their casting time increased by 10 minutes."
+      ]
+    },
+    // Aggiunge un campo per il costo degli incantesimi aggiuntivi
+    additionalSpells: function () {
+      var warlockLevel = classes.known['warlock(laserllama)'].level;
+      var maxSpellLevel = Math.ceil(warlockLevel / 2);
+      if (maxSpellLevel > 5) maxSpellLevel = 5;
+
+      return {
+        maxLevel: maxSpellLevel,
+        costPerLevel: 50, // 50 gp per livello dell'incantesimo
+        requirements: "Must have a scroll of the ritual spell and materials pleasing to patron",
+        castingTime: "1 hour ritual"
+      };
+    }
+  },
+  "voice of the master": {
+    name: "Voice of the Master",
+    description: desc([
+      "I can communicate telepathically with my Familiar as long as we are on the same plane of existence",
+      "I can perceive through my Familiar's senses while telepathically connected",
+      "If connected, I can speak through my Familiar in my voice, even if the Familiar is normally incapable of speech"
+    ]),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 3+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 3 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+    action: [["action", " (perceive)"]],
+  },
+  "erupting blast": {
+    name: "Erupting Blast",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 5+]",
+    description: "When you damage a creature with Eldritch Blast you can use a bonus action to cause other creatures of your choice within 5 feet of the target to take damage of the type of your Eldritch Blast equal to your Pact modifier (minimum of 1 damage).",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 5; },
+    action: [['bonus action', ""]]
+  },
+  "one with shadows": {
+    name: "One with Shadows",
+    description: levels.map(function (n) {
+      return n > 8 ? desc([
+        "You learn the invisibility spell, and can cast it targeting only yourself without expending a spell slot, so long as you are in an area of dim light or darkness."
+      ]) : desc([
+        "You learn the invisibility spell, and can cast it once per long rest targeting only yourself without expending a spell slot, so long as you are in an area of dim light or darkness."
+      ])
+    }),
+    additional: levels.map(function (n) { return n > 8 ? "" : "once per long rest" }),
+    "invisibility": {
+      extraname: "Warlock(Laserllama) 5",
+      source: [["GMB:LL", 0]],
+      spellcastingBonus: [{
+        name: "One with Shadows",
+        spells: ["invisibility"],
+        selection: ["invisibility"],
+        firstCol: levels.map(function (n) { return n > 8 ? "AtW" : "1xLR" })
+      }],
+      recovery: levels.map(function (n) { return n > 8 ? "" : "long rest" }),
+      usages: levels.map(function (n) { return n > 8 ? null : 1 })
+    },
+    autoSelectExtrachoices: [{
+      extrachoice: "invisibility",
+      minlevel: 5
+    }],
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 5+]",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 5; }
+  },
+  "thirsting blade": {
+    name: "Thirsting Blade",
+    description: desc([
+      "You can make two attacks with your Eldritch Blade, instead of one, whenever you take the Attack action. Moreover, if you use your action to cast a Warlock spell or use Eldritch Blast, you can make one Eldritch Blade attack as a bonus action."
+    ]),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 5+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 5 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch blade';
+    },
+    action: [['action', 'Eldritch Blade (2 attacks per action)'], ['bonus action', " (after action spell)"]],
+  },
+  "tomb of frost": {
+    name: "Tomb of Frost",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 5+]",
+    description: desc([
+      "Whenever you take damage, you can use your reaction to instantaneously encase yourself in a crystal of ice. This icehas a number of hit points equal to ten times your Warlock level and an Armor Class of 10. The ice takes as much of the triggering damage as possible. You are incapacitated and restrained while the ice lasts, but you cannot be targeted andare immune to all damage. At the beginning of your turn, you can cause any remaining ice to melt, ending this effect.",
+      "You can use this Invocation once between each short or long rest at no cost. When you have no uses remaining, you can expend a Pact Magic spell slot to use it again."
+    ]),
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 5; },
+    action: [['reaction', ""]],
+    usages: 1,
+    recovery: "short rest"
+  },
+  "vitality of the ageless": {
+    name: "Vitality of the Ageless",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 5+]",
+    description: "Whenever you or your Eldritch Familiar regain hit points while you are within 30 feet of each other you can treat anydice rolled to determine the hit points you or your Familiar regain as the maximum possible value, in place of rolling.",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 5 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+  },
+  "arcane secrets": {
+    name: "Arcane Secrets",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 7+]",
+    description: "You learn one spell of your choice from the Warlock spell list of 4th-level or lower, and you can cast once, at its lowest level without expending a spell slot. Once you cast it in this way you must finish a long rest before you can do so again. You can gain this Invocation more than once, but you must select a new Warlock spell each time you do so, and you can only learn one Warlock spell per spell level in this way.",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 7; },
+    allowDuplicates: true,
+    eval: function () {
+      CurrentSpells['warlock-ancient secrets'] = {
+        name: 'Ancient Secrets',
+        ability: 'warlock',
+        list: { class: 'warlock' },
+        known: { spells: 'book' },
+        refType: "feat"
+      };
+      if (CurrentSpells['ancient secrets'] && CurrentSpells['ancient secrets'].selectSp) {
+        // v12.999 style is present, so transfer chosen spells over and remove it
+        CurrentSpells['warlock-ancient secrets'].offsetBo = CurrentSpells['ancient secrets'].offsetBo;
+        CurrentSpells['warlock-ancient secrets'].selectBo = CurrentSpells['ancient secrets'].selectBo;
+        CurrentSpells['warlock-ancient secrets'].selectSp = CurrentSpells['ancient secrets'].selectSp;
+        delete CurrentSpells['ancient secrets'];
+      }
+      SetStringifieds('spells'); CurrentUpdates.types.push('spells');
+    },
+    removeeval: function () {
+      delete CurrentSpells['warlock-ancient secrets'];
+      SetStringifieds('spells'); CurrentUpdates.types.push('spells');
+    },
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 7; },
+    calcChanges: {
+      spellAdd: [
+        function (spellKey, spellObj, spName) {
+          if (spName == "warlock-ancient secrets") {
+            return true;
+          };
+        },
+        "Once per long rest, you can cast this spell without expending a spell slot. Once you cast it in this way you must finish a long rest before you can do so again"
+      ]
+    }
+  },
+  "ascendant step": {
+    name: "Ascendant Step",
+    description: desc([
+      "As a bonus action, you can grant yourself a temporary flying speed equal to your walking speed, which lasts until the end of your current turn, but you cannot hover. If you end your turn and are not secure then you fall to the ground."
+    ]),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 7+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 7;
+    },
+    action: [['bonus action', ""]],
+  },
+  "enspelled blade": {
+    name: "Enspelled Blade",
+    description: desc([
+      "You channel your eldritch magicks through your Pact Blade. Whenever you hit a creature with an Eldritch Blade attack, itapplies all the additional effects of your Eldritch Blast fromInvocations and your Patron, other than its damage, on hit."
+    ]),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 7+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 7 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch blade';
+    },
+  },
+  "ethereal sight": {
+    name: "Ethereal Sight",
+    description: desc([
+      "As an action, you can enhance your vision with the ethereal energy of undeath, allowing you to see through solid objects within 30 feet. For 1 minute, you have darkvision if you did not already, and you perceive objects as ghostly, transparent shadows of themselves. You must concentrate on this sense as if you were concentrating on a spell."
+    ]),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 7+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 7;
+    },
+    action: [['action', ""]],
+  },
+  "favored servant": {
+    name: "Favored Servant",
+    description: desc([
+      "Your Patron has granted you a great gift. Once between each long rest, can cast one of your Patron Spells at a level equal to your Pact Magic spell slots without expending a spell slot. You can learn this Invocation multiple times, but it cannot be used to cast the same Patron Spell more than once."
+    ]),
+    allowDuplicates: true,
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 7+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 7;
+    },
+    recovery: "long rest",
+    usages: 1
+  },
+  "otherwordly nature": {
+    name: "Otherwordly Nature",
+    description: desc([
+      "Your very being is suffused with eldritch magic. You no longer need to eat, breathe, or sleep. However, to gain the benefits ofa long rest, you must spend 8 hours doing light activity. Also, for every 10 years that pass, your body ages only 1 year."
+    ]),
+    allowDuplicates: true,
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 7+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 7;
+    },
+  },
+  "whispers of the grave": {
+    name: "Whispers of the Grave",
+    description: desc("I can cast Speak with Dead at will, without using a spell slot"),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level  7+]",
+    spellcastingBonus: [{
+      name: "Whispers of the Grave",
+      spells: ["speak with dead"],
+      selection: ["speak with dead"],
+      firstCol: "atwill"
+    }],
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 7; }
+  },
+  "commune with patron": {
+    name: "Commune with Patron",
+    description: desc("I can cast Speak with Dead at will, without using a spell slot"),
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level  9+]",
+    spellcastingBonus: [{
+      name: "Commune with Patron",
+      spells: ["contact other plane"],
+      selection: ["contact other plane"],
+    }],
+    usages: 1,
+    recovery: "long rest",
+    prereqeval: function (v) { return classes.known['warlock(laserllama)'].level >= 9; }
+  },
+  "favor of the master": {
+    name: "Favor of the Master",
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 9+]",
+    description: "At the end of a long rest, choose one Warlock spell you know of 1st-level or higher. Your Familiar can cast it once, at a level equal to your Pact Magic spell slots without expending a spell slot.",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 9 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+  },
+  "witch sight": {
+    name: "Witch Sight",
+    description:
+      levels.map(function (n) {
+        if (n < 15) return desc([
+          "You have Truesight out to a radius of 10 feet while you are conscious.",
+        ])
+        else return desc([
+          "You have Truesight out to a radius of 30 feet while you are conscious."])
+      }),
+    allowDuplicates: true,
+    source: ["GMB:LL", 0],
+    submenu: "[warlock level 9+]",
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 9;
+    },
+    vision: levels.map(function (n) {
+      if (n < 15) return [["Truesight", 10]]
+      else return [["Truesight", 30]]
+    }),
+  },
+};
+
+// Warlock LL Elder Arcanum
+// NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
+ElderArcanumsLL = {
+  "minion of chaos": {
+    name: "Minion of Chaos",
+    submenu: "[warlock level 11+]",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 11 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+    description: "As an action you can infuse your Eldritch Familiar with the full power of your Pact. It transforms, as if by polymorph, but it instead uses the stat block from the corresponding spell on the table below as if the spell were cast at 6th-level: Aberrant - summon aberration, Draconic - summon draconic spirit, Faerie - summon fey, Infernal - summon fiend. The transformation lasts for 1 minute, or until the Eldritch Familiar is reduced to 0 hit points. Once you use this feature you must complete a long rest before you can use it again.",
+    action: [["action", ""]],
+    usages: 1,
+    recovery: "long rest",
+  },
+  "minor arcanum": {
+    name: "Minor Arcanum",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 11;
+    },
+    description: "You can cast the Minor Arcanum spell once at 6th-level, without expending a spell slot. Once you cast the spell in this way, you must complete a long rest before you can cast your Minor Arcanum again.",
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 11+]",
+    spellcastingBonus: {
+      name: "Minor Arcanum",
+      spells: ["arcane gate", "circle of death", "eyebite", "flesh to stone", "investiture of flame", "investiture of ice", "investiture of stone", "investiture of wind", "mass suggestion", "mental prison", "otherworldly guise", "scatter", "soul cage", "summon fiend", "true seeing"],
+      selection: [],
+      firstCol: "MinArc"
+    }
+  },
+  "occult scholar": {
+    name: "Occult Scholar",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 11 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch tome';
+    },
+    description: "The occult power of your Tome allows you to prepare spells and eldritch powers. Over the course of 1 hour, which can be during a short or long rest, you perform an occult ritual with your Tome to replace any number of your Spells Known with another Warlock spell of your choice of 1st-level or higher. Once between each long rest when you perform this ritual, you can forgo replacing your Spells Known to instead replace one Eldritch Invocation you know with another Invocation of your choice for which you meet the prerequisites.",
+    additional: "Ritual duration: 1 hour (during short or long rest)",
+    recovery: "long rest",
+    submenu: "[warlock level 11+]",
+  },
+  "occult warrior": {
+    name: "Occult Warrior",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 11 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch blade';
+    },
+    description: "Your Eldritch Blade has been empowered by ancient sinister magicks. Whenever you hit with an Eldritch Blade attack you deal a bonus 1d10 damage of the type as Eldritch Blast. Also, after you hit a creature with an Eldritch Blade attack, it has disadvantage on the first saving throw that you force it to make before the end of your next turn.",
+    additional: "Bonus damage: +1d10 (Eldritch Blast damage type); Target gets disadvantage on first saving throw",
+    submenu: "[warlock level 11+]",
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          if (v.pactWeapon || v.theWea.pactWeapon) {
+            var desc = fields.Description || "";
+            if (!desc.includes("Bonus 1d10 damage")) {
+              fields.Description = desc + (desc ? '; ' : '') +
+                "Bonus 1d10 damage (Eldritch Blast type); " +
+                "Target: disadvantage on first saving throw before end of next turn";
+            }
+          }
+        },
+        "Adds Occult Warrior benefits to Eldritch Blade attacks.",
+        290
+      ]
+    }
+  },
+  "bond of the master": {
+    name: "Bond of the Master",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 13 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+    description: "While you and your Eldritch Familiar are within 30 feet of each other, you both have advantage on any saving throws you make against spells or other magical effects. Also, when you cast a Warlock spell that targets yourself, you can choose for your Eldritch Familiar to also gain the benefits of the spell so long as it is within 30 feet of you.",
+    additional: "Advantage on saves vs magic for both; Share self-targeted spells",
+    submenu: "[warlock level 13+]",
+    savetxt: {
+      text: ["While within 30 ft of my Eldritch Familiar, I have advantage on saves against spells and magical effects"]
+    },
+  },
+  "greater arcanum": {
+    name: "Greater Arcanum",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 13;
+    },
+    description: "Choose a spell from the list below. You can cast the Greater Arcanum spell once at 7th-level, without expending a spell slot. Once you cast the spell in this way, you must complete a long rest before you can cast your Greater Arcanum again.",
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 13+]",
+    spellcastingBonus: {
+      name: "Greater Arcanum",
+      spells: ["crown of stars", "etherealness", "finger of death", "forcecage", "mirage arcane", "plane shift", "power word pain", "teleport"],
+      selection: [],
+      firstCol: "GreArc"
+    }
+  },
+  "greater magicks": {
+    name: "Greater Magicks",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 13 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch tome';
+    },
+    description: "Your Eldritch Tome has been saturated with magic, allowing you to draw upon an increased amount of eldritch potential. Your total number of Pact Magic spell slots increases by one.",
+    additional: "Gain one additional Pact Magic spell slot",
+    submenu: "[warlock level 13+]",
+    addMod: [
+      {
+        type: "",
+        field: "SpellSlots.CheckboxesSet.lvl5",
+        mod: 1,
+        text: "Greater Magicks: Gain one additional 5th-level spell slot for Pact Magic."
+      }
+    ]
+  },
+  "otherworldly step": {
+    name: "Otherworldly Step",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 13 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch blade';
+    },
+    description: "Your Blade cuts rifts through reality itself. When you make an attack with your Eldritch Blade, you can teleport up to 10 feet to an unoccupied space you can see before or after the attack. In addition, when you take the Attack action and only make attacks with your Eldritch Blade, you can make an additional attack with your Eldritch Blade as part of that Attack action.",
+    additional: "Teleport 10 ft before/after attack; Additional attack when using only Eldritch Blade",
+    submenu: "[warlock level 13+]",
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          if (v.pactWeapon || v.theWea.pactWeapon) {
+            var teleportText = "Can teleport 10 ft before or after attack";
+            var extraAttackText = "Additional attack when Attack action uses only Eldritch Blade";
+            var currentDesc = fields.Description || "";
+            var newDesc = currentDesc;
+            if (!currentDesc.includes(teleportText)) {
+              newDesc = newDesc + (newDesc ? '; ' : '') + teleportText;
+            }
+            if (!currentDesc.includes(extraAttackText)) {
+              newDesc = newDesc + (newDesc ? '; ' : '') + extraAttackText;
+            }
+            if (newDesc !== currentDesc) {
+              fields.Description = newDesc;
+            }
+          }
+        },
+        "Adds Otherworldly Step benefits to Eldritch Blade attacks.",
+        290
+      ]
+    },
+    action: [["action", " Additional Attack(with Eldritch Blade only"]]
+  },
+  "arcana of the ancients": {
+    name: "Arcana of the Ancients",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 15 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch tome';
+    },
+    description: "The pages of your Eldritch Tome have been filled with magic from secret societies and dark cults long forgotten. You learn three additional Eldritch Invocations of your choice, and your number of Invocations Known increases by three to match.",
+    additional: "Learn 3 additional Eldritch Invocations",
+    submenu: "[warlock level 15+]",
+    bonusClassExtrachoices: [
+      {
+        class: "warlock(laserllama)",
+        feature: "eldritch invocations",
+        bonus: 3
+      }
+    ]
+  },
+  "chains of the abyss": {
+    name: "Chains of the Abyss",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 15 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+    description: "You can dominate other creatures with the eldritch chains of your Pact. You learn the hold monster spell. You can cast it without expending a spell slot or material components when you target an aberration, celestial, elemental, fey, or fiend. Once a creature succeeds on its saving throw against this spell it is immune to the effects of hold monster until the next dawn, unless you expend a Pact Magic spell slot to cast it.",
+    additional: "Learn hold monster; Free cast vs specific creature types",
+    submenu: "[warlock level 15+]",
+    spellcastingBonus: {
+      name: "Chains of the Abyss",
+      spells: ["hold monster"],
+      selection: ["hold monster"],
+      firstCol: "C.A."
+    },
+    spellChanges: {
+      "hold monster": {
+        changes: "I can cast it without expending a spell slot or material components when you target an aberration, celestial, elemental, fey, or fiend.",
+      }
+    }
+  },
+  "eldritch wind": {
+    name: "Eldritch Wind",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 15 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch blade';
+    },
+    description: "As an action, you can infuse your Eldritch Blade with the full power of your Pact and disappear. Choose up to 5 creatures you can see within 60 feet and make a single Eldritch Blade attack against each one. On hit, they take 6d10 damage of the same type as your Eldritch Blast. Each attack also applies any additional effects of your Eldritch Blast. You then reappear in an unoccupied space within 5 feet of one of your targets. Once you use this Arcanum you must finish a short or long rest before you can use it again. However, if you have no uses left, you can expend a Pact Magic spell slot to use it again.",
+    additional: "Attack up to 5 creatures for 6d10 damage each; Teleport after attack",
+    action: [["action", ""]],
+    usages: 1,
+    recovery: "short rest",
+    submenu: "[warlock level 15+]",
+  },
+  "mystic arcanum": {
+    name: "Mystic Arcanum",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 15;
+    },
+    description: "Choose a spell from the list below. You can cast the Mystic Arcanum spell once at 8th-level, without expending a spell slot. Once you cast the spell in this way, you must complete a long rest before you can cast your Mystic Arcanum again.",
+    additional: "Choose from: demiplane, dominate monster, feeblemind, glibness, maddening darkness, maze, power word stun, telepathy",
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 15+]",
+    spellcastingBonus: {
+      name: "Mystic Arcanum",
+      spells: ["demiplane", "dominate monster", "feeblemind", "glibness", "maddening darkness", "maze", "power word stun", "telepathy"],
+      selection: [],
+      firstCol: "MysArc"
+    }
+  },
+  "awakened blade": {
+    name: "Awakened Blade",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 17 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch blade';
+    },
+    description: "Your Eldritch Blade has gained a level of sinister sentience. While you are holding your Eldritch Blade, you cannot have disadvantage on attack rolls, and whenever you are forced to make a Constitution saving throw to maintain concentration on a spell you add your Pact modifier to your roll. As an action, you unleash an explosion of power from your Eldritch Blade. Creatures of your choice within 30 feet must succeed on a Dexterity saving throw or take 10d6 damage of the same type as Eldritch Blast and fall prone. On a success, they take half damage and don't fall prone. You can use this action once per long rest at no cost, but you can expend a Pact Magic spell slot to use it again.",
+    additional: "No disadvantage on attacks; Pact mod to concentration saves; AOE: 30 ft, 10d6 damage, prone",
+    action: [["action", "Explosion"]],
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 17+]",
+    savetxt: {
+      adv_vs: ["concentration"],
+      text: ["While holding Eldritch Blade: add Pact modifier to Constitution saving throws to maintain concentration"]
+    },
+    calcChanges: {
+      atkCalc: [
+        function (fields, v, output) {
+          if (v.pactWeapon || v.theWea.pactWeapon) {
+            output.extraNotes = (output.extraNotes || "") + "No disadvantage on attack rolls while holding Eldritch Blade. ";
+          }
+        },
+        "Notes for Awakened Blade features.",
+        95
+      ]
+    },
+    weaponOptions: {
+      regExpSearch: /^(?=.*awakened)(?=.*blade)(?=.*explosion).*$/i,
+      name: "Awakened Blade Explosion",
+      source: [["GMB:LL", 0]],
+      ability: 6,
+      type: "Special",
+      damage: [10, 6, "force"],
+      range: "30 ft",
+      description: "Creatures of choice within 30 ft: Dex save or take 10d6 force damage and fall prone (half damage/no prone on success)",
+      save: "Dexterity",
+      saveDC: "spell",
+      isSpell: true,
+      isNotWeapon: true,
+      isAlwaysProf: true
+    },
+    weaponAdd: ["Awakened Blade Explosion"]
+  },
+  "ancient arcanum": {
+    name: "Ancient Arcanum",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 17;
+    },
+    description: "You can cast the Ancient Arcanum spell once at 9th-level, without expending a spell slot. Once you cast the spell in this way, you must complete a long rest before you can cast your Ancient Arcanum again.",
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 17+]",
+    spellcastingBonus: {
+      name: "Ancient Arcanum",
+      spells: ["astral projection", "foresight", "gate", "imprisonment", "power word kill", "psychic scream", "true polymorph", "weird"],
+      selection: [],
+      firstCol: "AncArc"
+    }
+  },
+  "distort reality": {
+    name: "Distort Reality",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 17 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch tome';
+    },
+    description: "You can cast the wish spell once per long rest without expending a spell slot. If you use wish to duplicate a spell, it can only duplicate spells with a casting time of one action or one bonus action.",
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 17+]",
+    spellcastingBonus: {
+      name: "Distort Reality",
+      spells: ["wish"],
+      selection: ["wish"],
+      firstCol: "LR",
+    },
+    spellChanges: {
+      "wish": {
+        changes: "When duplicating spells with wish: only spells with 1 action or 1 bonus action casting time",
+      }
+    }
+  },
+  "eldritch domination": {
+    name: "Eldritch Domination",
+    source: ["GMB:LL", 0],
+    prereqeval: function (v) {
+      return classes.known['warlock(laserllama)'] &&
+        classes.known['warlock(laserllama)'].level >= 17 &&
+        GetFeatureChoice('class', 'warlock(laserllama)', 'pact focus') == 'eldritch familiar';
+    },
+    description: "You can extend your will through the chains of your eldritch bond. Once between each long rest, you can cast dominate monster without expending a spell slot. If you target a creature that is under the effect of your hold monster spell with dominate monster, it automatically fails its saving throw against your dominate monster spell, but the effects of your hold monster spell instantly end.",
+    usages: 1,
+    recovery: "long rest",
+    submenu: "[warlock level 17+]",
+    spellcastingBonus: {
+      name: "Eldritch Domination",
+      spells: ["dominate monster"],
+      selection: ["dominate monster"],
+      firstCol: "LR",
+    },
+    spellChanges: {
+      "dominate monster": {
+        changes: "Can cast dominate monster once per long rest without spell slot. If target is under the effect of your hold monster spell (including from Chains of the Abyss), it automatically fails the saving throw against dominate monster (hold monster ends)."
+      }
+    }
+  }
 };
