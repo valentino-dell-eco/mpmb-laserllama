@@ -1108,13 +1108,24 @@ AddSubClass("warlock(laserllama)", "archfey", {
                 "Your Patron infuses your magic with its whimsical fey power.",
                 "You can choose for your Eldritch Blast beams to deal psychic damage."
             ]),
-            spellcastingExtra: [
-                "faerie fire", "sleep",
-                "misty step", "phantasmal force",
-                "fear", "hypnotic pattern",
-                "hallucinatory terrain", "greater invisibility",
-                "mislead", "seeming"
-            ],
+            spellcastingBonus: [{
+                name: "Fey Magic",
+                spells: [
+                    "faerie fire", "sleep",
+                    "misty step", "phantasmal force",
+                    "fear", "hypnotic pattern",
+                    "hallucinatory terrain", "greater invisibility",
+                    "mislead", "seeming"
+                ],
+                selection: [
+                    "faerie fire", "sleep",
+                    "misty step", "phantasmal force",
+                    "fear", "hypnotic pattern",
+                    "hallucinatory terrain", "greater invisibility",
+                    "mislead", "seeming"
+                ],
+                firstCol: "Pact"
+            }],
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -1309,6 +1320,7 @@ AddSubClass("warlock(laserllama)", "ancient wyrm", {
                 "dominate beast", "wall of fire",
                 "conjure dragon", "dominate person"
             ],
+            spellcastingExtraApplyNonconform: true,
         },
         "subclassfeature6": {
             name: "Draconic Blast",
@@ -1424,6 +1436,7 @@ AddSubClass("warlock(laserllama)", "fiend", {
                 "blight", "wall of fire",
                 "cloudkill", "immolation"
             ],
+            spellcastingExtraApplyNonconform : true,
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -1553,6 +1566,7 @@ AddSubClass("warlock(laserllama)", "great old one", {
                 "confusion", "eldritch tentacles",
                 "modify memory", "telekinesis"
             ],
+            spellcastingExtraApplyNonconform : true,
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -1652,6 +1666,7 @@ AddSubClass("warlock(laserllama)", "deep one", {
                 "control water", "eldritch tentacles",
                 "cone of cold", "maelstrom"
             ],
+            spellcastingExtraApplyNonconform : true,
             description: desc([
                 "Your Patron has infused your magic with the ancient power of the depths.",
                 "You can choose for your Eldritch Blast to deal cold damage.",
@@ -1862,6 +1877,7 @@ AddSubClass("warlock(laserllama)", "darklord", {
                 "freedom of movement", "phantasmal killer",
                 "dream", "negative energy flood"
             ],
+            spellcastingExtraApplyNonconform: true,
             description: desc([
                 "Your Patron infuses your magic with the dark powers of the Shadowfell.",
                 "You can choose for your Eldritch Blast to deal necrotic damage."
@@ -2027,6 +2043,7 @@ AddSubClass("warlock(laserllama)", "exalted", {
                 "guardian of faith", "wall of fire",
                 "conjure celestial", "flame strike"
             ],
+            spellcastingExtraApplyNonconform : true,
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -2159,7 +2176,9 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
+                spellcastingExtraApplyNonconform : true,
                 spellcastingExtra: ["sleep", "sanctuary", "enlarge/reduce", "spike growth", "fly", "meld into stone", "polymorph", "pillars of earth", "arcane hand", "wall of stone"]
+            
             },
             "djinn (air)": {
                 name: "Djinn Noble Magic",
@@ -2178,6 +2197,7 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
+                spellcastingExtraApplyNonconform : true,
                 spellcastingExtra: ["sleep", "thunderwave", "enlarge/reduce", "gust of wind", "fly", "gaseous form", "polymorph", "greater invisibility", "arcane hand", "seeming"]
             },
             "efreeti (fire)": {
@@ -2197,6 +2217,7 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
+                spellcastingExtraApplyNonconform : true,
                 spellcastingExtra: [
                     "sleep", "burning hands", "enlarge/reduce", "scorching ray", "fly", "fireball", "polymorph", "fire shield", "arcane hand", "flame strike"
                 ]
@@ -2218,6 +2239,7 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
+                spellcastingExtraApplyNonconform : true,
                 spellcastingExtra: [
                     "sleep", "torrent", "enlarge/reduce", "misty step", "fly", "tidal wave", "polymorph", "watery sphere", "arcane hand", "cone of cold"
                 ]
@@ -2346,6 +2368,7 @@ AddSubClass("warlock(laserllama)", "undying", {
                 "Your Patron infuses your magic with undead power.",
                 "You can choose for your Eldritch Blast to deal necrotic damage."
             ]),
+            spellcastingExtraApplyNonconform : true,
             spellcastingExtra: [
                 "cause fear", "ray of sickness",
                 "blindness/deafness", "ray of enfeeblement",
