@@ -1051,12 +1051,12 @@ function returnDragonSparkDamage() {
     return damageMap[type.toLowerCase()] || [1, 10, "force"];
 }
 
-function returnDraconicBlast() {
+function returnDraconicBlast(n) {
     return {
         regExpSearch: /^(?=.*draconic)(?=.*blast).*$/i,
         name: "Draconic Blast",
         source: [["GMB:LL", 0]],
-        ability: 6,
+        ability: n,
         type: "Special",
         damage: returnDragonSparkDamage(),
         range: "15 ft cone",
@@ -1066,6 +1066,23 @@ function returnDraconicBlast() {
         isSpell: true,
         isNotWeapon: true,
         isAlwaysProf: true
+    };
+}
+
+function returnBlindingDefiance(n) {
+    return {
+        regExpSearch: /^(?=.*blinding)(?=.*defiance).*$/i,
+        name: "Blinding Defiance",
+        source: [["GMB:LL", 0]],
+        ability: n,
+        type: "Special",
+        damage: [8, 6, "radiant"],
+        range: "30 ft radius",
+        description: "On death save, return to life with half HP. Creatures in 30 ft: Con save or 8d6 radiant damage and blinded until end of your turn (half damage on save).",
+        save: "Constitution",
+        saveDC: "spell",
+        isSpell: true,
+        isNotWeapon: true
     };
 }
 
@@ -1299,11 +1316,18 @@ AddSubClass("warlock(laserllama)", "ancient wyrm", {
                 "Also, whenever you deal your Draconic Spark damage type with a Warlock spell or with your Eldritch Blast you can treat a roll of 1 or 2 on any of the damage dice as a 3."
             ]),
             choicesNotInMenu: true,
-            "intelligence": {},
-            "charisma": {},
-            "wisdom": {},
-            weaponOptions: returnDraconicBlast(),
-            weaponAdd: ["Draconic Blast"]
+            "intelligence": {
+                weaponOptions: returnDraconicBlast(4),
+                weaponAdd: ["Draconic Blast"]
+            },
+            "charisma": {
+                weaponOptions: returnDraconicBlast(5),
+                weaponAdd: ["Draconic Blast"]
+            },
+            "wisdom": {
+                weaponOptions: returnDraconicBlast(6),
+                weaponAdd: ["Draconic Blast"]
+            },
         },
         "subclassfeature10": {
             name: "Regal Presence",
@@ -1566,7 +1590,7 @@ AddSubClass("warlock(laserllama)", "great old one", {
                 "If it misses, you can target your attacker with one beam of your Eldritch Blast as part of the same reaction.",
                 "You can use this reaction a number of times equal to your Pact modifier (a minimum of once), and you regain all of your expended uses when you finish a long rest."
             ]),
-            action: ["reaction", ""],            
+            action: ["reaction", ""],
             usagescalc: function () {
                 var pactMod = GetFeatureChoice('class', 'warlock(laserllama)', 'pact modifier');
                 var modValue = 0;
@@ -1677,7 +1701,7 @@ AddSubClass("warlock(laserllama)", "deep one", {
                     regExpSearch: /^(?=.*grasp)(?=.*deep)(?=.*tentacle).*$/i,
                     name: "Deep One Tentacle",
                     source: [["GMB:LL", 0]],
-                    ability: 5, 
+                    ability: 5,
                     type: "Natural",
                     damage: [1, 8, "cold"],
                     range: "Melee (10 ft)",
@@ -1694,7 +1718,7 @@ AddSubClass("warlock(laserllama)", "deep one", {
                     regExpSearch: /^(?=.*grasp)(?=.*deep)(?=.*tentacle).*$/i,
                     name: "Deep One Tentacle",
                     source: [["GMB:LL", 0]],
-                    ability: 6, 
+                    ability: 6,
                     type: "Natural",
                     damage: [1, 8, "cold"],
                     range: "Melee (10 ft)",
@@ -1812,6 +1836,151 @@ AddSubClass("warlock(laserllama)", "deep one", {
     }
 });
 
+// Exalted Patron
+AddSubClass("warlock(laserllama)", "exalted", {
+    regExpSearch: /^(?=.*exalted).*$/i,
+    subname: "Exalted Patron",
+    fullname: "Exalted Warlock",
+    source: ["GMB:LL", 0],
+    features: {
+        "subclassfeature2": {
+            name: "Celestial Light",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            description: desc([
+                "When you fire a beam of your Eldritch Blast, you can instead choose to channel a beam of healing light at one creature you can see within range, restoring hit points to the target.",
+                "You can do so a number of times equal to 1 + your Warlock level, and you regain all uses when you finish a long rest."
+            ]),
+            usagescalc: function () {
+                var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                return 1 + warlockLevel;
+            },
+            recovery: "long rest",
+            calcChanges: {
+                atkAdd: [
+                    function (fields, v) {
+                        if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                            fields.Description += (fields.Description ? '; ' : '') +
+                                "Can heal instead (Celestial Light)";
+                        }
+                    },
+                    "Celestial Light: Eldritch Blast can heal instead of damage.",
+                    286
+                ]
+            }
+        },
+        "subclassfeature2.1": {
+            name: "Exalted Magic",
+            source: ["GMB:LL", 0],
+            minlevel: 2,
+            choicesNotInMenu: true,
+            choices: ["Intelligence", "Wisdom", "Charisma"],
+            spellcastingExtra: [
+                "cure wounds", "guiding bolt",
+                "flaming sphere", "restoration",
+                "daylight", "revivify",
+                "guardian of faith", "wall of fire",
+                "conjure celestial", "flame strike"
+            ],
+            calcChanges: {
+                atkAdd: [
+                    function (fields, v) {
+                        if (v.WeaponName && v.WeaponName.match(/eldritch blast/i)) {
+                            fields.Description += (fields.Description ? '; ' : '') +
+                                "Can deal radiant damage (Exalted Magic)";
+                        }
+                    },
+                    "Exalted Magic: Eldritch Blast can deal radiant damage.",
+                    286
+                ]
+            },
+        },
+        "subclassfeature6": {
+            name: "Radiant Conduit",
+            source: ["GMB:LL", 0],
+            minlevel: 6,
+            description: desc([
+                "You gain resistance to radiant damage, and when you use Celestial Light, you can expend multiple uses (up to your Pact Modifier) at one time to restore 1d10 hit points to your target for each use expended.",
+                "In addition, you can expend one of your Pact Magic spell slots as a bonus action to regain expended uses of Celestial Light equal to the level of that Pact Magic spell slot."
+            ]),
+            dmgres: ["Radiant"],
+            action: ["bonus action", "Recover Celestial Light uses (SS lvl)"]
+        },
+        "subclassfeature10": {
+            name: "Celestial Fortitude",
+            source: ["GMB:LL", 0],
+            minlevel: 10,
+            description: desc([
+                "Your divine presence fortifies you and your allies.",
+                "Each time you finish a short or long rest you gain temporary hit points equal to your Warlock level + your Pact modifier.",
+                "You can also choose up to five creatures who completed the short or long rest with you to gain temporary hit points equal to half your Warlock level + your Pact modifier."
+            ]),
+            choicesNotInMenu: true,
+            choices: ["Intelligence", "Wisdom", "Charisma"],
+            "intelligence": {
+                additional: function () {
+                    var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                    var intMod = What('Int Mod');
+                    var selfHP = warlockLevel + Math.max(intMod, 0);
+                    var allyHP = Math.floor(warlockLevel / 2) + Math.max(intMod, 0);
+                    return "Self: " + selfHP + " temp HP, Allies: " + allyHP + " temp HP";
+                }
+            },
+            "wisdom": {
+                additional: function () {
+                    var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                    var wisMod = What('Wis Mod');
+                    var selfHP = warlockLevel + Math.max(wisMod, 0);
+                    var allyHP = Math.floor(warlockLevel / 2) + Math.max(wisMod, 0);
+                    return "Self: " + selfHP + " temp HP, Allies: " + allyHP + " temp HP";
+                }
+            },
+            "charisma": {
+                additional: function () {
+                    var warlockLevel = classes.known['warlock(laserllama)'] ? classes.known['warlock(laserllama)'].level : 0;
+                    var chaMod = What('Cha Mod');
+                    var selfHP = warlockLevel + Math.max(chaMod, 0);
+                    var allyHP = Math.floor(warlockLevel / 2) + Math.max(chaMod, 0);
+                    return "Self: " + selfHP + " temp HP, Allies: " + allyHP + " temp HP";
+                }
+            }
+        },
+        "subclassfeature14": {
+            name: "Blinding Defiance",
+            source: ["GMB:LL", 0],
+            minlevel: 14,
+            description: desc([
+                "The heavenly power infused in you through your Pact allows you to resist death.",
+                "When you make a death saving throw, you can choose to instantly return to life with half your maximum hit points, stand up, and unleash a burst of radiant light.",
+                "When you do, creatures of your choice within 30 feet must make a Constitution saving throw against your Spell save DC.",
+                "On a failed save, creatures take 8d6 radiant damage and are blinded until the end of your current turn. On a success, they take half as much radiant damage and are not blinded.",
+                "Once you use this feature to return to life you must finish a long rest before you can use it again.",
+                "If you have no uses left, you can expend a Pact Magic spell slot to use it again."
+            ]),
+            usages: 1,
+            recovery: "long rest",
+            recharge: "spell slot",
+            savetxt: {
+                text: ["Blinding Defiance: On death save, return to life with half HP and 8d6 radiant damage/30 ft (Con save for half/no blind)"]
+            },
+            choicesNotInMenu: true,
+            choices: ["Intelligence", "Wisdom", "Charisma"],
+            "intelligence": {
+                weaponOptions: returnBlindingDefiance(4),
+                weaponAdd: ["Blinding Defiance"]
+            },
+            "wisdom": {
+                weaponOptions: returnBlindingDefiance(5),
+                weaponAdd: ["Blinding Defiance"]
+            },
+            "charisma": {
+                weaponOptions: returnBlindingDefiance(6),
+                weaponAdd: ["Blinding Defiance"]
+            },
+        }
+    }
+});
+
 // Aggiungi automazione per Eldritch Blast
 RunFunctionAtEnd(function () {
     ClassList["warlock(laserllama)"].calcChanges = {
@@ -1850,10 +2019,10 @@ RunFunctionAtEnd(function () {
         allBlasphemousKeys.push(invocKey);
 
         if (warlock_invs[invocKey]) {
-            continue; 
+            continue;
         }
 
-        
+
         warlock_invs[invocKey] = {
             name: NewChanDiv.name,
             source: NewChanDiv.source,
