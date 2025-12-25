@@ -299,7 +299,7 @@ ClassList['warlock(laserllama)'] = {
                     "Whenever I gain a warlock level, I can replace an invocation I know with another"
                 ]),
                 additional: levels.map(function (n) {
-                    return n < 3 ? 2 : (n < 5 ? 3 : n < 7 ? 3 : n < 9 ? 4 : n < 12 ? 5 : n < 15 ? 6 : n < 18 ? 7 : 8) + " invocations known";
+                    return n < 3 ? 2 : (n < 5 ? 3 : n < 7 ? 4 : n < 9 ? 5 : n < 12 ? 6 : n < 15 ? 7 : n < 18 ? 8 : 9) + " invocations known";
                 }),
                 extraname: "Eldritch Invocation",
                 toNotesPage: [
@@ -312,7 +312,7 @@ ClassList['warlock(laserllama)'] = {
                 ],
                 extrachoices: [],
                 extraTimes: levels.map(function (n) {
-                    return n < 2 ? 0 : n < 5 ? 2 : n < 7 ? 4 : n < 9 ? 5 : n < 12 ? 6 : n < 15 ? 7 : n < 18 ? 8 : 9;
+                    return n < 3 ? 2 : (n < 5 ? 3 : n < 7 ? 4 : n < 9 ? 5 : n < 12 ? 6 : n < 15 ? 7 : n < 18 ? 8 : 9);
                 }),
             };
 
