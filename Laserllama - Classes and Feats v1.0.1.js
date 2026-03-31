@@ -15161,8 +15161,8 @@ AddSubClass("ranger(laserllama)", "fey wanderer", {
 // // Planar Warden (Horizon Walker) 
 AddSubClass("ranger(laserllama)", "planar warden", {
   regExpSearch:
-    /^(?=.*planar)(?=.*warden).*$/i,
-  subname: "Planar Warden",
+    /planar[\s\-]?warden(?:\s*\(?(ll|laserllama|hb)?\)?)?/i,
+  subname: "Planar Warden (LL)",
   fullname: "Planar Warden Conclave",
   source: [["GMB:LL", 0]],
   features: {
