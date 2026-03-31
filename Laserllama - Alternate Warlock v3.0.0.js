@@ -22,7 +22,7 @@
     Code by:    Original script by Valentino dell'Eco
 */
 
-var iFileName = "LaserLlama - Alternate Warlock.js";
+var iFileName = "LaserLlama - Alternate Warlock v3.0.0.js";
 RequiredSheetVersion("13.0.6");
 if (ClassList["warlock"]) {
     ClassList["warlock"].regExpSearch = /^(?=.*warlock)(?!.*laserllama).*$/i;
