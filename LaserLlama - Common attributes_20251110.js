@@ -113,7 +113,7 @@
 */
 
 // Meta information
-var iFileName = "LaserLlama - Common attributes_20250718.js";
+var iFileName = "LaserLlama - Common attributes_20251110.js";
 RequiredSheetVersion("13.0.6");
 
 // Source information
@@ -8263,7 +8263,7 @@ EldritchInvocationsLL = {
     armorOptions: [
       {
         name: "Armor of Shadows",
-        source: ["HB", 0],
+        source: [["GMB:LL", 0]],
         regExpSearch: /^(?=.*armor)(?=.*shadows).*$/i,
         ac: "13+Int",
         dex: -10,
@@ -8838,7 +8838,7 @@ KnacksLL = {
 InfusionsLL = {
   "arm launcher": {
     name: "Arm Launcher",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: glove or gauntlet",
       "As an action, this magical launcher can be loaded with up to five Tiny objects",
@@ -8849,7 +8849,7 @@ InfusionsLL = {
   },
   "enhanced arcane focus": {
     name: "Enhanced Arcane Focus",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: arcane focus (requires attunement)",
       "Grants +1 bonus to spell attack rolls and ignores half cover when making spell attacks",
@@ -8860,7 +8860,7 @@ InfusionsLL = {
   },
   "enhanced defense": {
     name: "Enhanced Defense",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: suit of armor or a shield",
       "Grants +1 bonus to Armor Class while wearing or wielding this infused item",
@@ -8871,7 +8871,7 @@ InfusionsLL = {
   },
   "enhanced weapon": {
     name: "Enhanced Weapon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: simple or martial weapon",
       "Grants +1 bonus to attack and damage rolls with this infused weapon",
@@ -8882,7 +8882,7 @@ InfusionsLL = {
   },
   "featherweight belt": {
     name: "Featherweight Belt",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: belt or cloak (requires attunement)",
       "Reduces wearer to one-tenth of its weight without decreasing physical abilities",
@@ -8892,7 +8892,7 @@ InfusionsLL = {
   },
   "featherweight weapon": {
     name: "Featherweight Weapon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: simple or martial melee weapon (requires attunement)",
       "Removes heavy and two-handed properties; if it doesn't have them, gains light property",
@@ -8903,7 +8903,7 @@ InfusionsLL = {
   },
   "goggles of clearsight": {
     name: "Goggles of Clearsight",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: helm, goggles, or glasses",
       "See normally through light/heavy obscurement within 120 feet",
@@ -8915,7 +8915,7 @@ InfusionsLL = {
   },
   "lightning cannon": {
     name: "Lightning Cannon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: gauntlet, arcane focus, or metal rod",
       "In place of an attack, make ranged spell attack (60 ft) for 2d6 lightning damage",
@@ -8926,7 +8926,7 @@ InfusionsLL = {
   },
   "power whip": {
     name: "Power Whip",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: whip or chain",
       "Damage die becomes d10; once per turn can knock Large or smaller target prone",
@@ -8937,7 +8937,7 @@ InfusionsLL = {
   },
   "repeating shot": {
     name: "Repeating Shot",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: ranged weapon (requires attunement)",
       "Ignores loading property; produces own magic ammunition if none loaded",
@@ -8948,7 +8948,7 @@ InfusionsLL = {
   },
   "returning weapon": {
     name: "Returning Weapon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Item: weapon with thrown property",
       "Weapon immediately flies back to wielder's hand after thrown attack",
@@ -8959,7 +8959,7 @@ InfusionsLL = {
   },
   "gem of warding": {
     name: "Gem of Warding",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: gem worth at least 100 gold",
@@ -8975,7 +8975,7 @@ InfusionsLL = {
   },
   "homing weapon": {
     name: "Homing Weapon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: weapon with ranged or thrown property",
@@ -8987,7 +8987,7 @@ InfusionsLL = {
   },
   "homunculus servant": {
     name: "Homunculus Servant",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: gem worth at least 100 gold",
@@ -9000,7 +9000,7 @@ InfusionsLL = {
   },
   "immovable boots": {
     name: "Immovable Boots",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: pair of boots (requires attunement)",
@@ -9012,7 +9012,7 @@ InfusionsLL = {
   },
   "infiltrator armor": {
     name: "Infiltrator Armor",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: suit of armor (requires attunement)",
@@ -9026,7 +9026,7 @@ InfusionsLL = {
   },
   "light blade": {
     name: "Light Blade",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: sword hilt or arcane focus (requires attunement)",
@@ -9041,7 +9041,7 @@ InfusionsLL = {
   },
   "mind sharpener": {
     name: "Mind Sharpener",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: helmet, diadem, armor, or robes",
@@ -9056,7 +9056,7 @@ InfusionsLL = {
   },
   "minor arcane item": {
     name: "Minor Arcane Item",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: Tiny object, tool, or arcane focus (requires attunement)",
@@ -9070,7 +9070,7 @@ InfusionsLL = {
   },
   "radiant weapon": {
     name: "Radiant Weapon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: melee weapon (requires attunement)",
@@ -9089,7 +9089,7 @@ InfusionsLL = {
   },
   "repulsion gauntlets": {
     name: "Repulsion Gauntlets",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: gloves or gauntlets (requires attunement)",
@@ -9106,7 +9106,7 @@ InfusionsLL = {
   },
   "repulsion shield": {
     name: "Repulsion Shield",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: shield (requires attunement)",
@@ -9124,7 +9124,7 @@ InfusionsLL = {
   },
   "armor of strength": {
     name: "Armor of Strength",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: suit of armor (requires attunement)",
@@ -9142,7 +9142,7 @@ InfusionsLL = {
   },
   "chameleon armor": {
     name: "Chameleon Armor",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: suit of armor (requires attunement)",
@@ -9159,7 +9159,7 @@ InfusionsLL = {
   },
   "elemental armor": {
     name: "Elemental Armor",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: suit of armor (requires attunement)",
@@ -9171,7 +9171,7 @@ InfusionsLL = {
   },
   "elemental ring": {
     name: "Elemental Ring",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: ring (requires attunement)",
@@ -9186,7 +9186,7 @@ InfusionsLL = {
   },
   "elemental weapon": {
     name: "Elemental Weapon",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: melee weapon (requires attunement)",
@@ -9200,7 +9200,7 @@ InfusionsLL = {
   },
   "greater arcane item": {
     name: "Greater Arcane Item",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: Tiny object, tool, or arcane focus (requires attunement)",
@@ -9214,7 +9214,7 @@ InfusionsLL = {
   },
   "helm of awareness": {
     name: "Helm of Awareness",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: helmet or diadem (requires attunement)",
@@ -9231,7 +9231,7 @@ InfusionsLL = {
   },
   "voyager boots": {
     name: "Voyager Boots",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: pair of boots (requires attunement)",
@@ -9244,7 +9244,7 @@ InfusionsLL = {
   },
   "guardian gauntlets": {
     name: "Guardian Gauntlets",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: pair of gauntlets (requires attunement)",
@@ -9260,7 +9260,7 @@ InfusionsLL = {
   },
   "masterwork arcane item": {
     name: "Masterwork Arcane Item",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: Tiny object, tool, or arcane focus (requires attunement)",
@@ -9274,7 +9274,7 @@ InfusionsLL = {
   },
   "masterwork homunculus": {
     name: "Masterwork Homunculus",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Learn clone spell (Artificer spell, doesn't count against Spells Known)",
@@ -9291,7 +9291,7 @@ InfusionsLL = {
   },
   "mind shield": {
     name: "Mind Shield",
-    source: [["HB", 0]],
+    source: [[["GMB:LL", 0]]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: helmet or diadem (requires attunement)",
@@ -11296,6 +11296,320 @@ ElderArcanumsLL = {
       "dominate monster": {
         changes: "Can cast dominate monster once per long rest without spell slot. If target is under the effect of your hold monster spell (including from Chains of the Abyss), it automatically fails the saving throw against dominate monster (hold monster ends)."
       }
+    }
+  }
+};
+
+// Druid LL Primal Surges
+// NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
+PrimalSurgesLL = {
+  "ancient rites": {
+    name: "Ancient Rites",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "You empower your Rituals with the elder magic of nature. As an action, you can expend a Primal Surge to instantly cast a Ritual Druid spell, so long as you have that spell prepared"
+    ]),
+  },
+  "elder magick": {
+    name: "Elder Magick",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "When you cast a Druid spell, you can expend a Primal Surge to cast that spell as if you spent a spell slot one level higher, even if you normally would not be able to cast it as that level."
+    ]),
+  },
+  "elemental eruption": {
+    name: "Elemental Eruption",
+    source: [["GMB:LL", 0]],
+    action: [["action", ""]],
+    description: levels.map(function (n) {
+      if (n >= 16) return desc([
+        "As an action, I expend a Primal Surge to cause three 30-foot-tall, 5-foot radius cylinders of elemental power to erupt",
+        "Choose element: Air (thunder), Earth (bludgeoning), Fire (fire), or Water (cold)",
+        "Targets in area: Dexterity save or take 2d6 + my Druid level damage (half on success)",
+      ]);
+      if (n >= 8) return desc([
+        "As an action, I expend a Primal Surge to cause two 30-foot-tall, 5-foot radius cylinders of elemental power to erupt",
+        "Choose element: Air (thunder), Earth (bludgeoning), Fire (fire), or Water (cold)",
+        "Targets in area: Dexterity save or take 2d6 + my Druid level damage (half on success)",
+      ]);
+      return desc([
+        "As an action, I expend a Primal Surge to cause a 30-foot-tall, 5-foot radius cylinder of elemental power to erupt",
+        "Choose element: Air (thunder), Earth (bludgeoning), Fire (fire), or Water (cold)",
+        "Targets in area: Dexterity save or take 2d6 + my Druid level damage (half on success)",
+      ]);
+    }),
+  },
+  "primal bond": {
+    name: "Primal Bond",
+    source: [["GMB:LL", 0]],
+    action: [["action", ""]],
+    description: levels.map(function (n) {
+      var crBeastPlant = n < 4 ? 0 : n < 8 ? "1/8" : n < 12 ? "1/2" : 1;
+
+      return desc([
+        "I can touch one non-hostile Beast or Plant of CR " + crBeastPlant + " and expend a Primal Surge to bond it to me",
+        "Uses rules of conjure familiar spell, but target retains creature type and cannot be sent to pocket dimension",
+        "While bond lasts: Cannot regain the spent Primal Surge",
+        "Bond ends if: I end it, bond another creature, or the creature dies",
+        "If creature dies: Can use action + Primal Surge to restore it to max HP with bond restored",
+      ])
+
+    }),
+  },
+  "verdant growth": {
+    name: "Verdant Growth",
+    source: [["GMB:LL", 0]],
+    description: levels.map(function (n) {
+      if (n >= 16) return desc([
+        "As an action, I can spend a Primal Surge to exude an aura of verdant magic",
+        "For 1 minute or until Incapacitated: Area within 25 feet is difficult terrain for creatures I choose",
+        "Wild plant growth erupts from ground to hinder movement of foes",
+      ]);
+      if (n >= 8) return desc([
+        "As an action, I can spend a Primal Surge to exude an aura of verdant magic",
+        "For 1 minute or until Incapacitated: Area within 20 feet is difficult terrain for creatures I choose",
+        "Wild plant growth erupts from ground to hinder movement of foes",
+      ]);
+      return desc([
+        "As an action, I can spend a Primal Surge to exude an aura of verdant magic",
+        "For 1 minute or until Incapacitated: Area within 15 feet is difficult terrain for creatures I choose",
+        "Wild plant growth erupts from ground to hinder movement of foes",
+      ]);
+    }),
+  },
+  "wild shape": {
+    name: "Wild Shape",
+    source: [["GMB:LL", 0]],
+    action: [["bonus action", " (start,end)"], ["bonus action", " (learn shape)"]],
+    additional: levels.map(function (n) {
+      if (n < 2) return "";
+      var cr = n < 4 ? "1/4" : n < 8 ? "1/2" : n < 16 ? 1 : 2;
+      return "CR " + cr + "; 1 h; 2 Beast Shapes;";
+    }),
+    description: levels.map(function (n) {
+      var crWildShape = n < 4 ? "1/4" : n < 8 ? "1/2" : n < 16 ? 1 : 2;
+      return desc([
+        "As a bonus action, I can expend a Primal Surge to Shift into Beast form",
+        "Beast Shapes: I know 2 Beast Shapes of CR " + crWildShape + " or lower, both Tiny or smaller",
+        "Must have seen a live specimen of that Beast to select it",
+        "Learning New Beast Shapes: As action, touch Friendly Beast of CR " + crWildShape + " or lower and expend Primal Surge to learn its shape",
+        "No limit to number of Beast Shapes I can learn",
+        "When Shifting: Retain alignment, personality, hit points, and mental scores",
+        "Retain proficiencies, gain Beast's proficiencies (use higher if both have)",
+        "Equipment: Choose if falls, merges, or worn (doesn't change size)",
+        "Features: Retain all features Beast Shape can use, use Beast's senses",
+        "Can't cast spells but can maintain concentration",
+        "Duration: 1 hour. Revert if Unconscious or use bonus action to revert",
+        "Diminutive size: Revert instantly if take any damage or fail a saving throw"
+      ])
+    }),
+  },
+};
+
+// Bard LL Chords of Power
+// NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
+ChordsPowerLL = {
+  "inspiring melody": {
+    name: "Inspiring Melody",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "As an action, you expend any number of Bardic Inspiration Dice (up to your Charisma modifier), and choose a creature who can hear you within 30 feet for each Bardic Inspiration Die spent.",
+      "These creatures gain temporary hit points equal to the maximum roll of your Bardic Inspiration Die."
+    ]),
+    action: [["action", ""]],
+    calcChanges: {
+      atkAdd: [
+        function (fields, v) {
+          if (v.WeaponName && v.WeaponName.includes("bardic inspiration")) {
+            fields.Description += (fields.Description ? '; ' : '') + 'Can grant temp HP = max die roll to creatures within 30 ft';
+          }
+        },
+        "Inspiring Melody: Can grant temporary hit points equal to max Bardic Inspiration Die roll"
+      ]
+    }
+  },
+
+  "enthralling performance": {
+    name: "Enthralling Performance",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "After performing for at least 1 minute, you can expend one Bardic Inspiration Die to force creatures of your choice within 90 feet who listened to make a Wisdom saving throw.",
+      "On a failed save, creatures are charmed by you for 1 hour, or until you or your allies do anything hostile.",
+      "On a success, creatures are unaware you attempted to charm them.",
+      "While charmed, creatures idolize you and will do anything you ask short of risking their lives or fighting for you."
+    ]),
+    action: [["action", ""]],
+    usages: 1,
+    recovery: "long rest"
+  },
+
+  "irritating tune": {
+    name: "Irritating Tune",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice who are within 30 feet and can hear you at the beginning of their turn must succeed on a Wisdom saving throw or have disadvantage on attack rolls against all creatures other than you until the end of this performance.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    savetxt: {
+      text: ["Creatures within 30 ft have disadvantage on attacks vs others while hearing Irritating Tune"]
+    }
+  },
+
+  "lay of alacrity": {
+    name: "Lay of Alacrity",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice who are within 30 feet and can hear you at the beginning of their turn gain a bonus to their speed equal to five times your Charisma modifier in feet (minimum of 5 feet) which lasts until the end of their current turn.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    speed: {
+      allModes: function () {
+        var chaMod = What('Cha Mod');
+        return "+" + (Math.max(1, chaMod) * 5);
+      }
+    }
+  },
+
+  "song of rest": {
+    name: "Song of Rest",
+    source: [["GMB:LL", 0]],
+    description: desc([
+      "During a short rest you can perform to soothe your weary allies.",
+      "Expend any number of Bardic Inspiration Dice and roll them.",
+      "You restore a total number of hit points equal to the result of this roll, distributed among creatures who are participating in this short rest and can hear you.",
+      "Once a creature benefits from this Chord of Power it can't benefit from it again until it finishes a long rest."
+    ]),
+    action: [["action", " (during short rest)"]],
+    usages: 1,
+    recovery: "long rest"
+  },
+
+  "countersong": {
+    name: "Countersong",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 6+]",
+    description: desc([
+      "When you hear a creature within 30 feet cast a spell, you can use your reaction to expend a Bardic Inspiration Die, roll it, and produce a chaotic sound, attempting to disrupt the spell.",
+      "The caster must make an ability check with its spellcasting ability, and add the level of the spell it was casting to the result.",
+      "If the result of its ability check is less than 10 + your Bardic Inspiration Die roll, the creature's spell fails and has no effect."
+    ]),
+    action: [["reaction", ""]],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 6;
+    }
+  },
+
+  "disorienting dirge": {
+    name: "Disorienting Dirge",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 6+]",
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice who are within 30 feet and can hear you have disadvantage on Wisdom saving throws and saving throws to maintain their concentration.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 6;
+    }
+  },
+
+  "hymn of courage": {
+    name: "Hymn of Courage",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 6+]",
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice within 30 feet who can hear you are immune to the charmed and frightened condition.",
+      "A creature who is charmed or frightened when it hears this performance is not affected by the condition as long as it can hear you.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    savetxt: {
+      immune: ["charmed (while hearing Hymn)", "frightened (while hearing Hymn)"]
+    },
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 6;
+    }
+  },
+
+  "song of confidence": {
+    name: "Song of Confidence",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 6+]",
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice within 30 feet who can hear you are considered proficient in all saving throws for the duration.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 6;
+    }
+  },
+
+  "heroic anthem": {
+    name: "Heroic Anthem",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 10+]",
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice within 30 feet who can hear you add your Charisma modifier (minimum of +1) to the first damage roll they make before the start of your next turn.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 10;
+    }
+  },
+
+  "confounding canticle": {
+    name: "Confounding Canticle",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 10+]",
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice who are within 30 feet and can hear you at the beginning of their turn must succeed on a Wisdom saving throw, or until the start of your next turn their speed is halved, they can't take reactions, and they have disadvantage on all ability checks and attack rolls.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 10;
+    }
+  },
+
+  "mythic anthem": {
+    name: "Mythic Anthem",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 18+]",
+    description: desc([
+      "As an action, you expend one Bardic Inspiration Die to begin a performance that lasts until the beginning of your next turn.",
+      "Creatures of your choice within 30 feet who can hear you are resistant to all damage from spells and magical effects.",
+      "This performance immediately ends if you move from your space.",
+      "Performing this Chord of Power requires concentration."
+    ]),
+    action: [["action", ""]],
+    dmgres: ["spell", "magical"],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 18;
+    }
+  },
+
+  "legendary chord": {
+    name: "Legendary Chord",
+    source: [["GMB:LL", 0]],
+    submenu: "[bard level 18+]",
+    description: desc([
+      "As an action, you expend any number of Bardic Inspiration Dice (up to your Charisma modifier), and choose a creature who can hear you within 30 feet for each Bardic Inspiration Die spent.",
+      "These creatures can immediately make a single weapon attack or cast a spell of 1st-level or lower."
+    ]),
+    action: [["action", ""]],
+    prereqeval: function (v) {
+      return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 18;
     }
   }
 };
