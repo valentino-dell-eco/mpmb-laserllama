@@ -9307,7 +9307,7 @@ InfusionsLL = {
   },
   "adjustable tool set": {
     name: "Adjustable Tool Set",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: set of artisan's tools or tinker's tools",
       "Wielder is considered proficient with this magical set of tools",
@@ -9320,7 +9320,7 @@ InfusionsLL = {
   },
   "artificial limb": {
     name: "Artificial Limb",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: humanoid-shaped prosthetic limb",
       "Attaches to creature, covering or replacing a limb",
@@ -9331,7 +9331,7 @@ InfusionsLL = {
   },
   "belt of utility": {
     name: "Belt of Utility",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: belt or vest with ten pockets",
       "Ten Tiny pockets each holding Tiny or smaller objects",
@@ -9343,7 +9343,7 @@ InfusionsLL = {
   },
   "enhanced instrument": {
     name: "Enhanced Instrument",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: musical instrument (requires attunement)",
       "Wielder proficient with instrument, can use as spellcasting focus",
@@ -9355,7 +9355,7 @@ InfusionsLL = {
   },
   "ring of knowledge": {
     name: "Ring of Knowledge",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: ring (requires attunement)",
       "Choose one skill, tool, weapon proficiency, or language you know",
@@ -9365,7 +9365,7 @@ InfusionsLL = {
   },
   "thought blade": {
     name: "Thought Blade",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: silvered melee weapon (requires attunement)",
       "Use Intelligence instead of Strength/Dexterity for attack and damage rolls",
@@ -9376,7 +9376,7 @@ InfusionsLL = {
   },
   "wondrous translator": {
     name: "Wondrous Translator",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: ring, diadem, or necklace (requires attunement)",
       "Understand any spoken language as if native tongue",
@@ -9387,7 +9387,7 @@ InfusionsLL = {
   },
   "wondrous whip": {
     name: "Wondrous Whip",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Item: whip, gauntlet, or weaver's tools",
       "Can cast thorn whip cantrip using Intelligence as spellcasting ability",
@@ -9399,7 +9399,7 @@ InfusionsLL = {
   },
   "many-handed pouch": {
     name: "Many-Handed Pouch",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: four Tiny pouches, pockets, or sacks",
@@ -9411,7 +9411,7 @@ InfusionsLL = {
   },
   "ring of potential": {
     name: "Ring of Potential",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: ring (requires attunement)",
@@ -9425,7 +9425,7 @@ InfusionsLL = {
   },
   "skittering servant": {
     name: "Skittering Servant",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: fine mechanical components worth 100 gold",
@@ -9444,7 +9444,7 @@ InfusionsLL = {
   },
   "skyfall harness": {
     name: "Skyfall Harness",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: cloak, vest, or harness",
@@ -9455,7 +9455,7 @@ InfusionsLL = {
   },
   "wildfire cannon": {
     name: "Wildfire Cannon",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: gauntlet, arcane focus, or metal rod",
@@ -9472,7 +9472,7 @@ InfusionsLL = {
   },
   "wall shield": {
     name: "Wall Shield",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: shield (requires attunement)",
@@ -9490,7 +9490,7 @@ InfusionsLL = {
   },
   "war gauntlet": {
     name: "War Gauntlet",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Item: armored gauntlet and martial weapon or shield",
@@ -9503,7 +9503,7 @@ InfusionsLL = {
   },
   "collar of taming": {
     name: "Collar of Taming",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: metal circlet or collar (requires attunement)",
@@ -9517,7 +9517,7 @@ InfusionsLL = {
   },
   "elemental prism": {
     name: "Elemental Prism",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: diamond worth 50+ gold and arcane focus",
@@ -9529,7 +9529,7 @@ InfusionsLL = {
   },
   "levitating weapon": {
     name: "Levitating Weapon",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: one-handed melee weapon (requires attunement)",
@@ -9546,7 +9546,7 @@ InfusionsLL = {
   },
   "metamorphosis armor": {
     name: "Metamorphosis Armor",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: suit of armor (requires attunement)",
@@ -9562,7 +9562,7 @@ InfusionsLL = {
   },
   "vampiric weapon": {
     name: "Vampiric Weapon",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 11th-level Artificer",
       "Item: melee weapon (requires attunement)",
@@ -9575,7 +9575,7 @@ InfusionsLL = {
   },
   "astral cannon": {
     name: "Astral Cannon",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: gauntlet, arcane focus, or metal rod",
@@ -9592,7 +9592,7 @@ InfusionsLL = {
   },
   "boots of destruction": {
     name: "Boots of Destruction",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: pair of boots (requires attunement)",
@@ -9609,7 +9609,7 @@ InfusionsLL = {
   },
   "mystic armament": {
     name: "Mystic Armament",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: melee weapon (requires attunement)",
@@ -9626,7 +9626,7 @@ InfusionsLL = {
   },
   "mystic shot": {
     name: "Mystic Shot",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 17th-level Artificer",
       "Item: ranged weapon (requires attunement)",
@@ -9644,7 +9644,6 @@ InfusionsLL = {
   }
 
 };
-
 
 // Alchemist Artificer LL Elixir Infusions
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
@@ -9786,7 +9785,7 @@ ElixirInfusionsLL = {
 BiomancerModificationsLL = {
   "amphibian physiology": {
     name: "Amphibian Physiology",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Your neck sprouts gills or your skin becomes permeable like an amphibious creature",
       "You gain a swimming speed equal to your walking speed",
@@ -9799,7 +9798,7 @@ BiomancerModificationsLL = {
   },
   "bestial senses": {
     name: "Bestial Senses",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Your eyes and ears resemble those of predators",
       "When you make a Wisdom (Perception) or Wisdom (Survival) check based on your sense of hearing, sight, or smell",
@@ -9820,7 +9819,7 @@ BiomancerModificationsLL = {
   },
   "enhanced physicality": {
     name: "Enhanced Physicality",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Your muscles and veins engorge with arcane power",
       "When you make a Strength ability check or saving throw",
@@ -9841,7 +9840,7 @@ BiomancerModificationsLL = {
   },
   "monstrous claw": {
     name: "Monstrous Claw",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "You transform one of your limbs into a monstrous arm ending in a massive pincer",
       "Your unarmed strikes with this claw deal slashing damage equal to 1d8 + your Strength modifier",
@@ -9851,7 +9850,7 @@ BiomancerModificationsLL = {
   },
   "resilient hide": {
     name: "Resilient Hide",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Your flesh grows hideously thick",
       "When not wearing armor, your Armor Class equals 10 + your Intelligence modifier + your Constitution modifier"
@@ -9862,7 +9861,7 @@ BiomancerModificationsLL = {
   },
   "winged glide": {
     name: "Winged Glide",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "You grow bat-like skin flaps that you use to glide",
       "When you fall at least 10 feet and aren't incapacitated, you can subtract up to 100 feet from your fall when you calculate fall damage",
@@ -9872,7 +9871,7 @@ BiomancerModificationsLL = {
   },
   "arachnoid grip": {
     name: "Arachnoid Grip",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Your hands and feet secrete a sticky substance",
@@ -9888,7 +9887,7 @@ BiomancerModificationsLL = {
   },
   "greater physique": {
     name: "Greater Physique",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Biomancer",
       "Magic forcefully enlarges your body, giving you hideous size",
@@ -9906,7 +9905,7 @@ BiomancerModificationsLL = {
   },
   "vestigial limb": {
     name: "Vestigial Limb",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "You grow an additional grotesque limb that resembles your other limbs in a place of your choice",
@@ -9917,7 +9916,7 @@ BiomancerModificationsLL = {
   },
   "avian flight": {
     name: "Avian Flight",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 15th-level Artificer",
       "A pair of feathered or leathery wings sprout forth from your back",
@@ -9931,7 +9930,7 @@ BiomancerModificationsLL = {
   },
   "hideous regeneration": {
     name: "Hideous Regeneration",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 15th-level Artificer",
       "If you begin your turn with less than half of your hit points remaining, but at least 1 hit point",
@@ -9949,7 +9948,7 @@ BiomancerModificationsLL = {
 GunslingerUpgrades = {
   "close shot": {
     name: "Close Shot",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "When making ranged attack with Arcane Firearm while hostile creature within 5 ft",
       "Do not have disadvantage on attack roll"
@@ -9958,7 +9957,7 @@ GunslingerUpgrades = {
   },
   "deadly accuracy": {
     name: "Deadly Accuracy",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "+2 bonus to Arcane Firearm attack rolls",
       "Does not stack with Archery Fighting Style"
@@ -9973,7 +9972,7 @@ GunslingerUpgrades = {
   },
   "elemental shot": {
     name: "Elemental Shot",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Bonus action: touch Arcane Firearm and expend spell slot (1st-level+)",
       "Choose acid, cold, fire, lightning, or poison damage type",
@@ -9985,7 +9984,7 @@ GunslingerUpgrades = {
   },
   "grooved barrel": {
     name: "Grooved Barrel",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Ignore disadvantage on Arcane Firearm attacks at long range"
     ]),
@@ -9993,7 +9992,7 @@ GunslingerUpgrades = {
   },
   "high caliber": {
     name: "High Caliber",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Range increases to (100/400)",
       "Damage die increases from 1d10 to 2d6",
@@ -10003,7 +10002,7 @@ GunslingerUpgrades = {
   },
   "replaceable parts": {
     name: "Replaceable Parts",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Spend 10 minutes with smith's tools to replace one Upgrade with another",
       "Can be done during short rest"
@@ -10012,7 +10011,7 @@ GunslingerUpgrades = {
   },
   "blinding rounds": {
     name: "Blinding Rounds",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Once per turn when hitting target: force Constitution save",
@@ -10023,7 +10022,7 @@ GunslingerUpgrades = {
   },
   "concussive rounds": {
     name: "Concussive Rounds",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Once per turn when hitting target: force Constitution save",
@@ -10034,7 +10033,7 @@ GunslingerUpgrades = {
   },
   "explosive rounds": {
     name: "Explosive Rounds",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Once per turn when hitting target: all creatures within 5 ft make Dexterity save",
@@ -10045,7 +10044,7 @@ GunslingerUpgrades = {
   },
   "incapacitating rounds": {
     name: "Incapacitating Rounds",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 10th-level Artificer",
       "Once per turn when hitting target: force Strength save",
@@ -10057,7 +10056,7 @@ GunslingerUpgrades = {
   },
   "arcane railgun": {
     name: "Arcane Railgun",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 15th-level Artificer",
       "Once per turn in place of attack: 60-ft line Dexterity save",
@@ -10069,7 +10068,7 @@ GunslingerUpgrades = {
   },
   "independent turret": {
     name: "Independent Turret",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 15th-level Artificer",
       "Action: set Arcane Firearm as turret in 5-ft space",
@@ -10086,7 +10085,7 @@ GunslingerUpgrades = {
 AutomatonModels = {
   "agent model": {
     name: "Agent Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Action: perceive through Automaton's senses, become blind to own senses",
       "Bonus action to end",
@@ -10097,7 +10096,7 @@ AutomatonModels = {
   },
   "anchor model": {
     name: "Anchor Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Action: latch onto target within 5 ft, reduce speed by 5 × Intelligence modifier (min 5 ft)",
       "Automaton can still be targeted while attached",
@@ -10108,7 +10107,7 @@ AutomatonModels = {
   },
   "arcane model": {
     name: "Arcane Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "When casting Artificer spell: can originate from this Automaton instead of self",
       "Must be within 60 ft of Automaton",
@@ -10118,7 +10117,7 @@ AutomatonModels = {
   },
   "artisan model": {
     name: "Artisan Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Automaton proficient with one set of tools (chosen at creation)",
       "Action: use tools to make ability check, add Intelligence modifier (min +1) to result"
@@ -10128,7 +10127,7 @@ AutomatonModels = {
   },
   "assault model": {
     name: "Assault Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Slam attack damage increases to 1d10",
       "Deals force damage instead of bludgeoning"
@@ -10137,7 +10136,7 @@ AutomatonModels = {
   },
   "amphibian model": {
     name: "Amphibian Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Gains 30-foot swimming speed",
@@ -10148,7 +10147,7 @@ AutomatonModels = {
   },
   "arachnid model": {
     name: "Arachnid Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Gains 30-foot climbing speed",
@@ -10159,7 +10158,7 @@ AutomatonModels = {
   },
   "archer model": {
     name: "Archer Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Slam attack can be ranged weapon attack against target within 60 ft",
@@ -10170,7 +10169,7 @@ AutomatonModels = {
   },
   "armor model": {
     name: "Armor Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 5th-level Artificer",
       "Action: attach to willing creature within 5 ft, grant AC bonus equal to Intelligence modifier (min +1)",
@@ -10183,7 +10182,7 @@ AutomatonModels = {
   },
   "avenger model": {
     name: "Avenger Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 10th-level Artificer",
       "Reaction when creature within 25 ft attacks or forces save: order Automaton to move and Slam attack",
@@ -10195,7 +10194,7 @@ AutomatonModels = {
   },
   "avian model": {
     name: "Avian Model",
-    source: [["HB:LL", 0]],
+    source: [["GMB:LL", 0]],
     description: desc([
       "Prerequisite: 10th-level Artificer",
       "Gains 30-foot flying speed",
@@ -11611,5 +11610,321 @@ ChordsPowerLL = {
     prereqeval: function (v) {
       return classes.known['bard(laserllama)'] && classes.known['bard(laserllama)'].level >= 18;
     }
+  }
+};
+
+// Sorcerer LL Metamagics
+// NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
+MetamagicLL = {
+  "careful spell": {
+    name: "Careful Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that deals damage or forces a saving throw, you can spend 1 Sorcery Point and choose a number of creatures up to your Charisma modifier (minimum of 1), which can include yourself. These creatures can ignore the effects of the spell for its duration."
+    ])
+  },
+  "cerebral spell": {
+    name: "Cerebral Spell",
+    source: [["GMB:LL", 0]],
+    additional: "3 Sorcery Points",
+    description: desc([
+      "When you cast a spell that forces an Intelligence or Charisma saving throw, you can spend 3 Sorcery Points and change the initial saving throw to target the other ability score instead."
+    ])
+  },
+  "distant spell": {
+    name: "Distant Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell with a range of 5 feet or more, you can spend 1 Sorcery Point to double its range. If you apply this to a spell with a range of touch, its range becomes 30 feet."
+    ])
+  },
+  "empowered spell": {
+    name: "Empowered Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "After you roll damage for a spell, you can expend 1 Sorcery Point to re-roll any number of those damage dice, up to your Charisma modifier (minimum of 1) and use the new rolls. You can apply this Metamagic even if you already applied another Metamagic during the casting of this spell."
+    ])
+  },
+  "esoteric spell": {
+    name: "Esoteric Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that deals force, necrotic, psychic, or radiant damage, you can spend 1 Sorcery Point to change the damage type of the spell to another from the list above."
+    ])
+  },
+  "extended spell": {
+    name: "Extended Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell with a duration of 1 minute or longer, you can spend 1 Sorcery Point to double the spell's duration, up to a maximum duration of 24 hours."
+    ])
+  },
+  "heightened spell": {
+    name: "Heightened Spell",
+    source: [["GMB:LL", 0]],
+    additional: "3 Sorcery Points",
+    description: desc([
+      "When you cast a spell that forces a creature to make a saving throw, you can spend 3 Sorcery Points to force one target of the spell to make its initial saving throw with disadvantage."
+    ])
+  },
+  "illusory spell": {
+    name: "Illusory Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell, you can expend 1 Sorcery Point and cause the spell to appear as if it had originated from another creature or object you can see in range. The spell's range is still limited by your location. If a creature attempts to use a feature to stop the spell from being cast, such as the counterspell spell, it has disadvantage on any ability checks it makes as part of that feature or spell."
+    ])
+  },
+  "imbued spell": {
+    name: "Imbued Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell with a range of self, you can expend 1 Sorcery Point to cast it with a range of touch, targeting a willing creature you touch. If it requires concentration, the target of the spell concentrates on this effect, not you."
+    ])
+  },
+  "kinetic spell": {
+    name: "Kinetic Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you cast a spell that forces a Strength or a Dexterity saving throw, you can spend 2 Sorcery Points and change the initial saving throw to target the other ability score instead."
+    ])
+  },
+  "piercing spell": {
+    name: "Piercing Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that deals damage, you can expend 1 Sorcery Point and choose one type of damage dealt by the spell. For this spell, that type of damage ignores resistance to that type of damage, and treats immunity to it as resistance."
+    ])
+  },
+  "prismatic spell": {
+    name: "Prismatic Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that deals acid, cold, fire, lightning, poison, or thunder damage, you can spend 1 Sorcery Point to change the spell's damage type to another from the list above."
+    ])
+  },
+  "quickened spell": {
+    name: "Quickened Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you cast a spell that has a casting time of 1 action, you can spend 2 Sorcery Points to cast it as a bonus action."
+    ]),
+    action: [["bonus action", ""]]
+  },
+  "resolute spell": {
+    name: "Resolute Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you cast a spell that forces a Wisdom or a Constitution saving throw, you can spend 2 Sorcery Points and change the initial saving throw to target the other ability score instead."
+    ])
+  },
+  "seeking spell": {
+    name: "Seeking Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you cast a spell with spell attack roll and miss, you can expend 2 Sorcery Points to re-roll the d20. You must use the new d20 roll, potentially turning a missed attack into a hit. You can apply this Metamagic even if you already applied another Metamagic during the casting of this spell."
+    ])
+  },
+  "sturdy spell": {
+    name: "Sturdy Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you are forced to make a Constitution saving throw to maintain concentration on a spell, you can use your reaction to expend 1 Sorcery Point to gain advantage on your roll."
+    ]),
+    action: [["reaction", ""]]
+  },
+  "subtle spell": {
+    name: "Subtle Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell, you can spend 1 Sorcery Point to cast it without providing any of its somatic or verbal components."
+    ])
+  },
+  "twinned spell": {
+    name: "Twinned Spell",
+    source: [["GMB:LL", 0]],
+    additional: "SP equal to level",
+    description: desc([
+      "When you cast a spell that only targets one creature and does not have a range of self, you can expend Sorcery Points equal to the level you are casting the spell (minimum of 1) to target a second creature within range with the same spell. To be eligible, a spell must be incapable of targeting more than one creature at the level you are casting it."
+    ])
+  },
+  "unerring spell": {
+    name: "Unerring Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that requires a spell attack roll or a Dexterity saving throw, you can spend 1 Sorcery Point to ignore the effects of half and three-quarters cover."
+    ])
+  },
+  "unstable spell": {
+    name: "Unstable Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you cast a spell that includes a saving throw, you can expend 2 Sorcery Points, roll a d12, and change the initial saving throw to match the result: 1: Failure; 2-3: STR; 4-5: DEX; 6-7: CON; 8-9: WIS; 10: INT; 11: CHA; 12: Your Choice. If you roll a 1, the spell fails, but only the 2 Sorcery Points you spent to use this Metamagic are lost."
+    ])
+  },
+  "adamant spell": {
+    name: "Adamant Spell",
+    source: [["GMB:LL", 0]],
+    additional: "SP equal to level",
+    description: desc([
+      "When you cast a spell, you can expend Sorcery Points equal to the spell's level and grant it immunity to anti-magic spells and effects like counterspell or anti-magic field. You can exceed your Spell Limit to apply this Metamagic."
+    ])
+  },
+  "blinding spell": {
+    name: "Blinding Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1+ Sorcery Points",
+    description: desc([
+      "When you cast a spell that deals fire or radiant damage, you can expend Sorcery Points and force one target of the spell per Sorcery Point spent to also make a Constitution saving throw. On a failure, they are blinded for up to one minute. They can repeat this save at the start of each of their turns."
+    ])
+  },
+  "brutal spell": {
+    name: "Brutal Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you cast a spell that deals damage, but before you roll the damage, you can expend 2 Sorcery Points to empower it. If you roll the highest number of any of its damage dice you can roll that die again and add it to the total damage."
+    ])
+  },
+  "concussive spell": {
+    name: "Concussive Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1+ Sorcery Points",
+    description: desc([
+      "Whenever you cast a spell that deals bludgeoning or thunder damage, you can expend Sorcery Points to force one target of the spell per Sorcery Point expended to also make a Strength saving throw. On a failed save, they are knocked prone. Large and larger creatures have advantage on this saving throw."
+    ])
+  },
+  "dynamic presence": {
+    name: "Dynamic Presence",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "Choose either Deception, Intimidation, or Persuasion. You gain proficiency in the chosen skill, and whenever you make an ability check using that skill, you can expend 1 Sorcery Point to add double your proficiency bonus to your roll. You must do so before you roll the d20. You can select this Metamagic ability more than once, but you must select a different skill proficiency each time."
+    ])
+  },
+  "empowered cantrip": {
+    name: "Empowered Cantrip",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a Sorcerer Cantrip you can expend 1 Sorcery Point to increase the power of that Cantrip to its next level (e.g. a 3rd level Sorcerer casts firebolt as if they were 5th level)."
+    ])
+  },
+  "imbuing touch": {
+    name: "Imbuing Touch",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "As a bonus action, you can touch a nonmagical weapon and spend 1 Sorcery Point to imbue it with a spark of your magic. For the next minute, all attacks with that weapon deal force damage in place of that weapon's normal damage type."
+    ]),
+    action: [["bonus action", ""]]
+  },
+  "immutable will": {
+    name: "Immutable Will",
+    source: [["GMB:LL", 0]],
+    additional: "3 Sorcery Points",
+    description: desc([
+      "When you fail a saving throw, you can use a reaction to spend 3 Sorcery Points and re-roll the saving throw, with a bonus to your roll equal to your Charisma modifier (minimum of +1)."
+    ]),
+    action: [["reaction", ""]]
+  },
+  "linked spell": {
+    name: "Linked Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell, you can spend 1 Sorcery Point and touch a willing creature within 5 feet, expending one of its spell slots to cast the spell in place of your Sorcery Points."
+    ])
+  },
+  "magical guidance": {
+    name: "Magical Guidance",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "Whenever you make an ability check, you can use your reaction to expend 2 Sorcery Points to re-roll your d20. You must use the new roll, potentially turning a failure into a success."
+    ]),
+    action: [["reaction", ""]]
+  },
+  "overcharged spell": {
+    name: "Overcharged Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1+ Sorcery Points",
+    description: desc([
+      "When you cast a spell with one target that requires you to make a spell attack roll, you can expend Sorcery Points to increase your critical hit range for this casting by 1 for each Sorcery Point spent."
+    ])
+  },
+  "precise spell": {
+    name: "Precise Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that requires you to make a spell attack roll, you can spend 1 Sorcery Point to ignore all sources of disadvantage that would apply to that roll."
+    ])
+  },
+  "recycled spell": {
+    name: "Recycled Spell",
+    source: [["GMB:LL", 0]],
+    additional: "Action",
+    description: desc([
+      "When you cast a spell and it fails, you can use your action on your next turn to regain Sorcery Points equal to half the Sorcery Points spent to cast it (rounded down), including Metamagic. A spell is considered to have failed if it misses its target, deals no damage, inflicts no conditions, or otherwise fails its intended effect."
+    ]),
+    action: [["action", ""]]
+  },
+  "savage spell": {
+    name: "Savage Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1 Sorcery Point",
+    description: desc([
+      "When you cast a spell that deals bludgeoning, piercing, or slashing damage, you can spend 1 Sorcery Point to change the spell's damage type to another from the list above."
+    ])
+  },
+  "siphoning spell": {
+    name: "Siphoning Spell",
+    source: [["GMB:LL", 0]],
+    additional: "2 Sorcery Points",
+    description: desc([
+      "When you deal damage to a creature with a spell, you can expend 2 Sorcery Points to gain temporary hit points equal to half the damage dealt to one target of that spell. Temporary hit points from this Metamagic only last for 10 minutes."
+    ])
+  },
+  "sorcerous fortitude": {
+    name: "Sorcerous Fortitude",
+    source: [["GMB:LL", 0]],
+    additional: "1+ Sorcery Points",
+    description: desc([
+      "As an action, you can expend Sorcery Points and gain 1d4 temporary hit points per Sorcery Point spent. Temporary hit points from this Metamagic only last for 10 minutes."
+    ]),
+    action: [["action", ""]]
+  },
+  "terrifying spell": {
+    name: "Terrifying Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1+ Sorcery Points",
+    description: desc([
+      "When you cast a spell that deals necrotic or psychic damage, you can spend Sorcery Points to force one target of the spell per Sorcery Point spent to also make a Wisdom saving throw. On a failure, they are frightened of you for one minute. They can repeat the save at the start of each of their turns."
+    ])
+  },
+  "venomous spell": {
+    name: "Venomous Spell",
+    source: [["GMB:LL", 0]],
+    additional: "1+ Sorcery Points",
+    description: desc([
+      "When you cast a spell that deals acid or poison damage, you can spend Sorcery Points to force one target of the spell per Sorcery Point you spent to also make a Constitution saving throw. On a failure, they are poisoned for up to one minute. They can repeat the save at the start of each of their turns."
+    ])
   }
 };
