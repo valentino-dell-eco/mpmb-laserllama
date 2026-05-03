@@ -236,7 +236,7 @@ RequiredSheetVersion("13.0.6");
 
 ].forEach(function (s) { if (SpellsList[s] && SpellsList[s].classes && SpellsList[s].classes.indexOf("sorcerer(laserllama)") === -1) SpellsList[s].classes.push("sorcerer(laserllama)"); });
 
-app.alert("Loaded: LaserLlama - Alternate Sorcerer v4.0.0");
+// app.alert("Loaded: LaserLlama - Alternate Sorcerer v4.0.0");
 if (ClassList["sorcerer"]) {
     ClassList["sorcerer"].regExpSearch = /^(?=.*sorcerer)(?!.*laserllama).*$/i;
 }
@@ -1513,7 +1513,7 @@ AddSubClass("sorcerer(laserllama)", "aberrant sorcery origin", {
     }
 });
 
-app.alert("Loaded: Divine Sorcery");
+// app.alert("Loaded: Divine Sorcery");
 AddSubClass("sorcerer(laserllama)", "divine sorcery origin", {
     regExpSearch: /^(?=.*divine)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Divine Sorcery Origin",
@@ -1642,7 +1642,7 @@ AddSubClass("sorcerer(laserllama)", "divine sorcery origin", {
     }
 });
 
-app.alert("Loaded: Prime Sorcery");
+// app.alert("Loaded: Prime Sorcery");
 AddSubClass("sorcerer(laserllama)", "prime sorcery origin", {
     regExpSearch: /^(?=.*prime)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Prime Sorcery Origin",
@@ -1734,7 +1734,7 @@ AddSubClass("sorcerer(laserllama)", "prime sorcery origin", {
     }
 });
 
-app.alert("Loaded: Shadow Sorcery");
+// app.alert("Loaded: Shadow Sorcery");
 AddSubClass("sorcerer(laserllama)", "shadow sorcery origin", {
     regExpSearch: /^(?=.*shadow)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Shadow Sorcery Origin",
@@ -1821,7 +1821,7 @@ AddSubClass("sorcerer(laserllama)", "shadow sorcery origin", {
     }
 });
 
-app.alert("Loaded: Cosmic Sorcery");
+// app.alert("Loaded: Cosmic Sorcery");
 AddSubClass("sorcerer(laserllama)", "cosmic sorcery origin", {
     regExpSearch: /^(?=.*cosmic)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Cosmic Sorcery Origin",
@@ -1927,7 +1927,7 @@ AddSubClass("sorcerer(laserllama)", "cosmic sorcery origin", {
     }
 });
 
-app.alert("Loaded: Elder Sorcery");
+// app.alert("Loaded: Elder Sorcery");
 AddSubClass("sorcerer(laserllama)", "elder sorcery origin", {
     regExpSearch: /^(?=.*elder)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Elder Sorcery Origin",
@@ -2009,7 +2009,7 @@ AddSubClass("sorcerer(laserllama)", "elder sorcery origin", {
     }
 });
 
-app.alert("Loaded: Entropic Sorcery");
+// app.alert("Loaded: Entropic Sorcery");
 AddSubClass("sorcerer(laserllama)", "entropic sorcery origin", {
     regExpSearch: /^(?=.*entropic)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Entropic Sorcery Origin",
@@ -2101,7 +2101,7 @@ AddSubClass("sorcerer(laserllama)", "entropic sorcery origin", {
     }
 });
 
-app.alert("Loaded: Fey Sorcery");
+// app.alert("Loaded: Fey Sorcery");
 AddSubClass("sorcerer(laserllama)", "fey sorcery origin", {
     regExpSearch: /^(?=.*fey)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Fey Sorcery Origin",
@@ -2209,7 +2209,7 @@ AddSubClass("sorcerer(laserllama)", "fey sorcery origin", {
     }
 });
 
-app.alert("Loaded: Infernal Sorcery");
+// app.alert("Loaded: Infernal Sorcery");
 AddSubClass("sorcerer(laserllama)", "infernal sorcery origin", {
     regExpSearch: /^(?=.*infernal)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Infernal Sorcery Origin",
@@ -2313,7 +2313,7 @@ AddSubClass("sorcerer(laserllama)", "infernal sorcery origin", {
     }
 });
 
-app.alert("Loaded: Iron Sorcery");
+// app.alert("Loaded: Iron Sorcery");
 AddSubClass("sorcerer(laserllama)", "iron sorcery origin", {
     regExpSearch: /^(?=.*iron)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Iron Sorcery Origin",
@@ -2430,7 +2430,7 @@ AddSubClass("sorcerer(laserllama)", "iron sorcery origin", {
     }
 });
 
-app.alert("Loaded: Royal Sorcery");
+// app.alert("Loaded: Royal Sorcery");
 AddSubClass("sorcerer(laserllama)", "royal sorcery origin", {
     regExpSearch: /^(?=.*royal)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Royal Sorcery Origin",
@@ -2531,7 +2531,7 @@ AddSubClass("sorcerer(laserllama)", "royal sorcery origin", {
     }
 });
 
-app.alert("Loaded: Vampiric Sorcery");
+// app.alert("Loaded: Vampiric Sorcery");
 AddSubClass("sorcerer(laserllama)", "vampiric sorcery origin", {
     regExpSearch: /^(?=.*vampiric)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Vampiric Sorcery Origin",
@@ -2618,7 +2618,7 @@ AddSubClass("sorcerer(laserllama)", "vampiric sorcery origin", {
     }
 });
 
-app.alert("Loaded: Verdant Sorcery");
+// app.alert("Loaded: Verdant Sorcery");
 AddSubClass("sorcerer(laserllama)", "verdant sorcery origin", {
     regExpSearch: /^(?=.*verdant)(?=.*sorcery)(?=.*origin).*$/i,
     subname: "Verdant Sorcery Origin",
