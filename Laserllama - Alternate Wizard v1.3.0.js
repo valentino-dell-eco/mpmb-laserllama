@@ -1,4 +1,4 @@
-var iFileName = "LaserLlama - Alternate Wizard v1.1.0.js";
+var iFileName = "LaserLlama - Alternate Wizard v1.3.0.js";
 RequiredSheetVersion("13.0.6");
 
 // Check that exploits are properly imported
