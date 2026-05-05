@@ -22,7 +22,7 @@
     Code by:    Original script by Valentino dell'Eco
 */
 
-var iFileName = "LaserLlama - Alternate Warlock v3.0.0.js";
+var iFileName = "LaserLlama - Alternate Warlock v3.1.0.js";
 RequiredSheetVersion("13.0.6");
 if (ClassList["warlock"]) {
     ClassList["warlock"].regExpSearch = /^(?=.*warlock)(?!.*laserllama).*$/i;
@@ -33,68 +33,42 @@ if (ClassList["warlock"]) {
 }
 // Aggiungi la lista di incantesimi del Warlock di Laserllama
 [
-    // Cantrips (0 Level)
-    "acid splash", "blade ward", "chill touch", "create bonfire",
-    "friends", "frostbite", "green-flame blade", "guidance", "light",
-    "mage hand", "minor illusion", "poison spray", "prestidigitation", "produce flame",
-    "resistance", "sacred flame", "shillelagh", "shocking grasp", "spare the dying",
-    "thaumaturgy", "thorn whip", "thunderclap", "toll the dead", "true strike",
-    "vicious mockery", "word of radiance",
-    // 1st Level
-    "armor of agathys", "arms of hadar", "bane", "bless", "burning hands",
-    "charm person", "command", "comprehend languages", "detect magic", "disguise self",
-    "dissonant whispers", "divine favor", "ensnaring strike", "entangle", "expeditious retreat",
-    "faerie fire", "false life", "feather fall", "hellish rebuke", "hex",
-    "hunter's mark", "identify", "ill-omened raven", "inflict wounds", "magic missile",
-    "protection from evil and good", "ray of sickness", "sanctuary", "searing smite", "shield",
-    "shield of faith", "sleep", "thunderous smite", "thunderwave", "unseen servant",
-    "witch bolt", "wrathful smite",
-    // 2nd Level
-    "aid", "alter self", "augury", "blindness/deafness", "blur",
-    "branding smite", "calm emotions", "cloud of daggers", "cordon of arrows", "darkness",
-    "darkvision", "detect thoughts", "enhance ability", "enlarge/reduce", "find steed",
-    "find traps", "flame blade", "flaming sphere", "gentle repose", "gust of wind",
-    "hold person", "invisibility", "knock", "lesser restoration", "levitate",
-    "locate object", "magic mouth", "magic weapon", "mirror image", "misty step",
-    "moonbeam", "pass without trace", "prayer of healing", "protection from poison", "ray of enfeeblement",
-    "scorching ray", "see invisibility", "shatter", "silence", "spider climb",
-    "spike growth", "spiritual weapon", "suggestion", "warding bond", "web",
-    "zone of truth",
-    // 3rd Level
-    "animate dead", "aura of vitality", "banishment", "beacon of hope", "bestow curse",
-    "blinding smite", "blink", "call lightning", "clairvoyance", "conjure animals",
-    "counterspell", "create food and water", "crusader's mantle", "daylight", "dispel magic",
-    "elemental weapon", "fear", "feign death", "fireball", "flame arrows",
-    "fly", "gaseous form", "glyph of warding", "haste", "hunger of hadar",
-    "hypnotic pattern", "lightning bolt", "magic circle", "major image", "mass healing word",
-    "meld into stone", "nondetection", "phantom steed", "plant growth", "protection from energy",
-    "remove curse", "revivify", "sending", "sleet storm", "slow",
-    "speak with dead", "speak with plants", "spirit guardians", "stinking cloud", "summon fey",
-    "summon lesser demons", "summon shadowspawn", "summon undead", "thunder step", "tiny servant",
-    "tongues", "vampiric touch", "water breathing", "water walk", "wind wall",
-    // 4th Level
-    "arcane eye", "aura of life", "aura of purity", "banishment", "blight",
-    "charm monster", "compulsion", "confusion", "conjure minor elementals", "conjure woodland beings",
-    "control water", "death ward", "dimension door", "divination", "dominate beast",
-    "elemental bane", "evard's black tentacles", "fabricate", "faithful hound", "fire shield",
-    "freedom of movement", "giant insect", "grasping vine", "greater invisibility", "guardian of faith",
-    "hallucinatory terrain", "ice storm", "leomund's secret chest", "locate creature", "mordenkainen's faithful hound",
-    "mordenkainen's private sanctum", "phantasmal killer", "polymorph", "resilient sphere", "secret chest",
-    "shadow of moil", "sickening radiance", "staggering smite", "stone shape", "stoneskin",
-    "summon aberration", "summon construct", "summon elemental", "summon greater demon", "vitriolic sphere",
-    "wall of fire",
-    // 5th Level
-    "animate objects", "antilife shell", "awaken", "banishing smite", "bigby's hand",
-    "circle of power", "cloudkill", "commune", "commune with nature", "cone of cold",
-    "conjure elemental", "conjure volley", "contact other plane", "contagion", "creation",
-    "danse macabre", "dawn", "destructive wave", "dispel evil and good", "dominate person",
-    "dream", "enervation", "far step", "flame strike", "geas",
-    "greater restoration", "hallow", "hold monster", "holy weapon", "immolation",
-    "infernal calling", "insect plague", "legend lore", "maelstrom", "mass cure wounds",
-    "mislead", "modify memory", "negative energy flood", "passwall", "planar binding",
-    "raise dead", "reincarnate", "scrying", "seeming", "skill empowerment",
-    "steel wind strike", "swift quiver", "telekinesis", "telepathic bond", "teleportation circle",
-    "transmute rock", "tree stride", "wall of force", "wall of light", "wall of stone"
+    // Cantrips (0-Level)
+    "blade ward", "booming blade", "chill touch", "create bonfire", "dancing lights",
+    "frostbite", "green-flame blade", "infestation", "lightning lure", "mage hand",
+    "magic stone", "mind sliver", "minor illusion", "otherworldly grasp", "poison spray",
+    "prestidigitation", "sword burst", "tempestuous blade", "thunderclap", "toll the dead", "true strike",
+
+    // 1st-Level
+    "armor of agathys", "arms of hadar", "bane", "cause fear", "charm person",
+    "color spray", "comprehend languages", "dissonant whispers", "expeditious retreat", "ghastly flight",
+    "hellish rebuke", "hex", "tasha's hideous laughter", "illusory script", "inflict wounds",
+    "jump", "protection from evil and good", "ray of sickness", "sleep", "unseen servant", "witch bolt",
+
+    // 2nd-Level
+    "cloud of daggers", "create ooze", "crown of madness", "darkness", "earthbind",
+    "enthrall", "flame whip", "hold person", "invisibility", "levitate",
+    "mind spike", "tasha's mind whip", "mirror image", "misty step", "mystic spear",
+    "phantasmal force", "ray of enfeeblement", "shadow blade", "shatter", "spider climb", "suggestion",
+
+    // 3rd-Level
+    "bestow curse", "conjure fey", "conjure elemental", "conjure fiend", "counterspell",
+    "dispel magic", "enemies abound", "fear", "fly", "gaseous form",
+    "hunger of hadar", "hypnotic pattern", "intellect fortress", "life transference", "magic circle",
+    "major image", "remove curse", "slow", "spectral passage", "spirit shroud",
+    "thunder step", "tongues", "vampiric touch",
+
+    // 4th-Level
+    "accursed touch", "arcane eye", "banishment", "blight", "charm monster",
+    "compulsion", "confusion", "conjure aberration", "create undead", "dimension door",
+    "eldritch tentacles", "elemental bane", "giant insect", "greater invisibility", "hallucinatory terrain",
+    "phantasmal killer", "polymorph", "shadow of moil", "sickening radiance", "summon aberration",
+
+    // 5th-Level
+    "contact other plane", "contagion", "danse macabre", "dominate person", "dream",
+    "enervation", "far step", "geas", "hallow", "hold monster",
+    "insect plague", "legend lore", "mislead", "negative energy flood", "planar binding",
+    "scrying", "spiritual sundering", "synaptic static", "teleportation circle", "wall of light"
 ].forEach(function (s) { if (SpellsList[s] && SpellsList[s].classes && SpellsList[s].classes.indexOf("warlock(laserllama)") === -1) SpellsList[s].classes.push("warlock(laserllama)"); });
 
 ClassList['warlock(laserllama)'] = {
@@ -156,12 +130,6 @@ ClassList['warlock(laserllama)'] = {
         class: "warlock(laserllama)",
     },
     features: {
-        "subclassfeature1": {
-            name: "Otherworldly Patron",
-            source: [["GMB:LL", 0]],
-            minlevel: 2,
-            description: desc('Choose the Otherworldly Patron you have a bargain with and put it in the "Class" field ')
-        },
         "pact modifier": {
             name: "Pact Modifier",
             description: '\n   Use the "Choose Feature" button above to choose your Pact Modifier',
@@ -344,6 +312,12 @@ ClassList['warlock(laserllama)'] = {
 
             return InvocationsLL;
         })(),
+        "subclassfeature2": {
+            name: "Otherworldly Patron",
+            source: [["GMB:LL", 0]],
+            minlevel: 2,
+            description: desc('Choose the Otherworldly Patron you have a bargain with and put it in the "Class" field ')
+        },
         "pact magic": {
             name: "Pact Magic",
             source: [["GMB:LL", 0]],
@@ -1038,7 +1012,7 @@ ClassList['warlock(laserllama)'] = {
 };
 
 function returnDragonSparkDamage() {
-    var type = GetFeatureChoice('subclass', 'ancient wyrm', 'subclassfeature2');
+    var type = GetFeatureChoice('subclass', 'wyrm', 'subclassfeature2');
     if (!type) return [1, 10, "force"];
 
     var damageMap = {
@@ -1222,11 +1196,11 @@ AddSubClass("warlock(laserllama)", "archfey", {
     }
 });
 
-// Ancient Wyrm Patron
-AddSubClass("warlock(laserllama)", "ancient wyrm", {
-    regExpSearch: /^(?=.*ancient)(?=.*wyrm).*$/i,
-    subname: "Ancient Wyrm Patron",
-    fullname: "Ancient Wyrm Warlock",
+// Wyrm Patron
+AddSubClass("warlock(laserllama)", "wyrm", {
+    regExpSearch: /^(?=.*wyrm).*$/i,
+    subname: "Wyrm Patron",
+    fullname: "Wyrm Warlock",
     source: ["GMB:LL", 0],
     features: {
         "subclassfeature2": {
@@ -1436,7 +1410,7 @@ AddSubClass("warlock(laserllama)", "fiend", {
                 "blight", "wall of fire",
                 "cloudkill", "immolation"
             ],
-            spellcastingExtraApplyNonconform : true,
+            spellcastingExtraApplyNonconform: true,
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -1566,7 +1540,7 @@ AddSubClass("warlock(laserllama)", "great old one", {
                 "confusion", "eldritch tentacles",
                 "modify memory", "telekinesis"
             ],
-            spellcastingExtraApplyNonconform : true,
+            spellcastingExtraApplyNonconform: true,
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -1666,7 +1640,7 @@ AddSubClass("warlock(laserllama)", "deep one", {
                 "control water", "eldritch tentacles",
                 "cone of cold", "maelstrom"
             ],
-            spellcastingExtraApplyNonconform : true,
+            spellcastingExtraApplyNonconform: true,
             description: desc([
                 "Your Patron has infused your magic with the ancient power of the depths.",
                 "You can choose for your Eldritch Blast to deal cold damage.",
@@ -2043,7 +2017,7 @@ AddSubClass("warlock(laserllama)", "exalted", {
                 "guardian of faith", "wall of fire",
                 "conjure celestial", "flame strike"
             ],
-            spellcastingExtraApplyNonconform : true,
+            spellcastingExtraApplyNonconform: true,
             calcChanges: {
                 atkAdd: [
                     function (fields, v) {
@@ -2143,7 +2117,6 @@ AddSubClass("warlock(laserllama)", "exalted", {
     }
 });
 
-
 // Noble Genie Patron
 AddSubClass("warlock(laserllama)", "noble genie", {
     regExpSearch: /^(?=.*noble)(?=.*genie).*$/i,
@@ -2176,9 +2149,9 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
-                spellcastingExtraApplyNonconform : true,
+                spellcastingExtraApplyNonconform: true,
                 spellcastingExtra: ["sleep", "sanctuary", "enlarge/reduce", "spike growth", "fly", "meld into stone", "polymorph", "pillars of earth", "arcane hand", "wall of stone"]
-            
+
             },
             "djinn (air)": {
                 name: "Djinn Noble Magic",
@@ -2197,7 +2170,7 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
-                spellcastingExtraApplyNonconform : true,
+                spellcastingExtraApplyNonconform: true,
                 spellcastingExtra: ["sleep", "thunderwave", "enlarge/reduce", "gust of wind", "fly", "gaseous form", "polymorph", "greater invisibility", "arcane hand", "seeming"]
             },
             "efreeti (fire)": {
@@ -2217,7 +2190,7 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
-                spellcastingExtraApplyNonconform : true,
+                spellcastingExtraApplyNonconform: true,
                 spellcastingExtra: [
                     "sleep", "burning hands", "enlarge/reduce", "scorching ray", "fly", "fireball", "polymorph", "fire shield", "arcane hand", "flame strike"
                 ]
@@ -2239,7 +2212,7 @@ AddSubClass("warlock(laserllama)", "noble genie", {
                         286
                     ]
                 },
-                spellcastingExtraApplyNonconform : true,
+                spellcastingExtraApplyNonconform: true,
                 spellcastingExtra: [
                     "sleep", "torrent", "enlarge/reduce", "misty step", "fly", "tidal wave", "polymorph", "watery sphere", "arcane hand", "cone of cold"
                 ]
@@ -2368,7 +2341,7 @@ AddSubClass("warlock(laserllama)", "undying", {
                 "Your Patron infuses your magic with undead power.",
                 "You can choose for your Eldritch Blast to deal necrotic damage."
             ]),
-            spellcastingExtraApplyNonconform : true,
+            spellcastingExtraApplyNonconform: true,
             spellcastingExtra: [
                 "cause fear", "ray of sickness",
                 "blindness/deafness", "ray of enfeeblement",
