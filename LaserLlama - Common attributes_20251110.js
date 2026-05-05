@@ -8253,43 +8253,6 @@ MysticTalentsLL = {
     action: [["reaction", "TN Save Bonus"]],
   },
 };
-// Eldritch Invocations
-// NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
-EldritchInvocationsLL = {
-  "armor of shadows": {
-    name: "Armor of Shadows",
-    description: "While I have no armor or shield, I can use an action to ward myself (or dismiss) with living shadows. While unarmored and unshielded, my AC is 13 + my Pact ability modifier.",
-    action: ["action", " (ward/dismiss)"],
-    armorOptions: [
-      {
-        name: "Armor of Shadows",
-        source: [["GMB:LL", 0]],
-        regExpSearch: /^(?=.*armor)(?=.*shadows).*$/i,
-        ac: "13+Int",
-        dex: -10,
-        type: "",
-        list: "magic",
-        stealthdis: false,
-        isMagicArmor: true,
-        weight: 0,
-        invName: "Armor of Shadows",
-        affectsWildShape: true,
-      },
-    ],
-    armorAdd: "Armor of Shadows"
-  },
-  "aspect of the moon": {
-    name: "Aspect of the Moon",
-    description: "\n    I do not need to sleep and cannot be forced to sleep by any means." +
-      "\n    I gain the benefits of long rest if I spend 8 hours doing only light activity ",
-    savetxt: { immune: ["sleep"] }
-  },
-  "eyes of the rune keeper": {
-    name: "Eyes of the Rune Keeper",
-    description: "\n    I can read and understand any writtern words, symbols, or scripts as if they were written in my native tongue",
-    languageProfs: ["Any written language"],
-  }
-};
 // Knacks
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 KnacksLL = {
@@ -10224,7 +10187,8 @@ EldritchInvocationsLL = {
           regExpSearch: /justToAddToDropDown/,
           name: "Armor of Shadows",
           source: [["GMB:LL", 0]],
-          ac: "10+Int",
+          ac: "13+Int",
+          dex: -10,
           affectsWildShape: true,
           selectNow: true
         },
@@ -10261,6 +10225,7 @@ EldritchInvocationsLL = {
   "aspect of the moon": {
     name: "Aspect of the Moon",
     source: ["GMB:LL", 0],
+    savetxt: { immune: ["sleep"] },
     description: "You no longer need to sleep and cannot be forced to sleep byany means. To gain the benefits of a long rest, you can spend all 8 hours doing light activity, such as keeping watch.",
   },
   "beguiling influence": {
