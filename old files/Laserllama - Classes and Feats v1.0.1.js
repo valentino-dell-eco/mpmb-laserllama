@@ -54,26 +54,27 @@ if (ClassList["ranger"]) {
 [
   // 1st level 
   "absorb elements", "alarm", "animal friendship", "beast bond", "cure wounds", "detect magic",
-  "detect poison and disease", "ensnaring strike", "entangle", "expeditious retreat", "fog cloud",
-  "goodberry", "hail of thorns", "jump", "longstrider", "purify food and drink", "snare",
+  "detect poison and disease", "ensnaring strike", "entangle", "fog cloud",
+  "goodberry", "hail of thorns", "jump", "longstrider", "purify food and drink", "create snare",
   "speak with animals", "zephyr strike",
   // 2nd level
-  "aid", "animal messenger", "barkskin", "beast sense", "conjure beast", "continual flame",
-  "cordon of arrows", "darkvision", "enhance ability", "find traps", "gust of wind",
+  "aid", "animal messenger", "barkskin", "beast sense", "conjure beast",
+  "cordon of arrows", "darkvision", "enhance ability", "gust of wind",
   "healing spirit", "locate creature", "magic weapon", "pass without trace", "protection from poison",
   "restoration", "silence", "spike growth",
   // 3rd level
   "conjure elemental", "conjure fey", "conjure volley", "daylight", "dispel magic", "elemental weapon",
   "flame arrows", "grasping vine", "lightning arrow", "meld into stone", "nondetection",
   "plant growth", "revivify", "speak with plants", "leomund's tiny hut", "water breathing",
-  "water walk", "wind wall",
+  "water walk", "wind wall", "elemental bane", "protection from energy",
   // 4th level
   "death ward", "divination", "dominate beast", "freedom of movement", "guardian of nature",
-  "stoneskin",
+  "stoneskin", "wall of thorns",
   // 5th level
-  "awaken", "commune with nature", "contagion", "steel wind strike", "swift quiver", "tree stride",
+  "awaken", "commune with nature", "steel wind strike", "swift quiver", "tree stride",
   "wrath of nature",
 ].forEach(function (s) { if (SpellsList[s] && SpellsList[s].classes && SpellsList[s].classes.indexOf("ranger(laserllama)") === -1) SpellsList[s].classes.push("ranger(laserllama)"); });
+
 var PsionList = [
   // cantrips
   "blade ward",
@@ -232,7 +233,7 @@ if (ClassList["fighter"]) {
 };
 
 if (ClassSubList.paladin && ClassSubList.paladin["oath of vengeance"]) {
-    ClassSubList.paladin["oath of vengeance"].regExpSearch = /^(((?=.*(vengeance|wrath|justice))((?=.*paladin)|((?=.*(exalted|sacred|holy|divine))(?=.*(knight|fighter|warrior|warlord|trooper)))))|((?=.*dark)(?=.*knight))).*$/i;
+  ClassSubList.paladin["oath of vengeance"].regExpSearch = /^(((?=.*(vengeance|wrath|justice))((?=.*paladin)|((?=.*(exalted|sacred|holy|divine))(?=.*(knight|fighter|warrior|warlord|trooper)))))|((?=.*dark)(?=.*knight))).*$/i;
 }
 // Utility functions
 function CreateMartialSpellsheet() {
@@ -1832,7 +1833,7 @@ ClassList["ranger(laserllama)"] = {
         ],
         extraname: "Ranger Knacks",
         extraTimes: [
-          1,
+          2,
           2,
           3,
           3,
@@ -1890,6 +1891,7 @@ ClassList["ranger(laserllama)"] = {
         ClassKnackFeature[KnacksKeys[i]] = {
           // Add "spell" to the main item (when it is picked through the menu)
           name: NewKnack.name,
+          additional: NewKnack.additional,
           toNotesPage: [
             {
               // What is added to the notes page
@@ -1903,8 +1905,12 @@ ClassList["ranger(laserllama)"] = {
           addMod: NewKnack.addMod,
           speed: NewKnack.speed,
           toolProfs: NewKnack.toolProfs,
+          skills: NewKnack.skills,
+          skillstxt: NewKnack.skillstxt,
           action: NewKnack.action,
           prereqeval: NewKnack.prereqeval,
+          eval: NewKnack.eval,
+          removeeval: NewKnack.removeeval,
           usages: NewKnack.usages,
           recovery: NewKnack.recovery,
           savetxt: NewKnack.savetxt,
@@ -1915,6 +1921,7 @@ ClassList["ranger(laserllama)"] = {
           extraTimes: NewKnack.extraTimes,
           choices: NewKnack.choices,
           vision: NewKnack.vision,
+          allowDuplicates: NewKnack.allowDuplicates
         };;
 
       }
@@ -1950,6 +1957,7 @@ ClassList["ranger(laserllama)"] = {
         "Mounted Warrior"
       ],
       archery: FightingStylesLL.archery,
+      "balanced fighting": FightingStylesLL.balanced,
       defensive: FightingStylesLL.defensive,
       "dual wielding": FightingStylesLL.dual_wielding,
       "classical swordplay": FightingStylesLL.classical,
@@ -1965,72 +1973,6 @@ ClassList["ranger(laserllama)"] = {
       "melee marksman": FightingStylesLL.marksman,
       "mounted warrior": FightingStylesLL.mounted
     },
-    "wild expertise": (function () {
-      var a = {
-        name: "Wild Expertise",
-        source: ["GMB:LL", 0],
-        minlevel: 1,
-        description: levels.map((n) => {
-          if (n < 9) return desc(
-            " I gain expertise with skills I am proficient with",
-            "  Also I learn an additional language"
-          );
-          return desc(
-            " I gain expertise with skills I am proficient with",
-            "  Also I learn two additional languages"
-          );
-        }),
-        skillstxt:
-          "Expertise with any skill proficiencies (see lvl1 ranger feature)",
-        additional: levels.map(function (n) {
-          return (
-            "with " +
-            (n < 9 ? "1 skill" : "2 skills")
-          );
-        }),
-
-        extraname: "Wild Expertise",
-        autoSelectExtrachoices: [
-          { extrachoice: "first language", minlevel: 1 },
-          { extrachoice: "second language", minlevel: 9 },
-        ],
-        "first language": { languageProfs: [["Any language 1", 1]], },
-        "second language": { languageProfs: [["Any language 2", 1]], },
-        extrachoices: [
-          "Animal Handling",
-          "Athletics",
-          "Insight",
-          "Investigation",
-          "Medicine",
-          "Nature",
-          "Perception",
-          "Sleight of Hand",
-          "Stealth",
-          "Survival",
-        ],
-        extraTimes: levels.map(function (n) {
-          return n < 9 ? 1 : 2;
-        }),
-      };
-      for (var i = 0; i < a.extrachoices.length; i++) {
-        var attr = a.extrachoices[i].toLowerCase();
-        if (a[attr]) continue;
-        a[attr] = {
-          name: a.extrachoices[i] + " Expertise",
-          description: "",
-          source: a.source,
-          skills: [[a.extrachoices[i], "only"]],
-          prereqeval: function (v) {
-            return v.skillProfsLC.indexOf(v.choice) === -1
-              ? false
-              : v.skillExpertiseLC.indexOf(v.choice) === -1
-                ? true
-                : "markButDisable";
-          },
-        };
-      }
-      return a;
-    })(),
     "spellcasting": {
       name: "Spellcasting",
       source: [["GMB:LL", 0]],
@@ -2046,35 +1988,17 @@ ClassList["ranger(laserllama)"] = {
       source: ["GMB:LL", 0],
       minlevel: 2,
       description: desc([
-        "As a bonus action I can mark a creature as my Quarry, gaining the following benefits for the duration:",
-        "Whenever I damage it with an attack, I deal extra Quarry Die damage",
-        "Whenever I make a check to track or locate it, I can add my Quarry Die to the roll",
+        "As a bonus action, I can mark a creature as my Quarry. It lasts for the duration or until I mark a new target.",
+        " • Once per turn, when I hit it with an attack (weapon or spell), I deal bonus damage equal to my Quarry Die.",
+        " • I add my Quarry Die to Wisdom checks to track it or Intelligence checks to recall info about it."
       ]),
       additional: [
-        "",
-        "d4; 1 hour;",
-        "d4; 1 hour;",
-        "d4; 1 hour;",
-        "d4; 1 hour;",
-        "d6; 8 hours;",
-        "d6; 8 hours;",
-        "d6; 8 hours;",
-        "d6; 8 hours;",
-        "d8; 24 hours;",
-        "d8; 24 hours;",
-        "d8; 24 hours;",
-        "d8; 24 hours;",
-        "d10; 1 week;",
-        "d10; 1 week;",
-        "d10; 1 week;",
-        "d10; 1 week;",
-        "d12; indefinite;",
-        "d12; indefinite;",
-        "d12; indefinite;",
+        "", "d4; 1 hour", "d4; 1 hour", "d4; 1 hour", "d4; 1 hour",
+        "d6; 8 hours", "d6; 8 hours", "d6; 8 hours", "d6; 8 hours",
+        "d8; 24 hours", "d8; 24 hours", "d8; 24 hours", "d8; 24 hours",
+        "d10; 1 week", "d10; 1 week", "d10; 1 week", "d10; 1 week",
+        "d12; indefinite", "d12; indefinite", "d12; indefinite"
       ],
-      usages: "Wis mod per",
-      usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
-      recovery: levels.map((n) => { return n < 11 ? "long rest" : "short rest" }),
       action: [["bonus action", ""]]
     },
     subclassfeature3: {
@@ -2084,6 +2008,17 @@ ClassList["ranger(laserllama)"] = {
       description: desc(
         'Choose a Ranger Conclave you strive to emulate and put it in the "Class" field '
       ),
+    },
+    "extra attack": {
+      name: "Extra Attack",
+      source: ["GMB:LL", 0],
+      minlevel: 5,
+      description: desc(
+        'I can attack twice, instead of once, whenever I take the Attack action on my turn.',
+        'Moreover, if I cast a Ranger spell with an action, I can make a singel weapon attack with',
+        'my bonus action.'
+      ),
+      action: [["bonus action", "Weapon Attack (after action spell)"]]
     },
     "feral senses": {
       name: "Feral Senses",
@@ -2099,20 +2034,12 @@ ClassList["ranger(laserllama)"] = {
         );
       }),
     },
-    tireless: {
-      name: "Tireless",
-      source: ["GMB:LL", 0],
-      minlevel: 11,
-      description: desc([
-        "I regain all of my expended uses of Ranger's Quarry whenever I finish a short/long rest",
-      ]),
-    },
     "foe slayer": {
       name: "Foe Slayer",
       source: ["GMB:LL", 0],
       minlevel: 20,
       description: desc(
-        "Whenever I hit my QUarry, I can immediately end the mark and cause that attack to deal mazimum damage instead of rolling",
+        "Whenever I hit my Quarry, I can immediately end the mark and cause that attack to deal mazimum damage instead of rolling",
         "\n If the attack reduce the crea to 50 or fewer HP, it must succeed a Con save against my Spell DC or be reduced to 0 HP"
       ),
     },
@@ -4993,53 +4920,106 @@ var LL_Primal_Beast_Attributes = {
   languages: "understands the languages of its master but can't speak",
   features: [{
     name: "Master",
-    description: "The beast obeys the commands of its master and shares its proficiency bonus. It takes its turn during that of its master, on the same initiative count. It can move and take reactions on its own, but only takes the Dodge action on its turn unless its master takes a bonus action to command it to take another action. Its master can also forgo one attack during their Attack action to command the beast to take the Attack action. If its master is incapacitated, the beast can take any action, not just Dodge. The beast vanishes if its master dies."
+    description: "The beast obeys the commands of its master and shares its proficiency bonus. It takes its turn during that of its master, on the same initiative count. It can move and take reactions on its own, but only takes the Dodge action on its turn unless its master takes a bonus action to command it to take another action (including the Attack action). Its master can also forgo one attack during their Attack action to command the beast to take the Attack action. If its master is incapacitated, the beast can take any action, not just Dodge. The beast vanishes if its master dies."
   }],
-  traits: [{
-    name: "Primal Rebirth",
-    description: "Its master can make a 1 hour ritual, that can be part of a short/long rest, to have it return to full HP after 1 minute."
-  }, {
-    name: "Hit Dice",
-    description: "The Beast has a total number of d8 Hit Dice equal to your Ranger level. It also gains all the normal benefits of both short and long rests."
-  }, {
-    name: "Primal Bond",
-    description: "The beast adds it proficiency bonus to all its ability check and saving throws."
-  }, {
-    name: "Bestial Focus (Beast Master 7)",
-    minlevel: 7,
-    description: "The beast gains all benefits of your Ranger's Querry including any Knacks that enhance it. Also, the beast's attacks count as magical for overcoming resistances and immunities.",
-    eval: function (prefix, lvl) {
-      AddString(prefix + "Comp.Use.Attack.1.Description", "Counts as magical", "; ");
-    },
-    removeeval: function (prefix, lvl) {
-      RemoveString(prefix + "Comp.Use.Attack.1.Description", "Counts as magical");
+  getBeastTraits: function (type) {
+    var baseTraits = [{
+      name: "Primal Rebirth",
+      description: "Its master can make a 1 hour ritual, that can be part of a short/long rest, to have it return to full HP after 1 minute."
+    }, {
+      name: "Hit Dice",
+      description: "The Beast has a total number of d8 Hit Dice equal to your Ranger level. It also gains all the normal benefits of both short and long rests."
+    }, {
+      name: "Wild Bond",
+      description: "The beast adds its master's proficiency bonus to its AC, attack rolls, damage rolls, and any saving throws or skills it is proficient in."
+    }, {
+      name: "Bestial Focus (Beast Master 7)",
+      minlevel: 7,
+      description: "The beast gains all benefits of your Ranger's Quarry including any Knacks that enhance it. Also, the beast's natural weapon attacks count as magical.",
+      eval: function (prefix, lvl) {
+        AddString(prefix + "Comp.Use.Attack.1.Description", "Counts as magical", "; ");
+      },
+      removeeval: function (prefix, lvl) {
+        RemoveString(prefix + "Comp.Use.Attack.1.Description", "Counts as magical");
+      }
+    }, {
+      name: "Exceptional Training (Beast Master 11)",
+      minlevel: 11,
+      description: "Once per turn, when commanded to take the Attack action, the beast can make 2 attacks instead of 1.",
+      eval: function (prefix, lvl) {
+        Value(prefix + "Comp.Use.Attack.perAction", 2);
+      },
+      removeeval: function (prefix, lvl) {
+        Value(prefix + "Comp.Use.Attack.perAction", 1);
+      }
+    }];
+    switch (type) {
+      case "cave":
+        break;
+      case "land":
+        baseTraits.push(
+          {
+            name: "Charge",
+            description: "If the Beast moves at least 20 ft. in a line, then hits with its Maul, it deals bonus damage equal to your Quarry Die, and if the target is equal to the Beast's size or smaller, the target is also knocked Prone."
+          });
+        break;
+      case "sea":
+        baseTraits.push(
+          {
+            name: "Amphibious",
+            description: "The Beast can breathe both air and water."
+          },
+          {
+            name: "Wrap",
+            description: "If the Beast hits with its Tentacle, it can Grapple the target (escape DC equals your Spell save DC), but it can no longer attack with that Tentacle. If the Grappled target is larger than the Beast, the Beast moves with it."
+          }
+        );
+        break;
+      case "sky":
+        baseTraits.push({
+          name: "Flyby",
+          description: "Doesn't provoke opportunity attacks when flying out of reach."
+        });
+        break;
     }
-  }, {
-    name: "Exceptional Training (Beast Master 11)",
-    minlevel: 11,
-    description: "When commanded to take the Attack action, the beast can make 2 attacks as part of its Attack action.",
-    eval: function (prefix, lvl) {
-      Value(prefix + "Comp.Use.Attack.perAction", 2);
-    },
-    removeeval: function (prefix, lvl) {
-      Value(prefix + "Comp.Use.Attack.perAction", 1);
-    }
-  }],
+    return baseTraits;
+  },
   addMod: [
-    { type: "skill", field: "all", mod: "Prof", text: "The primal beast adds it proficiency bonus to all its ability check and saving throws." },
-    { type: "skill", field: "Init", mod: "Prof", text: "The primal beast adds it proficiency bonus to all its ability check and saving throws." },
-    { type: "save", field: "all", mod: "Prof", text: "The primal beast adds it proficiency bonus to all its ability check and saving throws." }
+    { type: "save", field: "all", mod: "Prof", text: "The primal beast adds its master's proficiency bonus to its saving throws." }
   ],
   calcChanges: {
     hp: function (totalHD, HDobj, prefix) {
       if (!classes.known["ranger(laserllama)"]) return;
       var rngrLvl = classes.known["ranger(laserllama)"].level;
-      var multiplier = What(prefix + "Comp.Use.HD.Die") == 6 ? [4, "four"] : [5, "five"];
-      var rngrLvlM = multiplier[0] * rngrLvl;
-      HDobj.alt.push(multiplier[0] + rngrLvlM);
-      HDobj.altStr.push(" = " + multiplier[0] + " as a base\n + " + multiplier[0] + " \xD7 " + rngrLvl + " from " + multiplier[1] + " times its master's ranger level (" + rngrLvlM + ")");
+      // Formula v4.4.0: 5 + (5 * Ranger Level)
+      var baseHp = 5;
+      var levelHp = 5 * rngrLvl;
+      var totalHp = baseHp + levelHp;
+      HDobj.alt.push(totalHp);
+      HDobj.altStr.push(" = 5 as a base\n + 5 \xD7 " + rngrLvl + " from its master's ranger level (" + levelHp + ")");
     },
-    setAltHp: true
+    setAltHp: true,
+    atkAdd: function (fields, v) {
+      if (!classes.known["ranger(laserllama)"]) return;
+      var rngrLvl = classes.known["ranger(laserllama)"].level;
+      if (v.isAutonomous ||
+        fields.Weapon_Name.toLowerCase().indexOf("claw") !== -1 ||
+        fields.Weapon_Name.toLowerCase().indexOf("tentacle") !== -1 ||
+        fields.Weapon_Name.toLowerCase().indexOf("shred") !== -1 ||
+        fields.Weapon_Name.toLowerCase().indexOf("maul") !== -1) {
+        if (rngrLvl <= 5) {
+          fields.Damage_Die = "1d4";
+        } else if (rngrLvl <= 9) {
+          fields.Damage_Die = "1d6";
+        } else if (rngrLvl <= 13) {
+          fields.Damage_Die = "1d8";
+        } else if (rngrLvl <= 17) {
+          fields.Damage_Die = "1d10";
+        } else if (rngrLvl <= 20) {
+          fields.Damage_Die = "1d12";
+        }
+      }
+    }
   }
 };
 
@@ -14146,9 +14126,9 @@ AddSubClass("fighter(laserllama)", "witchblade", {
 
 // Subclasses Alternate Ranger
 // Beast Master
+app.alert("LOADING BEAST MASTER")
 AddSubClass("ranger(laserllama)", "beast master", {
-  regExpSearch:
-    /^(?=.*beast)(?=.*master).*$/i,
+  regExpSearch: /^(?=.*beast)(?=.*master).*$/i,
   subname: "Beast Master",
   fullname: "Beast Master Conclave",
   source: [["GMB:LL", 0]],
@@ -14157,36 +14137,30 @@ AddSubClass("ranger(laserllama)", "beast master", {
       name: "Beast Master Spells",
       source: [["GMB:LL", 0]],
       minlevel: 3,
-      description:
-        "\n   " +
-        "I learn certain spells. They are Ranger spells for me and don't count against my total of spells known and can't be replaced when I gain a level",
+      description: desc(["I learn certain spells. They are Ranger spells for me and don't count against my total of spells known."]),
       spellcastingExtra: [
-        "animal friendship", "beast bond",
-        "beast sense", "warding bond",
+        "beast bond", "speak with animals",
+        "beast sense", "locate animals or plants",
         "haste", "protection from energy",
         "death ward", "freedom of movement",
-        "awaken", "commune with nature",
+        "awaken", "commune with nature"
       ],
     },
     "subclassfeature3.1": {
       name: "Primal Beast",
       source: [["GMB:LL", 0]],
       minlevel: 3,
-      description: desc([
-        "When I finish a long rest, with a 1 hour ritual, I can summon a primal beast of the cave, land, sea, or sky in 5 ft",
-        "I determine what animal it looks like, but it always has primal markings",
-        "It is friendly to me and my allies, obeys my commands, and acts during my turn",
-        "Unless I use a bonus action to command it, it only takes the Dodge action on its turn",
-        "I can also forgo one attack of my Attack action to command it to take the Attack action",
-        "It can take reactions and move on its turn even if I don't command it",
-        "If I'm incapacitated, It acts on its own to defend both me and itself to the best of its abilities",
-        " On 0 HP, it rolls the Death saves as a player",
-        "If it is died, I can perform 1 hour ritual (can be part of short/long rest) to bring it back to life at 1 HP",
-        "As a part of this ritual, it can expend Hit Dice to regain HP and I can change its form (choosing a different primal beast)",
-      ]),
-      action: [
-        ["bonus action", " (command)"],
-      ],
+      description: desc(["I have a primal beast companion (see notes). Its attacks deal my Quarry Die in damage + PB."]),
+      toNotesPage: [{
+        name: "Primal Beast",
+        note: desc([
+          "With a 1-hour ritual, I can summon a primal beast of the cave, land, sea, or sky.",
+          "It obeys my commands and acts on my turn. Bonus action to command it.",
+          "If I use the Attack action, I can forgo one attack to command the beast to Attack.",
+          "On 0 HP, it rolls death saves. Primal Rebirth ritual can return it to life.",
+        ])
+      }],
+      action: [["bonus action", " (command)"]],
       creaturesAdd: [
         ["Beast of the Cave", false],
         ["Beast of the Land", true],
@@ -14197,247 +14171,137 @@ AddSubClass("ranger(laserllama)", "beast master", {
         {
           name: "Beast of the Cave",
           source: [["GMB:LL", 0]],
-          size: 3,
-          type: "Beast",
-          alignment: "Neutral",
-          ac: "11+Dex+Prof",
-          hp: 20,
-          hd: [3, 8],
+          size: 3, type: "Beast", alignment: "Neutral",
+          ac: "13+Prof", hp: 10, hd: [1, 10],
           hdLinked: LL_Primal_Beast_Attributes.hdLinked,
           speed: "30 ft, burrow 10 ft",
-          scores: [14, 14, 15, 8, 14, 11],
-          senses: "Darkvision 60 ft",
-          passivePerception: 12,
-          languages: LL_Primal_Beast_Attributes.languages,
-          challengeRating: "1/4",
-          proficiencyBonus: 2,
-          proficiencyBonusLinked: true,
+          scores: [16, 12, 13, 8, 12, 11],
+          saves: ["", "", "1+Prof", "", "", "1+Prof"],
+          skills: { "Stealth": 2 },
+          senses: "Darkvision 120 ft, Tremorsense 30 ft",
+          passivePerception: 11,
+          proficiencyBonus: 2, proficiencyBonusLinked: true,
           attacksAction: 1,
           attacks: [{
-            name: "Claw",
-            ability: 5,
-            damage: [1, 6, "slashing"],
-            modifiers: ["", "Prof"],
-            range: "Melee (5 ft)",
-          }],
-          actions: [{
-            name: "Tremorsense",
-            description: "The Beast knows the location of anything in contact with the ground within 30 ft."
+            name: "Claw", ability: 1, damage: ["Quarry", "", "slashing"],
+            modifiers: ["", "Prof"], range: "Melee (5 ft)"
           }],
           features: LL_Primal_Beast_Attributes.features,
-          traits: LL_Primal_Beast_Attributes.traits.map(function (n) {
-            if (!typePF && /Bestial Focus/i.test(n.name)) {
-              var a = newObj(n);
-              a.description = "The beast's attacks count as magical.";
-              return a;
-            } else {
-              return n;
-            }
-          }),
-          addMod: LL_Primal_Beast_Attributes.addMod,
-          calcChanges: LL_Primal_Beast_Attributes.calcChanges,
-          minlevelLinked: LL_Primal_Beast_Attributes.hdLinked
+          traits: LL_Primal_Beast_Attributes.getBeastTraits("cave"),
+          calcChanges: LL_Primal_Beast_Attributes.calcChanges
         },
         {
           name: "Beast of the Land",
           source: [["GMB:LL", 0]],
-          size: 3,
-          type: "Beast",
-          alignment: "Neutral",
-          ac: "11+Dex+Prof",
-          hp: 20,
-          hd: [3, 8],
+          size: 3, type: "Beast", alignment: "Neutral",
+          ac: "13+Prof", hp: 10, hd: [1, 10],
           hdLinked: LL_Primal_Beast_Attributes.hdLinked,
           speed: "40 ft, climb 40 ft",
-          scores: [14, 14, 15, 8, 14, 11],
+          scores: [16, 12, 13, 8, 12, 11],
+          saves: ["1+Prof", "1+Prof", "", "", "", ""],
+          skills: { "Perception": 2, "Survival": 2, "Stealth": 2 },
           senses: "Darkvision 60 ft",
-          passivePerception: 12,
-          languages: LL_Primal_Beast_Attributes.languages,
-          challengeRating: "1/4",
-          proficiencyBonus: 2,
-          proficiencyBonusLinked: true,
+          passivePerception: 13,
+          proficiencyBonus: 2, proficiencyBonusLinked: true,
           attacksAction: 1,
           attacks: [{
-            name: "Maul",
-            ability: 5,
-            damage: [1, 8, "slashing"],
-            modifiers: ["", "Prof"],
-            range: "Melee (5 ft)",
-            description: "+1 Quarry Die damage if hits after moving 20 ft straight in same round, see Charge",
-            tooltip: "If the beast moves at least 20 feet straight toward a target and then hits it with a maul attack on the same turn, the target takes an extra Quarry Die slashing damage. If the target is a creature, it must succeed on a Strength saving throw against your spell save DC or be knocked prone.",
+            name: "Maul", ability: 1, damage: ["Quarry", "", "slashing"],
+            modifiers: ["", "Prof"], range: "Melee (5 ft)",
+            description: "On hit after 20ft move: +1 Quarry Die & Str save or Prone",
             useSpellMod: "ranger(laserllama)"
-          }, {
-            name: "Charge",
-            ability: 5,
-            damage: ["Str save", "", "Knocked prone"],
-            range: "Melee (5 ft)",
-            description: "Str save or knocked prone; Only if maul hits after moving 20 ft straight in same round",
-            tooltip: "If the beast moves at least 20 feet straight toward a target and then hits it with a maul attack on the same turn, the target takes an extra Quarry Die slashing damage. If the target is a creature, it must succeed on a Strength saving throw against your spell save DC or be knocked prone.",
-            abilitytodamage: false,
-            dc: true,
-            useSpellMod: "ranger(laserllama)"
-          }],
-          actions: [{
-            name: "Charge",
-            description: "If the beast moves at least 20 ft straight toward a target and then hits it with a maul attack on the same turn, the target takes an extra Quarry Die slashing damage. If the target is a creature, it must succeed on a Strength saving throw against my spell save DC or be knocked prone."
           }],
           features: LL_Primal_Beast_Attributes.features,
-          traits: LL_Primal_Beast_Attributes.traits.map(function (n) {
-            if (!typePF && /Bestial Focus/i.test(n.name)) {
-              var a = newObj(n);
-              a.description = "The beast's attacks count as magical.";
-              return a;
-            } else {
-              return n;
-            }
-          }),
-          addMod: LL_Primal_Beast_Attributes.addMod,
-          calcChanges: LL_Primal_Beast_Attributes.calcChanges,
-          minlevelLinked: LL_Primal_Beast_Attributes.hdLinked
-        }, {
+          traits: LL_Primal_Beast_Attributes.getBeastTraits("land"),
+          calcChanges: LL_Primal_Beast_Attributes.calcChanges
+        },
+        {
           name: "Beast of the Sea",
           source: [["GMB:LL", 0]],
-          size: 3,
-          type: "Beast",
-          alignment: "Unaligned",
-          ac: "11+Dex+Prof",
-          hp: 20,
-          hd: [3, 8],
+          size: 3, type: "Beast", alignment: "Unaligned",
+          ac: "13+Prof", hp: 10, hd: [1, 10],
           hdLinked: LL_Primal_Beast_Attributes.hdLinked,
-          speed: "10 ft, swim 60 ft",
-          scores: [14, 14, 15, 8, 14, 11],
+          speed: "10 ft, swim 40 ft",
+          scores: [16, 12, 13, 8, 12, 11],
+          saves: ["", "", "1+Prof", "", "", "1+Prof"],
+          skills: { "Perception": 2, "Stealth": 2 },
           senses: "Darkvision 60 ft",
-          passivePerception: 12,
-          languages: LL_Primal_Beast_Attributes.languages,
-          challengeRating: "1/4",
+          passivePerception: 13,
           proficiencyBonus: 2,
           proficiencyBonusLinked: true,
           attacksAction: 1,
           attacks: [{
-            name: "Pseudopod",
-            ability: 1,
-            damage: [1, 6, "Bludgeoning"],
-            modifiers: ["", "Prof"],
-            range: "Melee (5 ft)",
-            description: "On hit, target is grappled (escape DC is spell DC) and beast can't use attack on others",
-            tooltip: "If the beast hits a target with its pesudopod, the target is grappled (escape DC equal to your spellcasting save DC). Until this grapple ends, the beast can't use this attack on another target.",
+            name: "Tentacle", ability: 1, damage: ["Quarry", "", "bludgeoning"],
+            modifiers: ["", "Prof"], range: "Melee (5 ft)",
+            description: "Target grappled on hit (escape DC = Spell DC)",
             useSpellMod: "ranger(laserllama)"
-          }
-          ],
-          actions: [{
-            name: "Amphibious",
-            description: "The beast can breathe both air and water."
           }],
           features: LL_Primal_Beast_Attributes.features,
-          traits: LL_Primal_Beast_Attributes.traits.map(function (n) {
-            if (!typePF && /Bestial Focus/i.test(n.name)) {
-              var a = newObj(n);
-              a.description = "The beast's attacks count as magical.";
-              return a;
-            } else {
-              return n;
-            }
-          }),
-          addMod: LL_Primal_Beast_Attributes.addMod,
-          calcChanges: LL_Primal_Beast_Attributes.calcChanges,
-          minlevelLinked: LL_Primal_Beast_Attributes.hdLinked
-        }, {
+          traits: LL_Primal_Beast_Attributes.getBeastTraits("sea"),
+          calcChanges: LL_Primal_Beast_Attributes.calcChanges
+        },
+        {
           name: "Beast of the Sky",
           source: [["GMB:LL", 0]],
-          size: 4,
-          type: "Beast",
-          alignment: "Unaligned",
-          ac: "10+Dex+Prof",
-          hp: 16,
-          hd: [3, 6],
+          size: 4, type: "Beast", alignment: "Unaligned",
+          ac: "13+Prof", hp: 10, hd: [1, 8],
           hdLinked: LL_Primal_Beast_Attributes.hdLinked,
           speed: "10 ft, fly 60 ft",
-          scores: [6, 16, 13, 8, 14, 11],
+          scores: [12, 16, 12, 8, 12, 11],
+          saves: ["", "1+Prof", "", "", "", "1+Prof"],
+          skills: { "Perception": 2, "Stealth": 2 },
           senses: "Darkvision 60 ft",
-          passivePerception: 12,
-          languages: LL_Primal_Beast_Attributes.languages,
-          challengeRating: "1/4",
-          proficiencyBonus: 2,
-          proficiencyBonusLinked: true,
+          passivePerception: 13,
+          proficiencyBonus: 2, proficiencyBonusLinked: true,
           attacksAction: 1,
           attacks: [{
-            name: "Shred",
-            ability: 2,
-            damage: [1, 4, "slashing"],
-            modifiers: ["", "Prof"],
-            range: "Melee (5 ft)",
-            useSpellMod: "ranger"
-          }],
-          actions: [{
-            name: "Flyby",
-            description: "The beast doesn't provoke opportunity attacks when it flies out of an enemy's reach."
+            name: "Shred", ability: 2, damage: ["Quarry", "", "slashing"],
+            modifiers: ["", "Prof"], range: "Melee (5 ft)"
           }],
           features: LL_Primal_Beast_Attributes.features,
-          traits: LL_Primal_Beast_Attributes.traits.map(function (n) {
-            if (!typePF && /Bestial Focus/i.test(n.name)) {
-              var a = newObj(n);
-              a.description = "The beast's attacks count as magical.";
-              return a;
-            } else {
-              return n;
-            }
-          }),
-          addMod: LL_Primal_Beast_Attributes.addMod,
-          calcChanges: LL_Primal_Beast_Attributes.calcChanges,
-          minlevelLinked: LL_Primal_Beast_Attributes.hdLinked
-        }
-      ],
-      eval: function () {
-        // Remove any ranger companion pages
-        What("Template.extras.AScomp").split(",").forEach(function (prefix) {
-          if (What(prefix + "Companion.Remember") === "companion") {
-            DoTemplate("AScomp", "Remove", prefix, true)
+          traits: LL_Primal_Beast_Attributes.getBeastTraits("sky"),
+          calcChanges: {
+            hp: function (totalHD, HDobj, prefix) {
+              if (!classes.known["ranger(laserllama)"]) return;
+              var rngrLvl = classes.known["ranger(laserllama)"].level;
+              var baseHp = 4;
+              var levelHp = 4 * rngrLvl;
+              var totalHp = baseHp + levelHp;
+              HDobj.alt.push(totalHp);
+              HDobj.altStr.push(" = 4 as a base\n + 4 \xD7 " + rngrLvl + " from its master's ranger level (" + levelHp + ")");
+            },
+            setAltHp: true
           }
-        });
-      }
+        }
+      ]
     },
     "subclassfeature3.2": {
       name: "Wild Empathy",
       source: [["GMB:LL", 0]],
       minlevel: 3,
       description: desc([
-        "I learn the Wild Insight I knack, but it doesn't count against my Knacks Known",
-        "If already known, I learn another Knack"
+        "I learn the Wild Insight I knack, but it doesn't count against my Knacks Known.",
+        "It cannot be replaced when I gain a level."
       ]),
-      toNotesPage: [
-        {
-          // What is added to the notes page
-          name:
-            KnacksLL['wild insight i'].name,
-          note: desc(KnacksLL['wild insight i'].description),
-          amendTo: "Wild Empathy",
-        },
-      ],
     },
     subclassfeature7: {
       name: "Bestial Focus",
       source: [["GMB:LL", 0]],
       minlevel: 7,
-      description:
-        "My Primal Beast gains all benefits of my Ranger's Quarry, including any Knacks that enhance it, and its attack count as magical",
+      description: "My Primal Beast's natural attacks are magical. It gains all benefits of my Ranger's Quarry (and related Knacks).",
     },
     subclassfeature11: {
       name: "Exceptional Training",
       source: [["GMB:LL", 0]],
       minlevel: 11,
-      description: desc([
-        "Once per turn when I command my Primal Beast to use one of the attacks from its stat block, it can make two attacks"
-      ]),
+      description: "Once per turn, when I command my beast to Attack, it can make two attacks instead of one.",
     },
     subclassfeature15: {
       name: "Primal Bond",
       source: [["GMB:LL", 0]],
       minlevel: 15,
-      description: desc([
-        "When I cast a Ranger spell that targets myself, the Primmal Beast also gains the benefits as long as it is within 30 feet of me"
-      ]),
-    },
-  },
+      description: "When I cast a Ranger spell targeting myself, it also affects my beast if within 30 feet.",
+    }
+  }
 });
 
 // // Hunter 
@@ -14794,8 +14658,9 @@ AddSubClass("ranger(laserllama)", "deep stalker", {
       minlevel: 3,
       description: desc([
         "I gain a bonus to my initiative roll equal to my Wis mod (min of +1)",
-        " Also, when I attack my first turn in combat, I can attack one additional time as part of that action",
-        " On hit, it deals bonus damage equal to your level"
+        " so long I am not surprised or incapacitated",
+        " Also, when I attack in my first turn in combat, I can attack one additional time as part of that action",
+        " On hit, it deals bonus damage equal to my Quarry Die"
       ]),
       addMod: {
         type: "skill",
@@ -14819,11 +14684,11 @@ AddSubClass("ranger(laserllama)", "deep stalker", {
       saves: ["Wis"]
     },
     subclassfeature11: {
-      name: "Precise Strike",
+      name: "Precise Strikes",
       source: [["GMB:LL", 0]],
       minlevel: 11,
       description: desc([
-        "Once per turn, on a miss with a weapon attack, I can add my Quarry Die possibly turning the miss in a hit",
+        "Once per turn, on a miss with a weapon attack against my Quarry, I can add my Quarry Die possibly turning the miss in a hit",
         " In addition, I can see through both magical and nonmagical darkness"
       ]),
       vision: [["Can see in magical and non magical darkness"]],
@@ -14833,9 +14698,9 @@ AddSubClass("ranger(laserllama)", "deep stalker", {
       source: [["GMB:LL", 0]],
       minlevel: 15,
       description: desc([
-        "When a crea I can see targets me with an attack, I can use a reaction to impose disadv.",
-        " If it miss me, I can make a weapon attack against the attacker as part of the same reaction",
-        " In dim light or darkness, I have advan. on this special"
+        "When a Quarry I can see targets me with an attack, I can use a reaction to impose disadv.",
+        " If it miss me, I can make a weapon attack against the Quarry as part of the same reaction",
+        " In dim light or darkness, I have advan. on this special attack"
       ]),
       action: [["reaction", ""]],
     },
@@ -14859,8 +14724,8 @@ AddSubClass("ranger(laserllama)", "drake guard", {
       spellcastingExtra: [
         "absorb elements", "command",
         "dragon's breath", "warding bond",
-        "fear", "elemental weapon",
-        "dominate beast", "elemental bane",
+        "fear", "elemental bane",
+        "dominate creature", "polymorph",
         "awaken", "conjure dragon"
       ],
     },
@@ -14870,7 +14735,7 @@ AddSubClass("ranger(laserllama)", "drake guard", {
       minlevel: 3,
       description: desc([
         "I learn the Draconic language",
-        " Also, when I cast a Ranger spell that deals acid, cold, fire, lightning, or poison damage, I can choose to deal the damage of my Companion Essence instead"
+        " Also, I can cause my Ranger's Quarry damage, or any damage I deal with a Ranger spell, to be my Companion's Essence damage in place of its normal damage type."
       ]),
       languageProfs: ["Draconic"],
     },
@@ -14906,10 +14771,11 @@ AddSubClass("ranger(laserllama)", "drake guard", {
         speed: "30 ft; fly 30 ft",
         scores: [16, 12, 15, 8, 10, 14],
         saves: ["", 3, "", "", 4, ""],
+        skills: { "Acrobatics": 1, "Intimidation": 2 },
         damage_immunities: "the chosen Draconic Essence damage type",
         senses: "Darkvision 60 ft",
         passivePerception: 10,
-        languages: "Draconic, understands any languages spoken by the Drake Guard bound to it",
+        languages: "Draconic, understands any languages spoken by the Drake Guard bound to it, but cannot speak them",
         challengeRating: "0",
         proficiencyBonus: 2,
         proficiencyBonusLinked: true,
@@ -14931,6 +14797,9 @@ AddSubClass("ranger(laserllama)", "drake guard", {
         traits: [{
           name: "Draconic Essence",
           description: "Chosen when bounded: acid, cold, fire, lightning, or poison damage."
+        }, {
+          name: "Soul Bound",
+          description: "When your PB increases, the Dragon's bonus to skill and saving throw proficiencies increases as well.."
         }, {
           name: "Greater Companion (Drake Guard 7)",
           minlevel: 7,
@@ -14977,6 +14846,24 @@ AddSubClass("ranger(laserllama)", "drake guard", {
             HDobj.altStr.push(" = 5 as a base\n + 5 \xD7 " + rngrLvl + " from five times its guard's ranger level (" + rngrLvlM + ")");
           },
           setAltHp: true,
+          atkAdd: function (fields, v) {
+            if (!classes.known["ranger(laserllama)"]) return;
+            var rngrLvl = classes.known["ranger(laserllama)"].level;
+            if (v.isAutonomous ||
+              fields.Weapon_Name.toLowerCase().indexOf("claw") !== -1) {
+              if (rngrLvl <= 5) {
+                fields.Damage_Die = "1d4";
+              } else if (rngrLvl <= 9) {
+                fields.Damage_Die = "1d6";
+              } else if (rngrLvl <= 13) {
+                fields.Damage_Die = "1d8";
+              } else if (rngrLvl <= 17) {
+                fields.Damage_Die = "1d10";
+              } else if (rngrLvl <= 20) {
+                fields.Damage_Die = "1d12";
+              }
+            }
+          }
         },
       }]
     },
@@ -15011,9 +14898,7 @@ AddSubClass("ranger(laserllama)", "drake guard", {
         "Its damage type is the same of its Essence; Dex save to halve the damage",
         "If I have no uses left, I can expand a 3rd-level or higher spell slot (SS 3+) to use it again"
       ]),
-      additional: levels.map(function (n) {
-        return n < 11 ? "" : (n < 15 ? 8 : 10) + "d6 damage";
-      }),
+      additional: "six Quarry Die damage",
       action: [["action", ""]],
       usages: "Wis mod per",
       usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
@@ -15025,7 +14910,7 @@ AddSubClass("ranger(laserllama)", "drake guard", {
         source: [["GMB:LL", 0]],
         ability: 5,
         type: "Natural",
-        damage: [8, 6, "Essence"],
+        damage: [6, 8, "Essence"],
         range: "30-ft cone",
         description: "Hits all in area; Dex save for half damage; Damage type: equal to its Essence",
         abilitytodamage: false,
@@ -15039,7 +14924,7 @@ AddSubClass("ranger(laserllama)", "drake guard", {
           function (fields, v) {
             if (v.theWea.DrakewardenDrakeBreath && classes.known["ranger(laserllama)"]) {
               var rngrLvl = classes.known["ranger(laserllama)"].level;
-              fields.Damage_Die = (rngrLvl < 15 ? 8 : 10) + 'd6';
+              fields.Damage_Die = '6 d' + (rngrLvl < 14 ? 8 : rngrLvl < 18 ? 10 : 12);
             };
           },
           "",
@@ -15048,14 +14933,100 @@ AddSubClass("ranger(laserllama)", "drake guard", {
       }
     },
     "subclassfeature15": {
-      name: "Perfected Bond",
+      name: "Mythic Companion",
       source: [["GMB:LL", 0]],
       minlevel: 15,
       description: desc([
-        "My Draconic Companion, once per turn when I command it to attack, it can make two attacks instead of one.",
-        " As an action it can change its size between Small, Medium and Large",
-        " While it is Large, its flying speed it is not halved while ridden",
+        "My Draconic Companion, now uses the Mythic Companion stat block",
       ]),
+      creaturesAdd: [["Mythic Companion", true]],
+      creatureOptions: [{
+        name: "Mythic Companion",
+        source: [["GMB:LL", 0]],
+        size: 4,
+        type: "Dragon",
+        alignment: "Lawful Neutral",
+        ac: "14+Prof",
+        hp: 20,
+        hd: [3, 8],
+        hdLinked: ["ranger(laserllama)"],
+        minlevelLinked: ["ranger(laserllama)"],
+        speed: "40 ft; climb 40 ft; fly 60 ft",
+        scores: [20, 12, 18, 14, 10, 18],
+        saves: ["", 3, "", "", 4, ""],
+        skills: { "Acrobatics": 2, "Intimidation": 4 },
+        damage_immunities: "the chosen Draconic Essence damage type",
+        senses: "Blindsight 30 ft, Darkvision 60 ft",
+        passivePerception: 10,
+        languages: "Draconic, understands any languages spoken by the Drake Guard bound to it, but cannot speak them",
+        challengeRating: "0",
+        proficiencyBonus: 2,
+        proficiencyBonusLinked: true,
+        attacksAction: 1,
+        attacks: [{
+          name: "Claw",
+          ability: 1,
+          damage: [1, 4, "slashing"],
+          modifiers: ["", "Prof"],
+          range: "Melee (5 ft)",
+          description: "+1d4 Essence damage",
+          abilitytodamage: false
+        }],
+        actions: [
+          {
+            name: "Change Size",
+            description: "As an action, the drake can change its size to Small, Medium or Large until it uses this feature again.",
+          }
+        ],
+        features: [{
+          name: "Guard",
+          description: "The drake obeys the commands of its guard and shares its proficiency bonus. It takes its turn immediately after that of its guard, on the same initiative. It can move and take reactions on its own, but only takes the Dodge action on its turn unless its guard takes a bonus action to command it to take another action. If its guard is incapacitated, the drake can take any action, not just Dodge. The drake, when it is reduced to 0 hit points, it makes death saving thorws like a player character would." +
+            "\n  If it dies, you can perform a 1-hour ritual, which can be during a short or long rest, that restores it to life with 1 HP. As part of this ritual, it can expend Hit Dice to regain HP."
+        }],
+        traits: [{
+          name: "Draconic Essence",
+          description: "Chosen when bounded: acid, cold, fire, lightning, or poison damage."
+        }, {
+          name: "Multiattack",
+          description: "When the drake use its attack action, it can make up to two attacks with Claw."
+        }, {
+          name: "Soul Bound",
+          description: "When your PB increases, the Dragon's bonus to skill and saving throw proficiencies increases as well.."
+        }, {
+          name: "Elemental Breath (Drake Guard 11)",
+          minlevel: 11,
+          description: "You or the drake can exhale the Elemental Breath (see in character weapons)",
+        }
+        ],
+        calcChanges: {
+          hp: function (totalHD, HDobj, prefix) {
+            if (!classes.known["ranger(laserllama)"]) return;
+            var rngrLvl = classes.known["ranger(laserllama)"].level;
+            var rngrLvlM = 5 * rngrLvl;
+            HDobj.alt.push(5 + rngrLvlM);
+            HDobj.altStr.push(" = 5 as a base\n + 5 \xD7 " + rngrLvl + " from five times its guard's ranger level (" + rngrLvlM + ")");
+          },
+          setAltHp: true,
+          atkAdd: function (fields, v) {
+            if (!classes.known["ranger(laserllama)"]) return;
+            var rngrLvl = classes.known["ranger(laserllama)"].level;
+            if (v.isAutonomous ||
+              fields.Weapon_Name.toLowerCase().indexOf("claw") !== -1) {
+              if (rngrLvl <= 5) {
+                fields.Damage_Die = "1d4";
+              } else if (rngrLvl <= 9) {
+                fields.Damage_Die = "1d6";
+              } else if (rngrLvl <= 13) {
+                fields.Damage_Die = "1d8";
+              } else if (rngrLvl <= 17) {
+                fields.Damage_Die = "1d10";
+              } else if (rngrLvl <= 20) {
+                fields.Damage_Die = "1d12";
+              }
+            }
+          }
+        },
+      }]
     }
   }
 });
@@ -15077,8 +15048,8 @@ AddSubClass("ranger(laserllama)", "fey wanderer", {
         "I learn certain spells. They are Ranger spells for me and don't count against my total of spells known and can't be replaced when I gain a level",
       spellcastingExtra: [
         "cause fear", "charm person",
-        "enthrall", "misty step",
-        "conjure fey", "dispel magic",
+        "suggestion", "misty step",
+        "conjure fey", "enemies abound",
         "charm monster", "dimension door",
         "geas", "mislead"
       ],
@@ -15089,7 +15060,7 @@ AddSubClass("ranger(laserllama)", "fey wanderer", {
       minlevel: 3,
       description: desc([
         "I can choose to deal Psychic damage with my Ranger's Quarry",
-        " If I deal this damage to my Quarry, it has disadv. on all attacks rolls against other targets than me until the start of my next turn"
+        " If I deal this damage to my Quarry within 15 feet, it has disadv. on all attacks rolls against creatures other than me until the start of my next turn"
       ]),
     },
     "subclassfeature3.2": {
@@ -15098,14 +15069,14 @@ AddSubClass("ranger(laserllama)", "fey wanderer", {
       minlevel: 3,
       description: desc([
         "I gain proficiency in one of the following: Deception, Performance, or Persuasion",
-        " Also, I add my Wis mod (min of +1) to all my Charisma checks"
+        " Also, I can use my Wis mod instead of Cha mod whenever I make a Charisma check."
       ]),
       skillstxt: "Choose one: Deception, Performance, or Persuasion",
       addMod: [
-        { type: "skill", field: "Persuasion", mod: "max(Wis|1)", text: "I add my Wis mod (min of +1) to all my Charisma checks" },
-        { type: "skill", field: "Performance", mod: "max(Wis|1)", text: "I add my Wis mod (min of +1) to all my Charisma checks" },
-        { type: "skill", field: "Deception", mod: "max(Wis|1)", text: "I add my Wis mod (min of +1) to all my Charisma checks" },
-        { type: "skill", field: "Intimidation", mod: "max(Wis|1)", text: "I add my Wis mod (min of +1) to all my Charisma checks" },
+        { type: "skill", field: "Persuasion", mod: "max(Wis-Cha|0)", text: "I can use my Wis mod (min of +1) to all my Charisma checks instead of Cha mod" },
+        { type: "skill", field: "Performance", mod: "max(Wis-Cha|0)", text: "I can use my Wis mod (min of +1) to all my Charisma checks instead of Cha mod" },
+        { type: "skill", field: "Deception", mod: "max(Wis-Cha|0)", text: "I can use my Wis mod (min of +1) to all my Charisma checks instead of Cha mod" },
+        { type: "skill", field: "Intimidation", mod: "max(Wis-Cha|0)", text: "I can use my Wis mod (min of +1) to all my Charisma checks instead of Cha mod" },
       ],
     },
     subclassfeature7: {
@@ -15114,11 +15085,13 @@ AddSubClass("ranger(laserllama)", "fey wanderer", {
       minlevel: 7,
       description:
         "\n   I have advan. on saves to resist being charmed or frightened" +
-        "\n    Also, when a crea I can see within 30 ft makes a saves against these conditions, I can use my reaction to force another crea I can see within 60 ft to make a Wis save" +
-        "\n    On a fail, it is charmed or frightened (my choice) of me for 1 min. It can repeat the save at the end of its turns",
+        "\n    Also, once per cast, when a crea succeeds on its save against one of my Fey Wanderer spells, I can cause anoter creature of my choice within range to become the target of that spell.",
       savetxt: {
         adv_vs: ["charmed", "frightened"]
       },
+      usagescalc: "event.value = Math.max(1, What('Wis Mod'));",
+      recovery: "long rest",
+      limfeaname: "Whimisical Ward (new spell target)",
       action: [["reaction", ""]]
     },
     subclassfeature11: {
@@ -15126,16 +15099,16 @@ AddSubClass("ranger(laserllama)", "fey wanderer", {
       source: [["GMB:LL", 0]],
       minlevel: 11,
       description: desc([
-        "Once per long rest, I can cast Conjure Fey without material components or concentration, but its duration is reduced to 1 min"
+        "I can cast Conjure Fey without material components",
+        "Moreover, when I cast it, I can do it so it doesn't require concentration, but its duration is reduced to 1 min",
+        "If I cast it again, any previous Fey are dispelled"
       ]),
       spellChanges: {
         "conjure fey": {
           changes:
-            "Once per long rest, I can cast Conjure Fey without material components or concentration, but its duration is reduced to 1 minute",
+            "I can cast Conjure Fey without material components. Moreover, when I cast it, I can do it so it doesn't require concentration, but its duration is reduced to 1 minute, and if I cast it again, any previous Fey are dispelled.",
         },
       },
-      usages: 1,
-      recovery: "long rest"
     },
     subclassfeature15: {
       name: "Mirthful Step",
@@ -16274,8 +16247,8 @@ AddSubClass("ranger(laserllama)", "trapper", {
         {
           // What is added to the notes page
           name:
-            KnacksLL['trapper'].name,
-          note: desc(KnacksLL['trapper'].description),
+            KnacksLL['trapper i'].name,
+          note: desc(KnacksLL['trapper i'].description),
           amendTo: "Trap Adept",
         },
       ],
@@ -17787,7 +17760,7 @@ AddSubClass("rogue(laserllama)", "avenger", {
       additional: [
         "", "",
         "2 Spells Known (DL: 1st)",
-        "3 Spells Known (DL: 1st)", 
+        "3 Spells Known (DL: 1st)",
         "3 Spells Known (DL: 1st)",
         "3 Spells Known (DL: 1st)",
         "4 Spells Known (DL: 2nd)",

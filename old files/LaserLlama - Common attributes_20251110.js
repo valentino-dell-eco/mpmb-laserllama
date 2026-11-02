@@ -11,9 +11,20 @@
 
     Effect:     This script adds Laserllama's Exploits as spells (with both regular spell attributes, and some unique attributes, see doc below)
           It also adds some modified or new spells from LL's spell compendium
-          It also defines a global variable (FightingStylesLL) containing Fighting styles
-          It also defines a global variable (KnacksLL) containing Knacks
-          It also defines a global variable (MysticTalentsLL) containing Mystic Talents
+          It also defines some global variables: 
+          (FightingStylesLL) containing Fighting styles
+          (KnacksLL) containing Knacks
+          (MysticTalentsLL) containing Mystic Talents
+          (MetamagicLL) containing Metamagics
+          (ChordsPowerLL) containing Chords of Power
+          (PrimalSurgesLL) containing Primal Surges
+          (ElderArcanumsLL) containing Elder Arcanums
+          (EldritchInvocationsLL) containing Eldritch Invocations
+          (AutomatonModels) containing Automaton Models
+          (GunslingerUpgrades) containing Gunslinger Upgrades
+          (BiomancerModificationsLL) containing Biomancer Modifications
+          (ElixirInfusionsLL) containing Elixir Infusions
+          (InfusionsLL) containing Infusions
 
           Those exploits were published by Laserllama in GM Binder under the Fan Content policy.
           Laserllama: https://www.gmbinder.com/profile/laserllama
@@ -3702,7 +3713,7 @@ SpellsList["subjugate beast"] = {
   description:
     "1 beast save or charmed, I can give it an order as a bonus action; extra save when damaged",
   descriptionFull:
-    "As an action, you can expend an Exploit Die and attempt todominate one Beast that can see or hear you within 30 feet,forcing it to make a Wisdom saving throw. On a failure, it isCharmed by you. This effect lasts for 1 minute, but any timethe Beast takes damage, it repeats this saving throw, ending this effect on a success." +
+    "As an action, you can expend an Exploit Die and attempt to dominate one Beast that can see or hear you within 30 feet,forcing it to make a Wisdom saving throw. On a failure, it isCharmed by you. This effect lasts for 1 minute, but any timethe Beast takes damage, it repeats this saving throw, ending this effect on a success." +
     "\n While Charmed, you can use your bonus action to issue acommand to the Beast, specifying a simple course of action,which it follows to the best of its ability. If it doesn't receive acommand, it instead defends itself to the best of its ability.",
 };
 
@@ -5234,33 +5245,6 @@ SpellsList["shield"] = {
   name: "Shield (LL)",
   nameShort: "Shield (LL)",
   regExpSearch: /^(?=.*shield).*$/i,
-  source: ["GMB:LL", 0], // Correct source
-  classes: ["magus", "psion(laserllama)", "sorcerer", "wizard"],
-  level: 1,
-  school: "Abjur",
-  time: "1 r",
-  timeFull:
-    "1 reaction, which you take when you are hit by an attack you can see or targeted by magic missile",
-  range: "S",
-  components: "V,S",
-  duration: "Instantaneous",
-  description:
-    "Until the end of the turn, bonus to AC and take no damage from magic missile.",
-  descriptionMetric:
-    "Until the end of the turn, bonus to AC and take no damage from magic missile.",
-  descriptionFull:
-    "A shimmering barrier of magical force appears to protect you. Until the end of the current turn, you gain a bonus to your Armor Class equal to 1 + your Spellcasting modifier, and you take no damage from the magic missile spell." +
-    AtHigherLevels +
-    " When you cast this spell using a spell slot of 2nd level or higher, the bonus to your Armor Class increases by 1 for each slot level above 1st.",
-  allowUpCasting: true,
-  descriptionShorter:
-    "Until the end of the turn, bonus to AC and take no damage from magic missile.",
-};
-
-SpellsList["shield"] = {
-  name: "Shield (LL)",
-  nameShort: "Shield (LL)",
-  regExpSearch: /^(?=.*shield).*$/i,
   source: ["GMB:LL", 0],
   classes: ["magus", "psion(laserllama)", "sorcerer", "wizard"],
   level: 1,
@@ -5568,8 +5552,6 @@ SpellsList["create ooze"] = {
   allowUpCasting: true
 };
 
-
-
 // Elemental Blade
 SpellsList["elemental blade"] = {
   name: "Elemental Blade",
@@ -5710,7 +5692,7 @@ SpellsList["lock unlock"] = {
     " If the object is held shut by a mundane lock or it is stuck or barred, it is instantly unlocked, unstuck, or unbarred. If the object has multiple locks, only one of them is unlocked. Regardless, when you cast the spell, a loud knock, audible out to 300 feet, emanates from the target object."
 };
 
-// Magic Weapon
+// Magic Weapon ALT
 SpellsList["magic weapon"] = {
   name: "Magic Weapon (LL)",
   nameShort: "Magic Weapon (LL)",
@@ -5726,25 +5708,6 @@ SpellsList["magic weapon"] = {
   duration: "1 hour",
   description: "Touch nonmagical weapon: becomes +1 magic weapon. Scales to +2/+3 with higher slots.",
   descriptionFull: "You touch a nonmagical weapon and imbue it with arcane power. For the duration, it becomes a magical weapon with a +1 bonus to attack and damage rolls." + AtHigherLevels + "When you cast this spell using a spell slot of 3rd-level or higher, the bonus is +2. When you use a spell slot of 6th-level or higher, the bonus increases to +3.",
-  allowUpCasting: true
-};
-
-SpellsList["totemic cowl"] = {
-  name: "Totemic Cowl (LL)",
-  nameShort: "Totemic Cowl (LL)",
-  regExpSearch: /^(?=.*totemic)(?=.*cowl).*$/i,
-  source: ["GMB:LL", 0],
-  classes: ["shaman"],
-  level: 2,
-  school: "Abj",
-  time: "1 a",
-  timeFull: "1 action",
-  range: "Touch",
-  components: "V",
-  compMaterial: "a leaf from the first day of fall",
-  duration: "1 hour",
-  description: "Touch willing creature: reduces all damage by 2. Scales +1 per slot level above 2nd.",
-  descriptionFull: "You touch a willing creature. Until the spell ends, it is cloaked in a ghostly cowl, and any damage it takes is reduced by 2." + AtHigherLevels + " When you cast this spell using a spell slot of 3rd-level or higher, the damage reduction from the cowl increases by 1 for each slot level above 2nd.",
   allowUpCasting: true
 };
 
@@ -5812,6 +5775,25 @@ SpellsList["restoration"] = {
     AtHigherLevels +
     " When you cast this spell using a spell slot of 3rd-level or higher, the conditions and effects you can end increase, but the spell requires you to expend diamond dust of a certain value, which is consumed during casting:\n\nSlot Level | Value | Conditions/Effects\n3rd | 10 gp | Charmed, Exhaustion (1 level)\n4th | 50 gp | Reduction to one Ability Score or Hit Point Maximum\n5th | 100 gp | Petrified, One Curse, or Attunement to a Cursed Item",
   allowUpCasting: true,
+};
+
+SpellsList["totemic cowl"] = {
+  name: "Totemic Cowl (LL)",
+  nameShort: "Totemic Cowl (LL)",
+  regExpSearch: /^(?=.*totemic)(?=.*cowl).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["shaman"],
+  level: 2,
+  school: "Abj",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "Touch",
+  components: "V",
+  compMaterial: "a leaf from the first day of fall",
+  duration: "1 hour",
+  description: "Touch willing creature: reduces all damage by 2. Scales +1 per slot level above 2nd.",
+  descriptionFull: "You touch a willing creature. Until the spell ends, it is cloaked in a ghostly cowl, and any damage it takes is reduced by 2." + AtHigherLevels + " When you cast this spell using a spell slot of 3rd-level or higher, the damage reduction from the cowl increases by 1 for each slot level above 2nd.",
+  allowUpCasting: true
 };
 
 // ##### 3rd Level Spells ##### \\
@@ -5893,6 +5875,7 @@ SpellsList["cerebral blast"] = {
   allowUpCasting: true,
 };
 
+// Conjure Elemental ALT
 SpellsList["conjure elemental"] = {
   name: "Conjure Elemental (LL)",
   nameShort: "Conjure Elemental (LL)",
@@ -5945,6 +5928,7 @@ SpellsList["conjure volley"] = {
   allowUpCasting: true,
 };
 
+// Conjure Fey ALT
 SpellsList["conjure fey"] = {
   name: "Conjure Fey (LL)",
   nameShort: "Conjure Fey (LL)",
@@ -5977,6 +5961,7 @@ SpellsList["conjure fey"] = {
   descriptionShorter: "Conjure a fey (see book)",
 };
 
+// Conjure Volley
 SpellsList["conjure fiend"] = {
   name: "Conjure Fiend",
   nameShort: "Conjure Fiend",
@@ -6048,6 +6033,29 @@ SpellsList["dire wail"] = {
     "You let forth a wail filled with otherworldly power. Creatures of your choice within 30 feet must succeed on a Constitution saving throw or take 4d10 thunder damage and be deafened for the duration. At the end of each turn, targets can make a Constitution saving throw, ending the spell on a success. On a successful save, the creature takes half damage and is not deafened." +
     AtHigherLevels +
     " When you cast this spell using a spell slot of 4th-level or higher, the damage increases by 1d10 for each slot level above 3rd.",
+  allowUpCasting: true,
+};
+
+// Elemental Bane ALT
+SpellsList["elemental bane"] = {
+  name: "Elemental Bane (LL)",
+  nameShort: "Elemental Bane (LL)",
+  regExpSearch: /^(?=.*elemental)(?=.*bane).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["artificer", "druid", "magus", "shaman", "sorcerer", "warlock", "wizard"],
+  level: 3,
+  school: "Trans",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "60 feet",
+  components: "V, S",
+  duration: "1 minute",
+  description:
+    "Curse target, takes 1d6 extra damage of the chosen damage type",
+  descriptionFull:
+    "Choose one of the following damage types: acid, cold, fire,lightning, poison, or thunder; and one creature within range.It must make Constitution saving throw or be afflicted withan elemental curse, and if it has Resistance to the damagetype you chose, it loses it for the duration. \nThe first time each turn a cursed creature takes damage ofthe chosen type, it takes a bonus 1d6 damage, then it repeatsthe Constitution saving throw, ending the curse on a success." +
+    AtHigherLevels +
+    " If you cast this spell using a spell slot of 4th-level or higher, you can either increase the bonus damageby 1d6, or target another creature within range, for each spellslot level above 4th. If you target more than one creature, youuse the same damage type for all taragets of the spell.",
   allowUpCasting: true,
 };
 
@@ -6291,38 +6299,7 @@ SpellsList["accursed touch"] = {
   allowUpCasting: true,
 };
 
-SpellsList["create undead"] = {
-  name: "Create Undead (LL)",
-  nameShort: "Create Undead (LL)",
-  regExpSearch: /^(?=.*create)(?=.*undead).*$/i,
-  source: ["GMB:LL", 0],
-  classes: ["cleric", "warlock", "wizard"],
-  level: 4,
-  school: "Necro",
-  time: "10 min",
-  timeFull: "10 minutes",
-  range: "30 feet",
-  rangeMetric: "9 m",
-  components: "V,S,M",
-  compMaterial: "the corpse of a creature slain within the last day, and blood from the spellcaster, both of which are consumed by the casting of this spell", // Aggiunto virgola
-  duration: "Instantaneous",
-  description: "Only at night. Create an Undead (see book)",
-  descriptionFull: desc([
-    "This spell can only be cast at night. You spill your blood onto the corpse as part of a sinister ritual, reducing your maximum hit points by 2 and creating a Skeleton or Zombie under your control. Undead created by this spell use the rules below:", // Corretto "1" in "2"
-    toUni("Control.") + " Undead follow your commands without question. If not given a command, an Undead won't move and will only act to defend itself. In combat, any Undead you created share your initiative and act during your turn.", // Corretto testo completo
-    "As a bonus action, you can mentally command any number of Undead you created with this spell so long as they are all within 120 feet. You can issue an individual command to each, determining exactly how it will act, or setting a general course of action ('defend this hall'). So long as they remain under your control, your Undead will follow commands until completed.", // Corretto raggio e testo
-    toUni("Spellcasting.") + " If it can cast spells, you can command it to do so, but it uses your spell slots to fuel its spellcasting, even if it would normally be able to cast without spell slots.", // Aggiunta sezione mancante
-    toUni("Undead Bond.") + " While an Undead is under your control, you cannot regain the maximum hit points you spent to create it. However, when you finish a long rest, you can release control over any Undead that you created to regain the maximum hit points you spent to create them. When freed, Undead become hostile to all living things, the spellcaster in particular.", // Corretto testo
-    AtHigherLevels + " You can cast this spell with a spell slot of a higher level, and expend additional maximum hit points (Max. HP) to create more powerful Undead, as shown here:",
-    "• 5th level — Max HP cost: 3 — Undead: Ghoul", // Corretto valori
-    "• 6th level — Max HP cost: 6 — Undead: Ghast", // Corretto valori
-    "• 7th level — Max HP cost: 9 — Undead: Mummy, Wight", // Corretto valori
-    "• 8th level — Max HP cost: 12 — Undead: Flameskull", // Corretto valori
-    "• 9th level — Max HP cost: 15 — Undead: Revenant, Vampire Spawn" // Corretto valori
-  ]),
-  allowUpCasting: true,
-};
-
+//Conjure Aberration
 SpellsList["conjure aberration"] = {
   name: "Conjure Aberration (LL)",
   nameShort: "Conjure Aberration (LL)",
@@ -6355,6 +6332,100 @@ SpellsList["conjure aberration"] = {
   ]),
   descriptionShorter: "Conjure an aberration (see book)",
   allowUpCasting: true
+};
+
+//Create Undead ALT
+SpellsList["create undead"] = {
+  name: "Create Undead (LL)",
+  nameShort: "Create Undead (LL)",
+  regExpSearch: /^(?=.*create)(?=.*undead).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["cleric", "warlock", "wizard"],
+  level: 4,
+  school: "Necro",
+  time: "10 min",
+  timeFull: "10 minutes",
+  range: "30 feet",
+  rangeMetric: "9 m",
+  components: "V,S,M",
+  compMaterial: "the corpse of a creature slain within the last day, and blood from the spellcaster, both of which are consumed by the casting of this spell", // Aggiunto virgola
+  duration: "Instantaneous",
+  description: "Only at night. Create an Undead (see book)",
+  descriptionFull: desc([
+    "This spell can only be cast at night. You spill your blood onto the corpse as part of a sinister ritual, reducing your maximum hit points by 2 and creating a Skeleton or Zombie under your control. Undead created by this spell use the rules below:", // Corretto "1" in "2"
+    toUni("Control.") + " Undead follow your commands without question. If not given a command, an Undead won't move and will only act to defend itself. In combat, any Undead you created share your initiative and act during your turn.", // Corretto testo completo
+    "As a bonus action, you can mentally command any number of Undead you created with this spell so long as they are all within 120 feet. You can issue an individual command to each, determining exactly how it will act, or setting a general course of action ('defend this hall'). So long as they remain under your control, your Undead will follow commands until completed.", // Corretto raggio e testo
+    toUni("Spellcasting.") + " If it can cast spells, you can command it to do so, but it uses your spell slots to fuel its spellcasting, even if it would normally be able to cast without spell slots.", // Aggiunta sezione mancante
+    toUni("Undead Bond.") + " While an Undead is under your control, you cannot regain the maximum hit points you spent to create it. However, when you finish a long rest, you can release control over any Undead that you created to regain the maximum hit points you spent to create them. When freed, Undead become hostile to all living things, the spellcaster in particular.", // Corretto testo
+    AtHigherLevels + " You can cast this spell with a spell slot of a higher level, and expend additional maximum hit points (Max. HP) to create more powerful Undead, as shown here:",
+    "• 5th level — Max HP cost: 3 — Undead: Ghoul", // Corretto valori
+    "• 6th level — Max HP cost: 6 — Undead: Ghast", // Corretto valori
+    "• 7th level — Max HP cost: 9 — Undead: Mummy, Wight", // Corretto valori
+    "• 8th level — Max HP cost: 12 — Undead: Flameskull", // Corretto valori
+    "• 9th level — Max HP cost: 15 — Undead: Revenant, Vampire Spawn" // Corretto valori
+  ]),
+  allowUpCasting: true,
+};
+
+//Death Ward ALT
+SpellsList["death ward"] = {
+  name: "Death Ward (LL)",
+  nameShort: "Death Ward (LL)",
+  regExpSearch: /^(?=.*death)(?=.*ward).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["cleric", "paladin"],
+  level: 4,
+  school: "Abjur",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "Touch",
+  components: "V, S",
+  duration: "8 hours",
+  description: "Touched creature is warded against death; if it drops to 0 HP, it drops to 1 HP instead; ends after ward is triggered",
+  descriptionFull: desc([
+    "You touch a creature and ward it against the touch of death.The first time the target starts its turn with 0 hit points, but isnot dead, it can stand up with 1 hit point, and the spell ends.",
+    "If the spell is still in effect when the target is subjected toan effect that would kill it instantly without dealing damage,that effect is negated against the target, and the spell ends." // Corretto valori
+  ]),
+};
+
+// Dominate Creature ALT
+SpellsList["dominate creature"] = {
+  name: "Dominate Creature (LL)",
+  nameShort: "Dominate Creature (LL)",
+  regExpSearch: /^(?=.*dominate)(?=.*creature).*$/i,
+  source: ["GMB:LL", 0],
+  classes: [
+    "bard",
+    "druid",
+    "psion(laserllama)",
+    "ranger",
+    "sorcerer",
+    "warlock",
+    "wizard",
+  ],
+  level: 4,
+  school: "Ench",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "60 feet",
+  rangeMetric: "18 m",
+  components: "V, S",
+  duration: "Conc., 1 min",
+  description: "Charm a beast (or other types if upcast); telepathic link; take total control as an action.",
+  descriptionFull:
+    "You attempt to beguile a Beast that you can see within range. It must make a Wisdom saving throw or become Charmed by you for the duration. If you or creatures that are Friendly to you are fighting it, it has advantage on its saving throw." +
+    "\n\nWhile Charmed, you share a telepathic link with the creature so long as you are on the same plane. You can issue orders through this link, which it does its best to follow. When the creature does not have an order, it defends itself. As an action, you can take complete control: it takes only the actions you choose. You can cause it to use a reaction, but you must use yours as well." +
+    "\n\nAny time the creature takes damage, it repeats its Wisdom saving throw, ending the effect on a success." +
+    AtHigherLevels +
+    "When you cast this spell using a spell slot of 5th level or higher, the effects increase:\n\n" +
+    "Slot | Increased Effect\n" +
+    "-----|-----------------\n" +
+    "5th  | Can target Humanoids\n" +
+    "6th  | Duration: 10 minutes\n" +
+    "7th  | Duration: 1 hour\n" +
+    "8th  | Can target any creature type\n" +
+    "9th  | Duration: 8 hours",
+  allowUpCasting: true,
 };
 
 //Ego Scourge
@@ -6476,6 +6547,32 @@ SpellsList["staggering smite"] = {
   allowUpCasting: true,
 };
 
+//Wall of Ice ALT
+SpellsList["wall of ice"] = {
+  name: "Wall of Ice (LL)",
+  nameShort: "Wall of Ice (LL)",
+  regExpSearch: /^(?=.*wall)(?=.*ice).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["druid", "magus", "sorcerer", "wizard"],
+  level: 4,
+  school: "Conj",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "30 feet",
+  components: "V,S,",
+  duration: "Conc., 1 min",
+  description: "Conjure wall of ice, 6d6 cold damage when conjured, 2d6 damage passing through the frigid air",
+  descriptionFull: desc([
+    "You create a 1-foot thick wall of ice on a solid surface within range. You create it as a hemispherical dome or a sphere with radius of up to 10 feet, or you shape a flat surface made up often 10-foot-square panels. All panels must be contiguous with another panel. The ice wall lasts for the duration.",
+    " When the wall appears, creatures in its space must make a Dexterity saving throw. On a failure, you decide which side of the wall they are pushed to, then they take 6d6 cold damage. On a success, they decide which side they are pushed to, and they take half as much cold damage.",
+    " The wall has an AC of 12, 30 hit points per 10-foot section,and it is Vulnerable to fire damage. When a 10-foot section is destroyed, a sheet of frigid air remains in that space. When acreature passes through a sheet of this frigid air it must make a Constitution saving throw. It takes 2d6 cold damage on a failure, and half as much on a success. A creature can only be forced to make this saving throw once per turn.",
+    AtHigherLevels + " If you cast this spell using a spell slot of 5th-level or higher, the damage the wall deals when it appears increases by 2d6, and damage from passing through a sheet of frigid air increases by 1d6, for each slot level above 4th."
+  ]),
+  descriptionShorter: "Conjure wall of ice, 6d6 cold damage, 2d6 damage passing through the frigid air",
+  allowUpCasting: true
+};
+
+//Wall of Thorns ALT
 SpellsList["wall of thorns"] = {
   name: "Wall of Thorns (LL)",
   nameShort: "Wall of Thorns (LL)",
@@ -6500,6 +6597,7 @@ SpellsList["wall of thorns"] = {
   descriptionShorter: "Conjure wall of thorny plants, 5d8 piercing damage, difficult terrain",
   allowUpCasting: true
 };
+
 //###### 5TH LEVEL SPELLS ######\\
 
 //Banishing Smite ALT
@@ -6768,6 +6866,86 @@ SpellsList["wall of force"] = {
 };
 
 //###### 6TH LEVEL SPELLS ######\\
+
+//Astral Blade
+SpellsList["astral blade"] = {
+  name: "Astral Blade (LL)",
+  nameShort: "Astral Blade (LL)",
+  regExpSearch: /^(?=.*astral)(?=.*blade).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["sorcerer", "warlock", "wizard"],
+  level: 6,
+  school: "Conj",
+  time: "1 ba",
+  timeFull: "1 bonus action",
+  range: "60 feet",
+  rangeMetric: "18 m",
+  components: "V, S",
+  duration: "Conc., 1 min",
+  description: "4d6 force damage; critical hit on 18-20; bonus action to move blade.",
+  allowUpCasting: true,
+  descriptionFull:
+    "You conjure a 3-foot blade of pure astral energy. It appears in a space you can see within range, and you instantly make two melee spell attacks with it against targets within 5 feet. Astral Blade attacks score a critical hit on a roll of 18-20 on the d20. On hit, they deal 4d6 force damage. On a critical hit, its target must succeed on a Charisma saving throw or be banished to a harmless Demiplane until the start of your next turn.\n" +
+    " On subsequent turns, you can use a bonus action to move your Astral Blade up to 60 feet and make two attacks with it.\n" +
+    " Your Astral Blade can harmlessly pass through any barrier created with magic, like those of a Wall of Force spell."
+    + AtHigherLevels + "If you cast this spell using a spell slot of 7th-level or higher, the force damage dealt by the Astral Blade increases by 2d6 for each spell slot level above 6th.",
+};
+
+//Astral Projection ALT
+SpellsList["astral projection"] = {
+  name: "Astral Projection (LL)",
+  nameShort: "Astral Projection (LL)",
+  regExpSearch: /^(?=.*astral)(?=.*projection).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["cleric", "psion(laserllama)", "warlock", "wizard"],
+  level: 6,
+  school: "Div",
+  time: "1 hr",
+  timeFull: "1 hour",
+  range: "Self",
+  components: "V, S, M",
+  compMaterial: "10-foot long cord of mithril worth 1,000 gold for each target, which the spell consumes",
+  duration: "Special",
+  description: "You separate your soul from your body, projecting it into the Astral Plane (fails if you cast it on the Astral Plane).",
+  descriptionFull: desc([
+    "You separate your soul from your body, projecting it into theAstral Plane (The spell fails if you cast it on the Astral Plane).Your physical body is left behind, Unconscious and in a state of suspended animation; it does not need air, food, nor water, and it does not age. Your soul uses the following rules:",
+    toUni("Astral Body.") + " Your soul forms an Astral Body around itself. It is an exact replica of your physical body with your statistics and posessions, though a silver cord extends from the center of its back, turning invisibile after 1 foot. Any damage or other effects that apply to it don't affect your physical body or carry over to it when you return to your body.",
+    toUni("Silver Cord.") + " This cord tethers your soul to your physical body, and as long as it is intact, you can find your way to your physical body. If the cord is severed (which only happens if an effect specifically states that it does), your soul and body are permanently separated, killing you instantly.",
+    toUni("Ending the Spell.") + " If you leave the Astral Plane through a portal to another plane or return to the plane where the spell was cast, your physical body and its possessions travel along your silver cord, and you re-enter your physical body there.",
+    " The spell ends if you use your action to end it, if a spell like dispel magic is cast on your Astral Body or physical body, or if either body is reduced to 0 hit points. When the spell ends in this way, your soul instantly travels along your silver cord and returns to your physical body, where you awaken.",
+    AtHigherLevels + " If you cast this spell with a spell slot of 7th-level or higher, you can target three additional creatures for each spell slot level above 6th.",
+    " Any additional creatures must remain within 10 feet of you while you cast the spell."
+  ]),
+  allowUpCasting: true
+};
+
+//Create Homunculus
+SpellsList["create homunculus"] = {
+  name: "Create Homunculus (LL)",
+  nameShort: "Create Homunculus (LL)",
+  regExpSearch: /^(?=.*create)(?=.*homunculus).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["wizard"],
+  level: 6,
+  school: "Trans",
+  time: "1 h",
+  timeFull: "1 hour",
+  range: "Touch",
+  components: "V,S,M",
+  compMaterial: "clay, a sapphire worth 500 gold, and blood from the spellcaster, all of which are consumed",
+  duration: "Instantaneous",
+  description: "Create a homunculus servant (see book)",
+  descriptionFull: desc([
+    "While muttering incantations, you spill your blood onto the sapphire and place it at the heart of the clay, which you shape into your Homunculus. Your maximum hit points are reduced by 2d4 (this can't be lessened in any way), and a Homunculus comes to life under your control using the rules below:",
+    toUni("Statistics.") + " The Homunculus uses the stat block below. It uses your Spellcasting Ability, the Spell Slot spent to cast this spell, your Spell Attack Modifier, and Proficiency Bonus (PB) in several places throughout the stat block.",
+    toUni("Control.") + " Your Homunculus is absolutely loyal to you as its creator. It acts independently of you, but you can choose how it acts. In combat, it shares your initiative and your turn.",
+    toUni("Lifeblood Bond.") + " While your Homunculus lives, you cannot regain the maximum hit points spent in its creation. Casting this spell again instantly destroys any previous Homunculus.",
+    "The Homunculus cannot benefit from healing spells, short, or long rests. However, whenever you regain hit points (from a spell or rest), you can forgo regaining any number of those hit points and cause the Homunculus to regain them in your stead, so long as you are on the same plane of existence.",
+    "Finally, if you should die, the Homunculus dies instantly."
+  ]),
+  descriptionShorter: "Create a homunculus servant (see book)"
+};
+
 //Create Monstrosity
 SpellsList["create monstrosity"] = {
   name: "Create Monstrosity (LL)",
@@ -6798,31 +6976,34 @@ SpellsList["create monstrosity"] = {
   allowUpCasting: true
 };
 
-//Create Homunculus
-SpellsList["create homunculus"] = {
-  name: "Create Homunculus (LL)",
-  nameShort: "Create Homunculus (LL)",
-  regExpSearch: /^(?=.*create)(?=.*homunculus).*$/i,
+//Elemental Avatar
+SpellsList["elemental avatar"] = {
+  name: "Elemental Avatar (LL)",
+  nameShort: "Elemental Avatar (LL)",
+  regExpSearch: /^(?=.*elemental)(?=.*avatar).*$/i,
   source: ["GMB:LL", 0],
-  classes: ["wizard"],
+  classes: ["cleric", "psion(laserllama)", "warlock", "wizard"],
   level: 6,
-  school: "Trans",
-  time: "1 h",
-  timeFull: "1 hour",
-  range: "Touch",
-  components: "V,S,M",
-  compMaterial: "clay, a sapphire worth 500 gold, and blood from the spellcaster, all of which are consumed",
-  duration: "Instantaneous",
-  description: "Create a homunculus servant (see book)",
+  school: "Div",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "Self",
+  components: "V, S",
+  duration: "Conc., 1 hr",
+  description: "You infuse yourself with pure elemental energy for the duration.",
   descriptionFull: desc([
-    "While muttering incantations, you spill your blood onto the sapphire and place it at the heart of the clay, which you shape into your Homunculus. Your maximum hit points are reduced by 2d4 (this can't be lessened in any way), and a Homunculus comes to life under your control using the rules below:",
-    toUni("Statistics.") + " The Homunculus uses the stat block below. It uses your Spellcasting Ability, the Spell Slot spent to cast this spell, your Spell Attack Modifier, and Proficiency Bonus (PB) in several places throughout the stat block.",
-    toUni("Control.") + " Your Homunculus is absolutely loyal to you as its creator. It acts independently of you, but you can choose how it acts. In combat, it shares your initiative and your turn.",
-    toUni("Lifeblood Bond.") + " While your Homunculus lives, you cannot regain the maximum hit points spent in its creation. Casting this spell again instantly destroys any previous Homunculus.",
-    "The Homunculus cannot benefit from healing spells, short, or long rests. However, whenever you regain hit points (from a spell or rest), you can forgo regaining any number of those hit points and cause the Homunculus to regain them in your stead, so long as you are on the same plane of existence.",
-    "Finally, if you should die, the Homunculus dies instantly."
+    "You draw upon the chaotic energies of the elemental planes, infusing yourself with pure elemental Air, Earth, Fire, or Ice. For the duration, you gain the benefits of that element:",
+    toUni("Air.") + " A vortex of wind swirls about you, causing all ranged weapon attacks targeting you to be made with disadvantage, and granting you a flying speed equal to your walking speed.",
+    " As an action, you can unleash a tempestuous burst, forcing creatures within 15 feet to make a Strength saving throw. On a failed save, they take 4d8 thunder damage and are pushed away from you 15 feet in a straight line. On a successful save, they take half as much damage and are not moved.",
+    toUni("Earth.") + " Your body is covered in a shifting layer of raw earth and stone, granting you Resistance to bludgeoning, piercing, and slashing damage. You can also ignore any difficult terrain imposed by earth, stone, sand, or similar materials.",
+    " As an action, you rend the earth at your feet out to a 15-foot radius turning it into difficult terrain and forcing all creatures in that area to make a Dexterity saving throw. They take 4d8 bludgeoning damage and fall Prone on a failed save, and half as much damage and do not fall Prone on a success.",
+    toUni("Fire.") + " Flames envelop your body, harmless to you. You gain Immunity to fire damage, Resistance to radiant damage, and you shed bright light out to a 30-foot radius.",
+    " As an action, you unleash a burst of searing fire, forcing all creatures within 15 feet to make a Dexterity saving throw. On a failure, they take 4d8 fire damage and are Blinded until the start of your next turn. On a success, they take half as much damage and are not Blinded.",
+    toUni("Ice.") + " A thin sheen of glacial frost covers your body. You gain Immunity to cold damage, and the area within 15 feet of you becomes difficult terrain for creatures other than you due to the frigid temperature emitting from your body.",
+    " As an action, you can flash freeze the area within 15 feet, forcing creatures to make a Constitution saving throw. On a failure, they take 4d8 cold damage and their speed is halved until the start of your next turn. On a success, they take half as much damage and their speed is not affected.",
+    AtHigherLevels + " If you cast this spell using a spell slot of 6th-level or higher, you gain the benefits of another element of your choice (you can only choose each element once), and the damage of the special actions granted by this spell increases by 1d8 for each spell slot level above 5th."
   ]),
-  descriptionShorter: "Create a homunculus servant (see book)"
+  allowUpCasting: true
 };
 
 //Psionic Oppression
@@ -6897,6 +7078,56 @@ SpellsList["forcecage"] = {
     "A creature inside the cage cannot leave it by non-magical means. If the creature tries to use teleportation or interplanar travel to leave the cage, it must first make a Charisma saving throw. The spell or effect is wasted on a failed save, but on a success the creature uses the spell or effect to escape.",
     toUni("Statistics.") + " The cage's Armor Class equals your Spell save DC and it has 200 hit points. It is immune to poison, psychic, and non-magical bludgeoning, piercing, and slashing damage, vulnerable to force and magical bludgeoning, piercing, and slashing damage, and resistant to all other damage types. It cannot be dispelled by a dispel magic spell, but a disintegrate spell destroys the cage it instantly.", // Aggiunto "it" dopo "destroys the cage"
     AtHigherLevels + " When you cast this spell using a spell slot of 8th-level or higher, the hit points of the cage created by this spell increase by 25 for each spell slot level above 7th." // Corretto "8th level" in "8th-level"
+  ]),
+  allowUpCasting: true,
+};
+
+//Time Stop ALT
+SpellsList["time stop"] = {
+  name: "Time Stop (LL)",
+  nameShort: "Time Stop (LL)",
+  regExpSearch: /^(?=.*time)(?=.*stop).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["psion(laserllama)", "sorcerer", "wizard"],
+  level: 7,
+  school: "Div",
+  time: "1 action",
+  range: "Self",
+  components: "V",
+  duration: "Instantaneous",
+  description:
+    "You stop time and act as normal in the stopped time for a different number of turns",
+  descriptionFull: desc([
+    "You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take two turns in a row, during which you can use actions and move as normal.",
+    "This spell instantly ends if you move more than 1,000 feet from the location you cast it in, or if an action you use during the spell affects a creature other than you or an object that is being worn or carried by another creature.",
+    AtHigherLevels + "If you cast this spell using a spell slot of 8th-level or higher, the number of turns you take while time is stopped increases by 1 for each spell slot level above 7th."
+  ]),
+  allowUpCasting: true,
+};
+
+//Whirlwind ALT
+SpellsList["whirlwind"] = {
+  name: "Whirlwind (LL)",
+  nameShort: "Whirlwind (LL)",
+  regExpSearch: /^(?=.*whirlwind).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["druid", "sorcerer", "wizard"],
+  level: 7,
+  school: "Trans",
+  time: "1 action",
+  range: "300 ft",
+  components: "V, M",
+  compMaterial: "a single leaf of piece of straw",
+  duration: "Instantaneous",
+  description:
+    "You conjure a tornado under your control",
+  descriptionFull: desc([
+    "You magically transmute the winds in the area to conjure a powerful tornado under your control. This whirlwind appearsas a 10-foot radius, 50-foot high cylinder centered on a point you can see in range. With subsequent actions, you can move the whirlwind up to 30 feet in any direction along the ground.",
+    "The whirlwind sucks up any Medium or smaller objects that aren't being worn or carried or otherwise secured when they enter its space for the first time.",
+    "Any creature that enters the whirlwind's space must make a Strength saving throw. They take 10d6 thunder damage on a failure, and half as much on a successful save. Any Large or smaller creature that fails its saving throw is also sucked into the Whirlwind and Restrained in it. Each creature can only be forced to make this saving throw once per turn.",
+    "Restrained creatures move with the Whirlwind, and at the start of each of its turns it is Restrained within it, it takes 2d6 thunder damage and moves 10 feet up within the whirlwind. When a creature moves beyond the top of the whirlwind, it is thrown 60 feet in a random direction and lands Prone.",
+    "As an action, any Restrained creature can make a Strength check against your Spell save DC. On a successful check, it is thrown from whirlwind 60 feet in a direction of its choice.",
+    AtHigherLevels + "When you cast this spell using a spellslot of 8th-level or higher, the whirlwind is 10 feet taller and it deals an additional 2d6 thunder damage every time it deals damage for each slot level above 7th."
   ]),
   allowUpCasting: true,
 };
@@ -7015,6 +7246,36 @@ SpellsList["storm of vengeance"] = {
     " Strong winds up to 50 miles per hour rage, instantly dispersing all fog, mist, or similar effects, mundane or magical. Ranged attacks in the area become impossible." +
     toUni("Lightning Strikes") +
     " You charge the storm with lightning. As a bonus action on each turn, you can call six bolts of lighting from the cloud, each striking targets of your choice within the area. They must make a Dexterity saving throw, taking 10d6 lighting damage on a failure, and half on a success."
+};
+
+SpellsList["true polymorph"] = {
+  name: "True Polymorph (LL)",
+  nameShort: "True Polymorph (LL)",
+  regExpSearch: /^(?=.*true)(?=.*polymorph).*$/i,
+  source: ["GMB:LL", 0],
+  classes: ["druid", "sorcerer", "vessel", "warlock", "wizard"],
+  level: 8,
+  school: "Trans",
+  time: "1 a",
+  timeFull: "1 action",
+  range: "Sight",
+  components: "V, S, M",
+  compMaterial: "a drop of mercury, a dollop of gum arabic, and a wisp of smoke",
+  duration: "Conc., 1 hour",
+  description:
+    "You transform a creature or a non-magical object you can see within range",
+  descriptionFull: desc([
+    "You point your finger at one creature or non-magical object you can see in range, transforming it in one of the ways listed below. An unwilling target makes a Charisma saving throw to resist this effect, and Shapechangers automatically succeed on this saving throw. This spell cannot affect a target with 0 hit points, or an object that is being worn or carried.",
+    "If you concentrate on the effect for the full duration of this spell, the transformation becomes permanent for your target.",
+    toUni("Creature to Creature.") +
+    " The creature is transformed intoanother creature of a CR equal to (or lower then) half its CR or level. You must have seen a living specimen of the creature before in order to transform the target into that creature. The targets's game statistics are replaced by those of the creature, only retaining its alignment, personality, and Hit Points. All of its gear merges with its new form, and it cannot activate, use, or benefit from it while transformed. It can only take actions available to its new form, including speech, spellcasting, and things that require specific anatomy, such as hands." ,
+    toUni("Creature to Object.") +
+    " The creature is transformed into a non-magical object equal to its size or smaller. Everything it is wearing or carrying is transformed with it. You must have seen this object before to transform the creature into it. The target's statistics are replaced with those of the object. If the transformation ends, the target has no memory of the time it spent as the object." ,
+    toUni("Object to Creature.") +
+    " The non-magical object transforms into a creature equal to the objects size (or smaller) of CR 9 or lower. You must have seen a live specimen of the creature before in order to transform the object into that creature. Its statistics are replaced by those of the creature, it is Friendly to you and your allies, it rolls its own initative in combat, and you decide how it acts. Should the spell becomes permanent the new creature becomes independent, and it decides howto relate to you based how it was treated under your control." ,
+    toUni("Object to Object.") +
+    " The non-magical object is transformed into another non-magical object you have seen before, of its size or smaller. It statistics are replaced by the new object." ,
+  ])
 };
 
 //Weird ALT
@@ -8258,21 +8519,37 @@ MysticTalentsLL = {
 KnacksLL = {
   "alpine adept": {
     name: "Alpine Adept",
-    description: "You gain a 30-foot climbing speed, and you can use your reaction to reduce any falling damage you take by an amount equal to your Ranger level. If you already have a climbing speed it increases by 10 feet.",
+    description: desc([
+      "You gain a 30-foot climbing speed, and resistance to bludgeoning damage you take from falling.",
+      "If you already have a climbing speed it increases by 10 feet.",
+      "Finally you can add double your Proficiency Bonus to any Athletics checks that you make."
+    ]),
     speed: [["climb", { spd: "30 ft" }], ["climb", { bonus: "+10" }]],
-    action: [["reaction", ""]]
+    action: [["reaction", ""]],
+    skills: [["Athletics", "only"]],
+    additional: "prereq: prof in Athletics",
+    skillstxt: "Expertise in Athletics",
+    prereqeval: function (v) {
+      return v.skillProfs.indexOf("Athletics") !== -1;
+    },
   },
   "aquatic adept": {
     name: "Aquatic Adept",
-    description: "You gain a 30-foot swimming speed, and while you are underwater, you can hold your breath for up to 1 hour. If you already have a swimming speed it increases by 10 feet.",
+    additional: "prereq: prof in Athletics",
+    description: desc([
+      "You gain a 30-foot swimming speed, and while you are underwater, you can hold your breath for up to 1 hour.",
+      "If you already have a swimming speed it increases by 10 feet."]),
     speed: [["swim", { spd: "30 ft" }], ["swim", { bonus: "+10" }]],
+    prereqeval: function (v) {
+      return v.skillProfs.indexOf("Athletics") !== -1;
+    },
   },
   "favored foe": {
     name: "Favored Foe",
     description: desc([
       "You are especially adept at studying, tracking, and hunting aspecific type of enemy. Choose one creature type, two races of humanoid (such as gnolls and orcs), or one organization(like a thieves' guild or an evil cult) as your Favored Foe.",
-      " Whenever you make a Wisdom check to hunt or track, oran Intelligence check to recall knowledge about a FavoredFoe, you can treat a roll of 9 or lower on the d20 as a 10.",
-      " You can choose to learn this Knack more than once, butyou must choose a new Favored Foe each time you do so."
+      " Whenever you make a check to recall knowledge, hunt or track a Favored Foe, you can treat a roll of 9 or lower on the d20 as a 10.",
+      " You can choose to learn this Knack more than once, but you must choose a new Favored Foe each time you do so."
     ]),
     prereqeval: function (v) {
       return classes.known["ranger(laserllama)"].level >= 3;
@@ -8280,28 +8557,36 @@ KnacksLL = {
   },
   "herbalist i": {
     name: "Herbalist I",
-    description: "You gain proficiency with herbalism kits, and you automatically succeed on your Wisdom (Medicine) checks to stabilize creatures at 0 hit points if you use a herbalism kit.",
+    additional: "prereq: prof in Medicine",
+    description: desc([
+      "You gain proficiency with herbalism kits, and you automatically succeed on your Wisdom (Medicine) checks to stabilize creatures at 0 hit points if you use a herbalism kit.",
+      "Finally, you can add double your Proficiency Bonus to any Medicine or Herbalism Kit checks that you make."
+    ]),
     toolProfs: ["Herbalism Kit"],
+    skills: [["Medicine", "only"]],
+    skillstxt: "Expertise in Medicine and Herbalism Kit",
+    prereqeval: function (v) {
+      return v.skillProfs.indexOf("Medicine") !== -1;
+    },
+    eval: function () {
+      if (/herbalism kit/i.test(What("Too Text"))) {
+        Checkbox("Too Exp", true);
+      }
+    },
+    removeeval: function () {
+      if (/herbalism kit/i.test(What("Too Text"))) {
+        Checkbox("Too Exp", false);
+      }
+    },
   },
   "herbalist ii": {
     name: "Herbalist II",
+    additional: "prereq: Herbalist I, 3rd-level Ranger",
     description: "Over the course of a long rest, you can spend 1 hour using an herbalism kit to create one potion of healing. These potions of healing retain their potency until the end of your next long rest, at which point they become inert.",
     prereqeval: function (v) {
-      // Prerequisites: proficiency with poisoner's kit
-      if (!classes.known["ranger(laserllama)"].level > 3) {
-        return false;
-      }
-      if (
-        /herbalism.*?/i.test(What("Too Text")) &&
-        tDoc.getField("Too Prof").isBoxChecked(0)
-      ) {
-        return tDoc.getField("Too Exp").isBoxChecked(0) ? "markButDisable" : true;
-      } else {
-        return (
-          CurrentProfs.tool["Herbalism Kit"] ||
-          /herbalism.*?/i.test(v.toolProfs.toString())
-        );
-      }
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 3 && choices.indexOf("herbalist i") !== -1;
     },
   },
   "herbalist iii": {
@@ -8329,7 +8614,8 @@ KnacksLL = {
     name: "Naturalist I",
     description: desc([
       "Whenever you would make an Intelligence (Nature) check in the wilderness, you can choose to make a Wisdom (Nature) check instead.",
-      " Also, you can make Wisdom (Nature) checks as a bonus action to recall knowledge about one beast or plant you see."
+      "Also, you can make Wisdom (Nature) checks as a bonus action to recall knowledge about one beast or plant you see.",
+      "Finally, you can add double your Proficiency Bonus to any Nature checks that you make."
     ]),
     addMod: [
       {
@@ -8339,17 +8625,22 @@ KnacksLL = {
         text: "I can replace Intelligence (Nature) checks with Wisdom (Nature)",
       }
     ],
+    skills: [["Nature", "only"]],
+    additional: "prereq: prof in Nature",
+    skillstxt: "Expertise in Nature",
+    prereqeval: function (v) {
+      return v.skillProfs.indexOf("Nature") !== -1;
+    },
   },
   "naturalist ii": {
     name: "Naturalist II",
     description: desc([
-      "At the end of a long rest, you can attune to your surrounding environment. Examples include, but are not limited to: arctic, coast, desert, forest, grassland, mountain, or swamp. While in your attuned environment, you gain the following benefits:",
-      " \u2022 You have advantage on Wisdom (Nature) checks related to the local plants, animals, ecosystem, and weather.",
-      " \u2022 You find twice as much food when foraging or hunting.",
-      " \u2022 You have advantage on your initiative rolls so long as youare not surprised or incapacitated.",
+      "At the end of each long or short rest, you gain benefits as if you had cast the Commune with nature spell",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 6;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 9 && choices.indexOf("naturalist i") !== -1;
     },
   },
   "natural regeneration": {
@@ -8365,56 +8656,84 @@ KnacksLL = {
   },
   "slayer i": {
     name: "Slayer I",
+    additional: "prereq: prof in Perception, 3rd-level Ranger",
+    skills: [["Perception", "only"]],
+    skillstxt: "Expertise in Perception",
     description: desc([
-      "When you hit a creature with a weapon attack you can mark it as your Quarry as part of the attack, applying your Quarry damage bonus and other benefits to the damage roll.",
+      "Once per turn when you hit a creature with a weapon attack, you can mark it as your Quarry as part of the attack,",
+      "applying your Quarry damage bonus and other benefits to hit.",
+      "Finally, you add double your Proficiency Bonus to any Perception checks that you make."
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      return v.skillProfs.indexOf("perception") !== -1 && lvl >= 3;
     },
     action: [["action", " (on hit, weapon attack)"]]
   },
   "slayer ii": {
     name: "Slayer II",
+    additional: "prereq: Slayer I, 6th-level Ranger",
     description: desc([
-      "Your tracking abilities have become supernaturally accurate. You can mark a creature as your Quarry by studying signs ofits passing, such as tracks, that were left within 24 hours.",
-      "Moreover, whenever you make a Wisdom (Perception) or aWisdom (Survival) check to locate or track your Quarry, youcan treat a roll of 7 or lower on the d20 as an 8.",
+      "Your tracking abilities have become supernaturally accurate. You can mark a creature as your ",
+      "Quarry by studying signs ofits passing, such as tracks, that were left within 24 hours.",
+      "Moreover, whenever you make a Wisdom (Perception) or aWisdom (Survival) check to locate or ",
+      "track your Quarry, youcan treat a roll of 7 or lower on the d20 as an 8.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 6;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 6 && choices.indexOf("slayer i") !== -1;
     },
   },
   "slayer iii": {
     name: "Slayer III",
+    additional: "prereq: Slayer I, II, 14th-level Ranger",
     description: desc([
       "When you hit a Quarry with a weapon attack, you can force it to make a Constitution saving throw against your Spell save DC. On a failed save, it is blinded, cannot speak, deafened, or restrained (your choice) until the start of your next turn. You can only use this feature on your Quarry once per turn.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 14;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 14 && choices.indexOf("slayer i") !== -1 && choices.indexOf("slayer ii") !== -1;
     },
   },
   "stalker i": {
     name: "Stalker I",
+    additional: "prereq: prof in Stealth",
+    skills: [["Stealth", "only"]],
+    skillstxt: "Expertise in Stealth",
     description: desc([
       "You have advantage on Dexterity (Stealth) checks you make to hide while you are in natural environments.",
+      "You can add double your Proficiency Bonus to any Stealth checks that you make."
     ]),
+    prereqeval: function (v) {
+      var lvl = classes.known["ranger(laserllama)"].level;
+      return v.skillProfs.indexOf("stealth");
+    },
   },
   "stalker ii": {
     name: "Stalker II",
+    additional: "prereq: Stalker I, 3rd-level Ranger",
     description: desc([
       "You can take the Hide action as a bonus action on your turn.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 3 && choices.indexOf("stalker i") !== -1;
     },
     action: [["bonus action", "Hide"]]
   },
   "stalker iii": {
     name: "Stalker III",
+    additional: "prereq: Stalker I, II, 9th-level Ranger",
     description: desc([
       "You are always underthe effects of the Nondetection spell, and you can't be trackedby divination magic or magical means unless you wish to be.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 9;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 9 && choices.indexOf("stalker i") !== -1 && choices.indexOf("stalker ii") !== -1;
     },
     spellcastingBonus: [
       {
@@ -8434,38 +8753,63 @@ KnacksLL = {
   },
   "stalker iv": {
     name: "Stalker IV",
+    additional: "prereq: Stalker I, II, III, 14th-level Ranger",
     description: desc([
-      "When you take the Hide action, you, along with anything you are wearing or carrying, become invisible until the start of your next turn. This ends early if you attack or cast a spell.",
+      "When you take the Hide action, you, along with anything you are wearing or carrying, become invisible",
+      "until the start of your next turn. This ends early if you attack, cast a spell or force a creature to",
+      "make an ability check or saving throw."
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 14;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 14
+        && choices.indexOf("stalker i") !== -1
+        && choices.indexOf("stalker ii") !== -1
+        && choices.indexOf("stalker iii") !== -1;
     },
   },
   "strider i": {
     name: "Strider I",
+    skills: [["Survival", "only"]],
+    skillstxt: "Expertise in Survival",
+    additional: "prereq: prof in Survival",
     description: desc([
-      "You ignore the effects of difficult terrain imposed by naturalenvironments, such as undergrowth, snow, or swamp. Youalso can't become lost so long as you can see the night sky.",
-      "Finally, you and up to 10 creatures who travel with youdon't have your travel slowed by natural difficult terrain.",
+      "You ignore the effects of difficult terrain imposed by natural environments,",
+      "you cannot become lost so long as you can see the night sky, and you and up to 10 creatures",
+      "who travel with you don't have your travel slowed by natural difficult terrain.",
+      "Finally, you can add double your Proficiency Bonus to any Survival checks that you make."
     ]),
+    prereqeval: function (v) {
+      return v.skillProfs.indexOf("survival") !== -1;
+    },
     savetxt: { immune: ["natural diff. terrain"] }
   },
   "strider ii": {
     name: "Strider II",
+    additional: "prereq: Strider I, 3rd-level Ranger",
     description: desc([
       "You can take the Dash action as a bonus action on your turn.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 3 && choices.indexOf("strider i") !== -1;
     },
     action: [["bonus action", "Dash"]]
   },
   "strider iii": {
-    name: "Strider II",
+    name: "Strider III",
+    additional: "prereq: Strider I, II, 6th-level Ranger",
     description: desc([
-      "Your walking speed increases by 10 feet, and you ignore the effects of any difficult terrain imposed by spells, magical phenomena, or any other supernatural effect.",
+      "Your walking speed increases by 10 feet, and you ignore the effects of any",
+      "difficult terrain imposed by spells, magical phenomena, or any other supernatural effect.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 6;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 6
+        && choices.indexOf("strider i") !== -1
+        && choices.indexOf("strider ii") !== -1;
     },
     savetxt: { immune: ["non-natural diff. terrain"] },
     speed: { walk: { bonus: "+10" } },
@@ -8494,8 +8838,18 @@ KnacksLL = {
       },
     },
   },
+  "student of the Wild": {
+    name: "Survivor I",
+    description: desc([
+      "You gain proficiency in two skills of your choice from the Ranger class skill list.",
+      "You can learn this Knack more than once, but you choose two new Ranger class skills each time that you learn it."
+    ]),
+    skillstxt: "Choose two from the Ranger class skill list.",
+    allowDuplicates: true
+  },
   "survivor i": {
     name: "Survivor I",
+    additional: "prereq: 6th-level Ranger",
     description: desc([
       "As a bonus action on your turn, you can grant yourself temporary hit points equal to your Constitution modifier (minimum of 1).",
     ]),
@@ -8506,78 +8860,96 @@ KnacksLL = {
   },
   "survivor ii": {
     name: "Survivor II",
+    additional: "prereq: Survivor I, 9th-level Ranger",
     description: desc([
       "When you expend a Hit Die to regain hit points, you regain additional hit points equal to your Wisdom modifier (minimum of 1 hit point).",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 9;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 9 && choices.indexOf("survivor i") !== -1;
     },
   },
   "survivor iii": {
     name: "Survivor III",
+    additional: "prereq: Survivor I, II,  14th-level Ranger",
     description: desc([
       "When you make a death saving throw, you add your Wisdom modifier to the roll (minimum of +1). If the result of your roll is 20 or higher, it is as if you had rolled a 20 on the d20",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 14;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 14
+        && choices.indexOf("survivor i") !== -1
+        && choices.indexOf("survivor ii") !== -1;
     },
   },
-  "trapper": {
-    name: "Trapper",
+  "trapper i": {
+    name: "Trapper I",
+    skills: [["Sleight of Hand", "only"]],
+    skillstxt: "Expertise in Sleight of Hand",
+    additional: "prereq: prof in Sleight of Hand",
     description: desc([
-      "You can construct natural traps. Over the course of 1 hour, which can be during a short or long rest, you can use a knife, natural materials, and expend 10 feet of rope to craft a Trap.",
-      " As an action, you can set one of these Traps in an adjacent unoccupied 5-foot space. The first Large or smaller creature to move into that space must succeed on a Dexterity saving throw against your Spell save DC or become restrained.",
-      " As an action, the restrained creature, or another creature within 5 feet of it, can use an action to make a Strength check against your Spell save DC, freeing the creature on a success.",
-      "As an action (separate from setting the Trap), you can hide the Trap. If hidden, a successful Intelligence (Investigation) against your Spell save DC is required to detect the Trap."
+      "You gain expertise in Sleight of Hand. You can construct natural traps over 1 hour (can be during a rest)",
+      " using a knife, natural materials, and 10 feet of rope. A Trap remains usable until the end of your next long rest.",
+      "As an action, you can set a Trap in an adjacent 5-foot space. The first Large or smaller creature to enter must",
+      " succeed on a Dexterity saving throw against your Spell save DC or be Restrained. A creature can use its",
+      " action to make a Strength check against your Spell save DC to free itself or another creature, destroying",
+      " the trap on success.",
+      "As an action, you can hide a Trap. Creatures unaware of a Trap have disadvantage on their saving throw against it.",
+      " Detection requires an Intelligence (Investigation) or Wisdom (Perception) check against your Spell save DC."
     ]),
+    prereqeval: function (v) {
+      return v.skillProfs.indexOf("sleight of hand") !== -1;
+    },
     action: [
-      ["action", " (set Trap)"],
-      ["action", " (hide Trap)"],
+      ["action", "Setting a Trap"],
+      ["action", "Hide a Trap"],
     ]
+  },
+  "trapper ii": {
+    name: "Trapper I",
+    additional: "prereq: Trapper I, 6th-level Ranger",
+    description: desc([
+      "So long as you have enough natural material and rope, you can craft up to three Traps in 1 hour, and once you",
+      "set your Traps, they last until triggered or destroyed."
+    ]),
+    prereqeval: function (v) {
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 6
+        && choices.indexOf("trapper i") !== -1;
+    },
   },
   "wild insight i": {
     name: "Wild Insight I",
+    additional: "prereq: prof in Animal Handling or Insight",
     description: desc([
-      "You can communicate with beasts as if you were always under the effect of a Speak with Animals spell.",
+      "You can verbally communicate with and understand Beasts.",
+      "However, when communicating with a Beast, its awareness and ability to recall knowledge is",
+      " limited by its Intelligence",
     ]),
+    prereqeval: function (v) {
+      return
+      v.skillProfs.indexOf("animal handling") !== -1 ||
+        v.skillProfs.indexOf("insight") !== -1;
+    },
   },
   "wild insight ii": {
     name: "Wild Insight II",
+    additional: "prereq: Wild Insight I, 3rd-level Ranger",
     description: desc([
-      "You have bound yourself with a minor nature spirit. You learn the Conjure Familiar spell. It is a Ranger spell for you and it is always prepared, but it does not count against the number of spells you prepare each day. When you cast this spell your summoned Familiar is always a Fey creature.",
+      "As an action, expend a spell slot and touch a Friendly Beast with a CR equal to the level of",
+      " that spell slot or lower, forging a mystic bond. While this bond persists, you can't regain ",
+      " that spell slot.",
+      "This bond persists until you bond another Beast, this Beast dies, or you release the bond.",
+      "The bonded Beast is Friendly to you and aids you to the best of its abilities."
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
-    },
-    spellcastingBonus: [
-      {
-        name: "Wild Insight II",
-        firstCol: "WI2",
-        spells: ["conjure familiar"],
-        selection: ["conjure familiar"],
-        times: 1,
-      },
-    ],
-    spellChanges: {
-      "conjure familiar": {
-        changes:
-          "Your familiar is always a Fey.",
-      },
-    },
-  },
-  "wild insight iii": {
-    name: "Wild Insight III",
-    description: desc([
-      "When you cast conjure familiar, it can take the form of a Beast of CR 1/2 or lower.",
-    ]),
-    prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
-    },
-    spellChanges: {
-      "conjure familiar": {
-        changes:
-          "Your familiar is always a Fey and it can take the form of a Beast of CR 1/2 or lower.",
-      },
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 3
+        && choices.indexOf("wild insight i") !== -1;
     },
   },
   //from expanded Ranger
@@ -8593,6 +8965,7 @@ KnacksLL = {
   },
   "fell handed i": {
     name: "Fell Handed I",
+    additional: "prereq: 6th-level Ranger",
     description: desc([
       "When you score a critical hit with a weapon attack against a creature, you have advantage on the next attack you make against that creature before the end of your next turn.",
     ]),
@@ -8602,12 +8975,16 @@ KnacksLL = {
   },
   "fell handed ii": {
     name: "Fell Handed II",
+    additional: "prereq: Fell Handed I, 9th-level Ranger",
     description: desc([
       "When you score a critical hit against a creature, your criticalhit range for attack rolls against that creature expands by 1.",
       " For example, if you score a critical hit against a creature for the first time, you then score a critical hit on a roll of 19 or 20 when you make an attack roll against it, and so on.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 9;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 9
+        && choices.indexOf("fell handed i") !== -1;
     },
   },
   "hedge knight i": {
@@ -8619,11 +8996,15 @@ KnacksLL = {
   },
   "hedge knight ii": {
     name: "Hedge Knight II",
+    additional: "prereq: Hedge Knight I, 3rd-level Ranger",
     description: desc([
       "Whenever you make an Intelligence (History) or Charisma (Persuasion) check, you can use Wisdom in place of Intelligence or Charisma, respectively.",
     ]),
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 3
+        && choices.indexOf("hedge knight i") !== -1;
     },
     addMod: [
       {
@@ -8647,7 +9028,11 @@ KnacksLL = {
   },
   "planar adept (astral sea)": {
     name: "Planar Adept (Astral Sea)",
-    description: "You gain resistance to radiant damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of astral sea plane environments.",
+    additional: "prereq: 9th-level Ranger",
+    description: desc([
+      "You gain resistance to radiant damage. Also, you and up to 10 creatures who travel with you have",
+      " advantage on any saving throws they make to resist the hostile effects of astral sea plane environments.",
+    ]),
     dmgres: ["Radiant"],
     submenu: "Planar Adept",
     prereqeval: function (v) {
@@ -8656,7 +9041,11 @@ KnacksLL = {
   },
   "planar adept (feywild)": {
     name: "Planar Adept (Feywild)",
-    description: "You gain resistance to psychic damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of feywild plane environments.",
+    additional: "prereq: 9th-level Ranger",
+    description: desc([
+      "You gain resistance to psychic damage. Also, you and up to 10 creatures who travel with you have",
+      " advantage on any saving throws they make to resist the hostile effects of feywild plane environments.",
+    ]),
     dmgres: ["Psychic"],
     submenu: "Planar Adept",
     prereqeval: function (v) {
@@ -8665,6 +9054,7 @@ KnacksLL = {
   },
   "planar adept (mechanus)": {
     name: "Planar Adept (Mechanus)",
+    additional: "prereq: 9th-level Ranger",
     description: "You gain resistance to force damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of mechanus plane environments.",
     dmgres: ["Force"],
     submenu: "Planar Adept",
@@ -8674,6 +9064,7 @@ KnacksLL = {
   },
   "planar adept (shadowfell)": {
     name: "Planar Adept (Shadowfell)",
+    additional: "prereq: 9th-level Ranger",
     description: "You gain resistance to necrotic damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of shadowfell plane environments.",
     dmgres: ["Necrotic"],
     submenu: "Planar Adept",
@@ -8683,6 +9074,7 @@ KnacksLL = {
   },
   "planar adept (air)": {
     name: "Planar Adept (Air)",
+    additional: "prereq: 9th-level Ranger",
     description: "You gain resistance to thunder damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of air plane environments.",
     dmgres: ["Thunder"],
     submenu: "Planar Adept",
@@ -8692,6 +9084,7 @@ KnacksLL = {
   },
   "planar adept (earth)": {
     name: "Planar Adept (Earth)",
+    additional: "prereq: 9th-level Ranger",
     description: "You gain resistance to force damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of earth plane environments.",
     dmgres: ["acid"],
     submenu: "Planar Adept",
@@ -8701,6 +9094,7 @@ KnacksLL = {
   },
   "planar adept (fire)": {
     name: "Planar Adept (fire)",
+    additional: "prereq: 9th-level Ranger",
     description: "You gain resistance to fire damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of fire plane environments.",
     dmgres: ["Fire"],
     submenu: "Planar Adept",
@@ -8710,6 +9104,7 @@ KnacksLL = {
   },
   "planar adept (water)": {
     name: "Planar Adept (Water)",
+    additional: "prereq: 9th-level Ranger",
     description: "You gain resistance to cold damage. Also, you and up to 10 creatures who travel with you have advantage on any saving throws they make to resist the hostile effects of water plane environments.",
     dmgres: ["Cold"],
     submenu: "Planar Adept",
@@ -8732,10 +9127,11 @@ KnacksLL = {
         ClassList["ranger(laserllama)"].features["fighting style"]
       );
       FSfea.name = "Rider II";
-      (FSfea.description = desc([
-        "I learn the Mounted Warrior Fighting Style and it doesn't count to the max of Fighting Styles I know, and I can ride trained mounts that are equal to my size or larger",
-        " If you already know the Mounted Warrior Fighting Style you learn another Ranger Fighting Style of your choice. "
-      ])),
+      FSfea.additional = "prereq: Rider I, 3rd-level Ranger"
+        (FSfea.description = desc([
+          "I learn the Mounted Warrior Fighting Style and it doesn't count to the max of Fighting Styles I know, and I can ride trained mounts that are equal to my size or larger",
+          " If you already know the Mounted Warrior Fighting Style you learn another Ranger Fighting Style of your choice. "
+        ])),
         (FSfea.extraname = "Rider II Fighting Style");
       FSfea.extraTimes = [];
       if (classes.known["ranger(laserllama)"] && CurrentFeatureChoices.classes &&
@@ -8748,7 +9144,10 @@ KnacksLL = {
         FSfea.choices = ["Mounted Warrior"];
       }
       FSfea.prereqeval = function (v) {
-        return classes.known["ranger(laserllama)"].level >= 3;
+        var lvl = classes.known["ranger(laserllama)"].level;
+        var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+        return lvl >= 3
+          && choices.indexOf("rider i") !== -1;
       };
     }
 
@@ -8756,19 +9155,34 @@ KnacksLL = {
   })(),
   "rider iii": {
     name: "Rider III",
+    additional: "prereq: Rider I, II, 6th-level Ranger",
     description: desc([
       "When you are riding mount and it is hit by an attack, you can use a reaction to become the target of that attack instead. Also, if your mount is forced to make a saving throw while you are riding it, you can use your reaction to grant it advantage on its roll.",
     ]),
     prereqeval: function (v) {
       return classes.known["ranger(laserllama)"].level >= 6;
     },
+    prereqeval: function (v) {
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 6
+        && choices.indexOf("rider i") !== -1
+        && choices.indexOf("rider ii") !== -1;
+    },
     action: [["reaction", ""]]
   },
   "underground adept": {
     name: "Underground Adept",
-    description: "You gain darkvision out to a range of 60 feet.If you already have darkvision its range increases by 30 feet. As an action you can close your eyes to gain tremorsenseout to a 60-foot radius. In that radius, you can sense anythingtouching the ground. This special sense lasts for 1 minute, oruntil you open your eyes. Once you use this action you mustfinish a short or long rest before you can use it again.",
+    description: desc([
+      "You gain darkvision out to a range of 60 feet.If you already have darkvision its range increases by 30 feet.",
+      "As an action you can close your eyes to gain tremorsense out to a 60-foot radius. In that radius, you can sense",
+      " anything touching the ground. This special sense lasts for 1 minute, or until you open your eyes. Once you use",
+      " this action you must finish a short or long rest before you can use it again.",
+
+
+    ]),
     vision: [["Darkvision", "fixed 60"], ["Darkvision", "+30"]],
-    action: [["action", ""]],
+    action: [["action", " Tremorsense (60 ft)"]],
     usages: 1,
     recovery: "short rest"
   },
@@ -8776,12 +9190,14 @@ KnacksLL = {
     name: "Woodsman I",
     description: desc([
       "You gain proficiency with woodcarver's tools, and you have advantage on ability checks to identify and construct things from wood.",
-      " Also, at the end of each long rest, you can use woodcarver'stools and raw timber to craft a number of arrows, bolts, clubs, javelins, and quarterstaffs equal to your proficiency bonus.",
+      " Also, at the end of each long rest, you can use woodcarver'stools and raw timber to craft a number of arrows, bolts, clubs,",
+      " javelins, and quarterstaffs equal to your proficiency bonus.",
     ]),
     toolProfs: ["Woodcarver's tools"]
   },
   "woodsman ii": {
     name: "Woodsman II",
+    additional: "prereq: Woodsman I, 3rd-level Ranger",
     description: desc([
       "You gain the following benefits:",
       " \u2022 You gain proficiency with carpenter's tools. Anything you construct from wood has twice as many hit points.",
@@ -8790,7 +9206,10 @@ KnacksLL = {
     ]),
     toolProfs: ["Carpenter's tools"],
     prereqeval: function (v) {
-      return classes.known["ranger(laserllama)"].level >= 3;
+      var lvl = classes.known["ranger(laserllama)"].level;
+      var choices = GetFeatureChoice("class", "ranger(laserllama)", "knacks", true);
+      return lvl >= 3
+        && choices.indexOf("woodsman i") !== -1;
     },
   },
 };
@@ -10042,7 +10461,6 @@ GunslingerUpgrades = {
     additional: "Deployable turret"
   }
 };
-
 // Machinist Artificer LL Automaton Models
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 AutomatonModels = {
@@ -10171,7 +10589,7 @@ AutomatonModels = {
 
 
 
-// Warlock LL Eldritch Invocations
+// Warlock LL Eldritch Invocations MetamagicLL ChordsPowerLL PrimalSurgesLL ElderArcanumsLL EldritchInvocationsLL
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 EldritchInvocationsLL = {
   "armor of shadows": {
@@ -10909,7 +11327,7 @@ EldritchInvocationsLL = {
   },
 };
 
-// Warlock LL Elder Arcanum
+// Warlock LL Elder Arcanum 
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 ElderArcanumsLL = {
   "minion of chaos": {
@@ -11264,7 +11682,7 @@ ElderArcanumsLL = {
   }
 };
 
-// Druid LL Primal Surges
+// Druid LL Primal Surges 
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 PrimalSurgesLL = {
   "ancient rites": {
@@ -11370,7 +11788,7 @@ PrimalSurgesLL = {
   },
 };
 
-// Bard LL Chords of Power
+// Bard LL Chords of Power 
 // NOTE: See the lack of "var" keyword, it is important as this variable has to be global to be used in other imports
 ChordsPowerLL = {
   "inspiring melody": {
