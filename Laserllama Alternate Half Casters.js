@@ -3222,8 +3222,9 @@ if (typeof LLExploitFeature !== "function" || !SpellsList["arresting strike"] ||
 	throw new Error("Please import the 'Laserllama Common Attributes 20261019.js' file before importing this file.");
 }
 
-if (ClassList["ranger"]) ClassList["ranger"].regExpSearch = /^(?=.*ranger)(?!.*laserllama).*$/i;
-if (ClassList["rangerua"]) ClassList["rangerua"].regExpSearch = /^(?=.*ranger)(?=.*(ua|unearthed))(?!.*laserllama).*$/i;
+// Official rangers (the sheet uses the UA Revised Ranger instead of the PHB one when it's loaded): same regex, minus "LaserLlama"
+if (ClassList["ranger"]) ClassList["ranger"].regExpSearch = /^(?!.*laserllama)((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i;
+if (ClassList["rangerua"]) ClassList["rangerua"].regExpSearch = /^(?!.*laserllama)((?=.*(ranger|strider))|((?=.*(nature|natural))(?=.*(knight|fighter|warrior|warlord|trooper)))).*$/i;
 LLRngLvl = function () { return classes.known["ranger(laserllama)"] ? classes.known["ranger(laserllama)"].level : 0; };
 LLQuarryDie = function (n) { return n < 2 ? "" : n < 6 ? "d4" : n < 10 ? "d6" : n < 14 ? "d8" : n < 18 ? "d10" : "d12"; };
 LLHasSkill = function (v, sSkill) { return v && v.skillProfsLC ? v.skillProfsLC.indexOf(sSkill.toLowerCase()) !== -1 : false; };
@@ -4604,3 +4605,10 @@ FeatsList["wild companion"] = {
 	description : "I bond with a beast of CR up to my level / 4 as my Wild Companion (Companion page). It acts on my turn and takes the Dodge action unless I command it with a bonus action. A new Companion takes 8 hours of tracking and bonding.",
 	action : [["bonus action", "Command Wild Companion"]]
 };
+
+// Make the LaserLlama subclasses selectable in the Class/Subclass selection dialogs
+if (typeof LLFixSubclassNames === "function") {
+	LLFixSubclassNames();
+	// and again after all add-on scripts have run (other scripts may add or change subclasses)
+	if (typeof RunFunctionAtEnd === "function") RunFunctionAtEnd(function () { LLFixSubclassNames(); });
+}

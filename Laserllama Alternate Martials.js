@@ -6617,3 +6617,10 @@ FeatsList["roguish initiate"] = {
 	languageProfs : ["Thieves' Cant"],
 	action : [["bonus action", "Dash, Hide, or Use an Object (choose one)"]]
 };
+
+// Make the LaserLlama subclasses selectable in the Class/Subclass selection dialogs
+if (typeof LLFixSubclassNames === "function") {
+	LLFixSubclassNames();
+	// and again after all add-on scripts have run (other scripts may add or change subclasses)
+	if (typeof RunFunctionAtEnd === "function") RunFunctionAtEnd(function () { LLFixSubclassNames(); });
+}

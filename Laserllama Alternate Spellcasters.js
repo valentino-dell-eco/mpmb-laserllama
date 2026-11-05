@@ -5213,6 +5213,17 @@ LLWizScholar = function (sSchool, sTradition) {
 	};
 };
 
+// Studious Recovery: the limited feature shows the highest slot level I can recover, updated live
+// (half my wizard level, but not higher than my Int mod, min 1st)
+LLWizStudious = function (sUsesFld) {
+	var oFld = tDoc.getField(sUsesFld.replace("Max Usages ", ""));
+	if (!oFld || !classes.known["wizard(laserllama)"]) return;
+	var nLvl = classes.known["wizard(laserllama)"].level;
+	var nMax = Math.max(1, Math.min(Math.floor(nLvl / 2), Math.max(1, Number(What("Int Mod")))));
+	var sNew = "Studious Recovery (slot \u2264 " + nMax + ["st", "nd", "rd"].concat(["th", "th", "th", "th", "th", "th"])[nMax - 1] + ")";
+	if (oFld.value !== sNew && /studious recovery/i.test(oFld.value)) oFld.value = sNew;
+};
+
 ClassList["wizard(laserllama)"] = {
 	name : "Wizard (LaserLlama)",
 	regExpSearch : /^(?=.*wizard)(?=.*laserllama).*$/i,
@@ -5293,10 +5304,8 @@ ClassList["wizard(laserllama)"] = {
 			source : [["GMB:LL", 0]],
 			minlevel : 2,
 			description : LLdesc("During a short rest, I can study my spellbook to regain one expended spell slot"),
-			additional : levels.map(function (n) {
-				return n < 2 ? "" : "slot level \u2264 " + Math.max(1, Math.floor(n / 2)) + " and \u2264 Int mod (min 1)";
-			}),
 			usages : 1,
+			usagescalc : "event.value = 1; if (typeof LLWizStudious === 'function') LLWizStudious(event.target.name);",
 			recovery : "short rest"
 		},
 		"subclassfeature3" : {
@@ -6000,3 +6009,10 @@ AddSubClass("wizard(laserllama)", "war mage", {
 		}
 	}
 });
+
+// Make the LaserLlama subclasses selectable in the Class/Subclass selection dialogs
+if (typeof LLFixSubclassNames === "function") {
+	LLFixSubclassNames();
+	// and again after all add-on scripts have run (other scripts may add or change subclasses)
+	if (typeof RunFunctionAtEnd === "function") RunFunctionAtEnd(function () { LLFixSubclassNames(); });
+}

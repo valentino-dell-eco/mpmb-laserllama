@@ -7188,3 +7188,10 @@ AddSubClass("warlord(laserllama)", "academy of zeal", {
 		}
 	}
 });
+
+// Make the LaserLlama subclasses selectable in the Class/Subclass selection dialogs
+if (typeof LLFixSubclassNames === "function") {
+	LLFixSubclassNames();
+	// and again after all add-on scripts have run (other scripts may add or change subclasses)
+	if (typeof RunFunctionAtEnd === "function") RunFunctionAtEnd(function () { LLFixSubclassNames(); });
+}

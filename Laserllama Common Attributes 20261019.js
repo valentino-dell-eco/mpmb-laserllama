@@ -588,6 +588,39 @@ LLdesc = function (arr, joinStr) {
 	return desc(arr, joinStr);
 };
 
+// Make sure every subclass can be selected in the sheet's Class Selection and Subclass dialogs.
+// Those dialogs only list a subclass if its "fullname" (or "Class (subname)") is parsed back to that same subclass,
+// and the Subclass dialog writes the fullname in the Class field. With both the official and the LaserLlama classes
+// loaded, a short fullname (e.g. "Evoker" or "Berserker") could be recognized as the other version of the class,
+// hiding the subclass (or switching the class when selected). This gives such subclasses a fullname that includes
+// the class name (e.g. "Evoker Wizard (LaserLlama)", "Berserker Barbarian"); subclasses that already work are untouched.
+// Called at the end of each LaserLlama file (it checks all classes loaded so far).
+LLFixSubclassNames = function () {
+	if (typeof ParseClass !== "function") return;
+	for (var sCl in ClassList) {
+		var oCl = ClassList[sCl];
+		if (!oCl || !oCl.subclasses || !isArray(oCl.subclasses[1])) continue;
+		for (var i = 0; i < oCl.subclasses[1].length; i++) {
+			var sSub = oCl.subclasses[1][i];
+			var oSub = ClassSubList[sSub];
+			if (!oSub || !oSub.subname) continue;
+			var aTry = [oSub.fullname ? oSub.fullname : oCl.name + " (" + oSub.subname + ")"];
+			if (oSub.fullname && !/laserllama/i.test(oSub.fullname)) aTry.push(oSub.fullname + " " + oCl.name);
+			if (/^the /i.test(oSub.subname)) aTry.push(oSub.subname.replace(/^the /i, "") + " " + oCl.name);
+			aTry.push(oSub.subname + " " + oCl.name);
+			aTry.push(oCl.name + " (" + oSub.subname + ")");
+			for (var t = 0; t < aTry.length; t++) {
+				var aParsed = false;
+				try { aParsed = ParseClass(aTry[t]); } catch (e) {}
+				if (aParsed && aParsed[0] === sCl && aParsed[1] === sSub) {
+					if (t > 0) oSub.fullname = aTry[t];
+					break;
+				}
+			}
+		}
+	}
+};
+
 // ===================================================================================
 // FIGHTING STYLES (Alternate Fighter v3.5.1 + Expanded, Alternate Martial Multiclassing)
 // Each entry: menu = name shown in the "Choose Feature" menu
@@ -6884,3 +6917,10 @@ LLWlkFamily("Verdant", {
 		{ name : "Natural Camouflage", description : "While it remains still, it's indistinguishable from normal plants and foliage." }]
 });
 
+
+// Make the LaserLlama subclasses selectable in the Class/Subclass selection dialogs
+if (typeof LLFixSubclassNames === "function") {
+	LLFixSubclassNames();
+	// and again after all add-on scripts have run (other scripts may add or change subclasses)
+	if (typeof RunFunctionAtEnd === "function") RunFunctionAtEnd(function () { LLFixSubclassNames(); });
+}
